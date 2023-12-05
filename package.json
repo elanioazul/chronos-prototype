@@ -20,6 +20,7 @@
     "@angular/router": "^16.2.0",
     "@ngx-translate/core": "^15.0.0",
     "@ngx-translate/http-loader": "^8.0.0",
+    "font-gis": "^1.0.5",
     "ol": "^8.2.0",
     "ol-ext": "^4.0.11",
     "primeflex": "^3.3.0",
