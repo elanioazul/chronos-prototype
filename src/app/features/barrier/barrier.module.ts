@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BarrierComponent } from './barrier.component';
+import { BarrierRoutingModule } from './barrier-routing.module'
 
 
 
@@ -9,7 +10,8 @@ import { BarrierComponent } from './barrier.component';
     BarrierComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    BarrierRoutingModule
   ]
 })
 export default class BarrierModule { }
