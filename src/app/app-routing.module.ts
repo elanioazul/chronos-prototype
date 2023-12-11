@@ -17,6 +17,11 @@ const routes: Routes = [
 		loadChildren: () =>
 			import("./features/visor/visor.module")
 	},
+  {
+    path: "**",
+    loadChildren: () =>
+      import("./features/barrier/barrier.module")
+  }
 ];
 
 @NgModule({
