@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { isTokenPresentGuard } from './guards/is-token-present.guard';
 
 const routes: Routes = [
   {
@@ -14,9 +15,15 @@ const routes: Routes = [
   },
   {
 		path: "visor",
+    canActivate: [isTokenPresentGuard],
 		loadChildren: () =>
 			import("./features/visor/visor.module")
 	},
+  {
+    path: "**",
+    loadChildren: () =>
+      import("./features/barrier/barrier.module")
+  }
 ];
 
 @NgModule({
