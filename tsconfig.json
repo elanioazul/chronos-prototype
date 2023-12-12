@@ -26,7 +26,10 @@
     "paths": {
 			"@features/*": ["src/app/features/*"],
 			"@shared/*": ["src/app/shared/*"],
+			"@core/*": ["src/app/features/visor/core/*"],
 		},
+    "allowSyntheticDefaultImports": true,
+    "noImplicitAny": false,
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

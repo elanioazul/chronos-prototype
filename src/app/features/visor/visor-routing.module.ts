@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { VisorComponent } from './visor.component';
+import { VisorComponent } from './components/visor.component';
 
 const routes: Routes = [
   {
@@ -13,5 +13,6 @@ const routes: Routes = [
 @NgModule({
   declarations: [],
   imports: [CommonModule, RouterModule.forChild(routes)],
+  exports: [RouterModule]
 })
 export class VisorRoutingModule {}
