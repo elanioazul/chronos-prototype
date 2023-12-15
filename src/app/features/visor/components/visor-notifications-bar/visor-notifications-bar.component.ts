@@ -3,7 +3,7 @@ import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } fr
 import { Subject, map, takeUntil } from 'rxjs';
 import {
   addMouseControlToMap
-} from '@core/utils/ol';;
+} from '@features/visor/core/libs/ol';;
 @Component({
   selector: 'app-visor-notifications-bar',
   templateUrl: './visor-notifications-bar.component.html',
