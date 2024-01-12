@@ -30,6 +30,7 @@
 		},
     "allowSyntheticDefaultImports": true,
     "noImplicitAny": false,
+    "skipLibCheck": true
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

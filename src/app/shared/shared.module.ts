@@ -24,6 +24,7 @@ import { MultiSelectModule} from 'primeng/multiselect';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { PaginatorModule } from 'primeng/paginator';
+import { TreeModule } from 'primeng/tree';
 
 //Primeng customized components
 import { TableComponent } from './primeng/table/table.component';
@@ -49,7 +50,8 @@ import { TableComponent } from './primeng/table/table.component';
     CommonModule,
     ProgressSpinnerModule,
     InputNumberModule,
-    PaginatorModule
+    PaginatorModule,
+    TreeModule
   ],
   exports: [
     MessagesModule,
@@ -65,7 +67,8 @@ import { TableComponent } from './primeng/table/table.component';
     ToastModule,
     TableComponent,
     InputNumberModule,
-    PaginatorModule
+    PaginatorModule,
+    TreeModule
   ],
 })
 export class SharedModule {

@@ -1,1 +1,6 @@
-<p>visor works!</p>
+<div class="container">
+    <app-visor-header></app-visor-header>
+    <app-visor-map *ngIf="map" [map]="map"></app-visor-map>
+    <app-visor-notifications-bar></app-visor-notifications-bar>
+    <app-visor-sidebar></app-visor-sidebar>
+</div>

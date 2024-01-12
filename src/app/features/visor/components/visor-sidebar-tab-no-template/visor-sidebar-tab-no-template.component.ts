@@ -1,5 +1,5 @@
 import { Component, ComponentRef, EventEmitter, Input, OnInit, Output, ViewChild, ViewContainerRef } from '@angular/core';
-import { IVisorTab } from '@core/interfaces/visor-tab.interfaz';
+import { ISidebarTab } from '@core/interfaces/sidebar/sidebar-tab.interfaz';
 
 @Component({
   selector: 'app-visor-sidebar-tab-no-template',
@@ -8,7 +8,7 @@ import { IVisorTab } from '@core/interfaces/visor-tab.interfaz';
   styleUrls: ['./visor-sidebar-tab-no-template.component.scss']
 })
 export class VisorSidebarTabNoTemplateComponent implements OnInit {
-  @Input() configOptions!: IVisorTab;
+  @Input() configOptions!: ISidebarTab;
 
   //@Output() messageEvent = new EventEmitter<string>();
   //subscriptions: Subscription[] = [];

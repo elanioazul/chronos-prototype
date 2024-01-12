@@ -1,4 +1,4 @@
-export interface IVisorTab {
+export interface ISidebarTab {
     id : string,
     title: string,
     widget?: any,

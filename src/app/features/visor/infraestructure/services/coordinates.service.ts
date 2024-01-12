@@ -3,9 +3,12 @@ import { Injectable, inject } from '@angular/core';
 import { ICoordinateSystemDto } from '@core/interfaces/dto/coordinate-system.dto';
 import {
   COORD_SYSTEMS_API_URL,
+  TRANSFORMED_API_URL,
   TRANSFORM_API_URL,
 } from '@features/visor/core/consts/endpoints';
+import { ICoordinateTransformedDto } from '@features/visor/core/interfaces/dto/coordinate-transformed.dto';
 import { CoordinateSystem } from '@features/visor/core/models/coord-system';
+import { CoordinateTransformed } from '@features/visor/core/models/coord-transformed';
 import {
   Observable,
   Subject,
@@ -42,6 +45,27 @@ export class CoordinatesService {
             item[2],
             item[3],
             item[4]
+          );
+        })
+      )
+    );
+
+  getTransformedCoordList$ = this.http
+    .get<any[]>(TRANSFORMED_API_URL)
+    .pipe(
+      //tap(data => console.log('transformed coord are :', JSON.stringify(data))),
+      catchError(this.handleError)
+    )
+    .pipe(
+      map((data: ICoordinateTransformedDto[]) =>
+        data.map((item: any) => {
+          return new CoordinateTransformed(
+            item[0],
+            item[1],
+            item[2],
+            item[3],
+            item[4],
+            item[5]
           );
         })
       )

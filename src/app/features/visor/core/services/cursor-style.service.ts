@@ -1,21 +1,32 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-
+import { Injectable, computed, signal } from '@angular/core';
+import { BehaviorSubject, Subject } from 'rxjs';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+export interface CursorStyleState {
+  style: string;
+}
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CursorStyleService {
 
-  private cursorStyle = new BehaviorSubject<string>('default');
-  cursorStyle$ = this.cursorStyle.asObservable();
+  //state
+  private state = signal<CursorStyleState>({
+    style: 'default',
+  });
 
-  constructor() { }
+  //selectors
+  style = computed(() => this.state().style);
 
-  getCursorStyleValue() {
-    return this.cursorStyle.value;
+  //sources
+  updateStyle$ = new Subject<string>();
+
+  constructor() {
+    this.updateStyle$.pipe(takeUntilDestroyed()).subscribe((style: string) =>
+      this.state.update((state) => ({
+        ...state,
+        style: style
+      }))
+    )
   }
 
-  setCursorStyle(style: string) {
-    this.cursorStyle.next(style);
-  }
 }
