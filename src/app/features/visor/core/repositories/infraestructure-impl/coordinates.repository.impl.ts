@@ -4,6 +4,7 @@ import { CoordinatesRepository } from '@features/visor/infraestructure/repositor
 // import { ICoordinateSystemDto } from '../../interfaces/dto/coordinate-system.dto';
 import { CoordinatesService } from '@features/visor/infraestructure/services/coordinates.service';
 import { CoordinateSystem } from '../../models/coord-system';
+import { CoordinateTransformed } from '../../models/coord-transformed';
 
 export class CoordinatesRepositoryImpl implements CoordinatesRepository {
   coordService = inject(CoordinatesService);
@@ -12,6 +13,10 @@ export class CoordinatesRepositoryImpl implements CoordinatesRepository {
     return this.coordService.getCoordSystems$;
   }
   transformCoords(): Observable<any> {
-    return this.coordService.transformed$
+    return this.coordService.transformed$;
+  }
+
+  getIncidentes(): Observable<CoordinateTransformed[]> {
+    return this.coordService.getTransformedCoordList$;
   }
 }

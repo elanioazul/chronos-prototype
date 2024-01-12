@@ -12,8 +12,9 @@ import {
   ViewChild,
   ViewContainerRef,
   ViewEncapsulation,
+  inject,
 } from '@angular/core';
-import { IVisorTab } from '@core/interfaces/visor-tab.interfaz';
+import { ISidebarTab } from '@core/interfaces/sidebar/sidebar-tab.interfaz';
 import { SidebarService } from '@core/services/sidebar.service';
 import { Subscription } from 'rxjs';
 
@@ -23,12 +24,15 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./visor-sidebar-tab.component.scss'],
   //encapsulation: ViewEncapsulation.None
 })
-export class VisorSidebarTabComponent implements OnInit, AfterViewInit, OnDestroy {
+export class VisorSidebarTabComponent implements OnInit {
+  sidebar = inject(SidebarService);
+  renderer = inject(Renderer2);
+
   @ViewChild('widget') widgetDiv!: ElementRef<HTMLElement>;
 
-  sidebarDiv!: ElementRef<HTMLDivElement>;
+  sidebarDiv: ElementRef<HTMLDivElement> | undefined;
 
-  divSwitcher?: any;
+  // divSwitcher?: any;
 
   @ViewChild('container', {
     static: true,
@@ -36,42 +40,20 @@ export class VisorSidebarTabComponent implements OnInit, AfterViewInit, OnDestro
   })
   container!: ViewContainerRef;
 
-  @Input() configOptions!: IVisorTab;
+  @Input() configOptions!: ISidebarTab;
 
   @Output() messageEvent = new EventEmitter<string>();
   subscriptions: Subscription[] = [];
 
-  constructor(
-    private sidebarService: SidebarService,
-    private renderer: Renderer2
-  ) {
+  constructor() {
     this.getSidebarDomNode();
   }
   
-  ngAfterViewInit(): void {
-    this.checkIsSwitcherLayersTab();
-  }
   
   ngOnInit() {
     this.loadWidget();
   }
   
-  ngOnDestroy(): void {
-    this.subscriptions.forEach((sub) => sub.unsubscribe());
-  }
-
-  checkIsSwitcherLayersTab() {
-    if (this.widgetDiv.nativeElement.getAttribute('id') === 'layers') {
-      const elem = this.widgetDiv.nativeElement;
-      this.renderer.addClass(
-        elem,
-        'layer-switcher'
-      )
-      this.divSwitcher = elem;
-      this.sidebarService.updateSwitchLayersNode(this.divSwitcher);
-    }
-  }
-
   sendMessageToLoaderComp(tabName: string): void {
     this.messageEvent.emit(
       `mensaje por aqui al comp cargador desde componente ${tabName} dynamico`
@@ -79,13 +61,7 @@ export class VisorSidebarTabComponent implements OnInit, AfterViewInit, OnDestro
   }
 
   private getSidebarDomNode(): void {
-    this.subscriptions.push(
-      this.sidebarService.sidebarDiv$.subscribe((domNode) => {
-        if (domNode) {
-          this.sidebarDiv = domNode;
-        }
-      })
-    );
+    this.sidebarDiv = this.sidebar.sidebarDiv();
   }
 
   private async loadWidget() {

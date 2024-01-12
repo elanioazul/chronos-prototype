@@ -1,6 +1,6 @@
-import { IVisorTab} from '@core/interfaces/visor-tab.interfaz'
 
-export const visorTabsConfig: IVisorTab[] = [
+import { ISidebarTab } from '@core/interfaces/sidebar/sidebar-tab.interfaz';
+export const visorTabsConfig: ISidebarTab[] = [
   {
     id: 'layers',
     title: 'Commutador de capes',

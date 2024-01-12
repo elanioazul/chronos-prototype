@@ -5,3 +5,4 @@ export const RESOURCES_API_URL = 'https://qas-chronos-router.apps.aroas.westeuro
 
 export const TRANSFORM_API_URL = 'http://localhost:4000/api/transform';
 export const COORD_SYSTEMS_API_URL = 'http://localhost:4000/api/coordsystems';
+export const TRANSFORMED_API_URL = 'http://localhost:4000/api/transformed';

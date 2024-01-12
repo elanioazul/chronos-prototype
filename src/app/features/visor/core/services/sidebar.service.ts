@@ -1,36 +1,46 @@
-import { Injectable, ElementRef } from '@angular/core';
+import { Injectable, ElementRef, signal, computed } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
 import Sidebar from '@core/js/ol5-sidebar.js';
-
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+export interface SidebarState {
+  sidebarInstance: Sidebar | null;
+  sidebarDiv: ElementRef<HTMLDivElement> | undefined;
+  created: boolean;
+}
 @Injectable({
   providedIn: 'root'
 })
 export class SidebarService {
+  
+  //state 
+  private state = signal<SidebarState>({
+    sidebarInstance: null,
+    sidebarDiv: undefined,
+    created: false
+  });
 
-  private sidebarDiv = new Subject<ElementRef<HTMLDivElement> | undefined>();
-  sidebarDiv$ = this.sidebarDiv.asObservable();
+  //selectors
+  sidebarInstance = computed(() => this.state().sidebarInstance);
+  sidebarDiv = computed(() => this.state().sidebarDiv);
 
-  // private switchLayersDiv = new Subject<ElementRef<HTMLDivElement> | undefined>();
-  // switchLayersDiv$ = this.switchLayersDiv.asObservable();
+  //sources
+  updateSidebarInstance$ = new Subject<Sidebar>()
+  updateSidebarNode$ = new Subject<ElementRef<HTMLDivElement>>();
 
-  public sidebarInstance = new BehaviorSubject<Sidebar>({});
-  sidebarInstance$ = this.sidebarInstance.asObservable();
+  constructor() {
+    this.updateSidebarInstance$.pipe(takeUntilDestroyed()).subscribe((sidebar: Sidebar) => 
+      this.state.update((state) => ({
+        ...state,
+        sidebarInstance: sidebar
+      }))
+    )
+    this.updateSidebarNode$.pipe(takeUntilDestroyed()).subscribe((sidebarDomNode: ElementRef<HTMLDivElement>) => 
+      this.state.update((state) => ({
+        ...state,
+        sidebarInstance: sidebarDomNode
+      }))
+    );
 
-  constructor() { }
-
-  updateSidebarNode(template?: ElementRef<HTMLDivElement>) {
-    this.sidebarDiv.next(template);
   }
 
-  // updateSwitchLayersNode(template?: ElementRef<HTMLDivElement>) {
-  //   this.switchLayersDiv.next(template);
-  // }
-
-  updateSidebarInstance(sidebar: Sidebar): void {
-    this.sidebarInstance.next(sidebar);
-  }
-
-  getSidebarInstance(): Sidebar {
-    return this.sidebarInstance.getValue();
-  }
 }

@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { isTokenPresentGuard } from './guards/is-token-present.guard';
 
 const routes: Routes = [
@@ -30,6 +30,7 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes, {
     useHash: true,
     anchorScrolling: 'enabled',
+    preloadingStrategy: PreloadAllModules
   })],
   exports: [RouterModule]
 })

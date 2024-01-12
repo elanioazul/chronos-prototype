@@ -1,1 +1,33 @@
-<p>visor-sidebar works!</p>
+<div #sidebar id="sidebar" class="sidebar collapsed">
+
+    <div class="sidebar-tabs">
+      <ul role="tablist">
+        <li (click)="onSelectTab('layers')"><a href="#layers" role="tab"><i [class]="visorTabsConfig[0].icon"
+              [style]="visorTabsConfig[0].iconStyle"></i></a></li>
+        <li (click)="onSelectTab('searchbycoord')"><a href="#searchbycoord" role="tab"><i [class]="visorTabsConfig[1].icon" 
+              [style]="visorTabsConfig[1].iconStyle"></i></a></li>
+        <li (click)="onSelectTab('routes')"><a href="#routes" role="tab"><i [class]="visorTabsConfig[2].icon"
+              [style]="visorTabsConfig[2].iconStyle"></i></a></li>
+        <li (click)="onSelectTab('routebyclicks')"><a href="#routebyclicks" role="tab"><i [class]="visorTabsConfig[3].icon"
+              [style]="visorTabsConfig[3].iconStyle"></i></a></li>
+        <li (click)="onSelectTab('info')"><a href="#info" role="tab"><i [class]="visorTabsConfig[4].icon"
+              [style]="visorTabsConfig[4].iconStyle"></i></a></li>
+        <li (click)="onSelectTab('measurements')"><a href="#measurements" role="tab"><i [class]="visorTabsConfig[5].icon" 
+              [style]="visorTabsConfig[5].iconStyle"></i></a></li>
+        <li (click)="onSelectTab('zoomin')"><a href="#zoomin" role="tab"><i [class]="visorTabsConfig[6].icon" 
+              [style]="visorTabsConfig[6].iconStyle"></i></a></li>
+        <li (click)="onSelectTab('zoomout')"><a href="#zoomout" role="tab"><i [class]="visorTabsConfig[7].icon" 
+              [style]="visorTabsConfig[7].iconStyle"></i></a></li>
+      </ul>
+  
+      <ul role="tablist">
+        <li><a href="https://dev.azure.com/Inetum-Catalunya/SEM-CHRONOS/_git/SEM_chronos-ui-web" role="tab"
+            target="_blank"><i class="pi pi-github" style="font-size: 1.5rem"></i></a></li>
+      </ul>
+    </div>
+  
+    <div class="sidebar-content">
+      <ng-container #container>
+      </ng-container>
+    </div>
+  </div>
