@@ -11,7 +11,7 @@ export class VisorMapComponent {
 
   @ViewChild('map') mapRef!: ElementRef<HTMLElement>;
 
-  @Input('map') map!: Signal<ChronosMap | null>;
+  @Input('map') map!: ChronosMap | null;
 
   ngOnInit(): void {
   }
@@ -19,6 +19,6 @@ export class VisorMapComponent {
   ngAfterViewInit(): void {
     this.mapRef.nativeElement.style.cursor  = this.cursorService.style();
 
-    this.map()!.setTarget(this.mapRef.nativeElement);
+    this.map?.setTarget(this.mapRef.nativeElement);
   }
 }

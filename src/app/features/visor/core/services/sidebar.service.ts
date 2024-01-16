@@ -37,7 +37,7 @@ export class SidebarService {
     this.updateSidebarNode$.pipe(takeUntilDestroyed()).subscribe((sidebarDomNode: ElementRef<HTMLDivElement>) => 
       this.state.update((state) => ({
         ...state,
-        sidebarInstance: sidebarDomNode
+        sidebarDiv: sidebarDomNode
       }))
     );
 
