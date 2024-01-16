@@ -34,16 +34,6 @@ export class VisorSidebarComponent implements AfterViewInit {
           component: () => import('@features/visor/components/visor-sidebar-tab-no-template/visor-sidebar-tab-no-template.component').then(m => m.VisorSidebarTabNoTemplateComponent),
           inputs: visorTabsConfig.find(item => item['id'] === type)!
         }
-      case 'zoomin':
-        return {
-          component: () => import('@features/visor/components/visor-sidebar-tab-no-template/visor-sidebar-tab-no-template.component').then(m => m.VisorSidebarTabNoTemplateComponent),
-          inputs: visorTabsConfig.find(item => item['id'] === type)!
-        }
-      case 'zoomout':
-        return {
-          component: () => import('@features/visor/components/visor-sidebar-tab-no-template/visor-sidebar-tab-no-template.component').then(m => m.VisorSidebarTabNoTemplateComponent),
-          inputs: visorTabsConfig.find(item => item['id'] === type)!
-        }
       default:
         return {
           component: () => import('@features/visor/components/visor-sidebar-tab-no-template/visor-sidebar-tab-no-template.component').then(m => m.VisorSidebarTabNoTemplateComponent),
@@ -66,11 +56,6 @@ export class VisorSidebarComponent implements AfterViewInit {
           inputs: visorTabsConfig.find(item => item['id'] === type)!
         }
       case 'info':
-        return {
-          component: () => import('@features/visor/components/visor-sidebar-tab/visor-sidebar-tab.component').then(m => m.VisorSidebarTabComponent),
-          inputs: visorTabsConfig.find(item => item['id'] === type)!
-        }
-      case 'measurements':
         return {
           component: () => import('@features/visor/components/visor-sidebar-tab/visor-sidebar-tab.component').then(m => m.VisorSidebarTabComponent),
           inputs: visorTabsConfig.find(item => item['id'] === type)!
