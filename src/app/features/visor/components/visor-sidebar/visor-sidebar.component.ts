@@ -76,7 +76,7 @@ export class VisorSidebarComponent implements AfterViewInit {
   updateSidebar(): void {
     const element = this.sidebarDiv.nativeElement;
     this.divSidebar = element;
-    this.sidebar.updateSidebarNode$.next(this.divSidebar)
+    this.sidebar.updateSidebarNode(this.divSidebar)
   }
 
   ngAfterViewInit(): void {

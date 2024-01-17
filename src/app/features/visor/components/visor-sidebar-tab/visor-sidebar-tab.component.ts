@@ -25,7 +25,7 @@ import { Subscription } from 'rxjs';
   //encapsulation: ViewEncapsulation.None
 })
 export class VisorSidebarTabComponent implements OnInit {
-  sidebar = inject(SidebarService);
+  sidebarService = inject(SidebarService);
   renderer = inject(Renderer2);
 
   @ViewChild('widget') widgetDiv!: ElementRef<HTMLElement>;
@@ -61,7 +61,13 @@ export class VisorSidebarTabComponent implements OnInit {
   }
 
   private getSidebarDomNode(): void {
-    this.sidebarDiv = this.sidebar.sidebarDiv();
+    this.subscriptions.push(
+      this.sidebarService.sidebarDiv$.subscribe((domNode) => {
+        if (domNode) {
+          this.sidebarDiv = domNode;
+        }
+      })
+    );
   }
 
   private async loadWidget() {
