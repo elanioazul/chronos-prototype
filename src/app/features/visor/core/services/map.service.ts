@@ -166,6 +166,7 @@ export class MapService {
   }
 
   private addLayer(layer: ChronosLayer, zIndex: number): void {
+    layer.ol.setZIndex(zIndex);
     this.map()!.addLayer(layer.ol);
     layer.zIndex = zIndex;
   }
@@ -251,8 +252,8 @@ export class MapService {
           'initial'
         );
         this.setService$.next(service);
-        service.layers.forEach((initialLayer: ChronosLayer) => {
-          this.addLayer(initialLayer, 100 - index);
+        service.layers.forEach((initialLayer: ChronosLayer, indexPrima) => {
+          this.addLayer(initialLayer, 100 - index - indexPrima);
           // Capas iniciales por defecto con visibilidad
           initialLayer.visible = serviceInfo.visible;
           initialLayer.opacity = serviceInfo.opacidad;
