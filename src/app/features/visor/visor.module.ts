@@ -12,9 +12,7 @@ import { VisorSearchByCoordComponent } from './components/visor-sidebar/visor-se
 import { VisorNavigatorComponent } from './components/visor-sidebar/visor-navigator/visor-navigator.component';
 import { VisorNavigatorByClicksComponent } from './components/visor-sidebar/visor-navigator-by-clicks/visor-navigator-by-clicks.component';
 import { VisorInfoComponent } from './components/visor-sidebar/visor-info/visor-info.component';
-import { VisorMeasurementComponent } from './components/visor-sidebar/visor-measurement/visor-measurement.component';
-import { VisorZoomInComponent } from './components/visor-sidebar/visor-zoom-in/visor-zoom-in.component';
-import { VisorZoomOutComponent } from './components/visor-sidebar/visor-zoom-out/visor-zoom-out.component';
+import { SharedModule } from '@shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -29,10 +27,7 @@ import { VisorZoomOutComponent } from './components/visor-sidebar/visor-zoom-out
     VisorNavigatorComponent,
     VisorNavigatorByClicksComponent,
     VisorInfoComponent,
-    VisorMeasurementComponent,
-    VisorZoomInComponent,
-    VisorZoomOutComponent,
   ],
-  imports: [CommonModule, VisorRoutingModule],
+  imports: [CommonModule, VisorRoutingModule, SharedModule],
 })
 export default class VisorModule {}

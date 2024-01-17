@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, computed, inject } from '@angular/core';
+import { Component, ElementRef, OnInit, computed, inject } from '@angular/core';
 import { SidebarService } from '../core/services/sidebar.service';
 import { MapService } from '../core/services/map.service';
 import { VisorService } from '../core/services/visor.service';
@@ -12,7 +12,7 @@ import { ISidebarTab } from '../core/interfaces/sidebar/sidebar-tab.interfaz';
   templateUrl: './visor.component.html',
   styleUrls: ['./visor.component.scss'],
 })
-export class VisorComponent implements OnInit, AfterViewInit {
+export class VisorComponent {
   sidebarService = inject(SidebarService);
   mapService = inject(MapService);
   visorService = inject(VisorService);
@@ -37,14 +37,12 @@ export class VisorComponent implements OnInit, AfterViewInit {
     this.mapService.applyConfigData(this.config()!);
     // console.log(this.mapService.services());
     // console.log(this.mapService.map());
-    
-  }
-  
-  ngOnInit(): void {}
-
-  ngAfterViewInit(): void {
-    this.sidebarDiv = this.sidebarService.sidebarDiv();
-    this.setSideBar();
+    this.sidebarService.sidebarDiv$.subscribe((domNode) => {
+      if (domNode) {
+        this.sidebarDiv = domNode;
+        this.setSideBar();
+      }
+    })
   }
 
   refreshSidebar(): void {
@@ -53,7 +51,7 @@ export class VisorComponent implements OnInit, AfterViewInit {
       nonOpenableTabs: this.visorTabsConfig.filter((tab: ISidebarTab) => !tab.openableSidebarNeeded),
       largerTabs: this.visorTabsConfig.filter((tab: ISidebarTab) => tab.largeSidebarNeeded),
     });
-    this.sidebarService.updateSidebarInstance$.next(this.sidebar)
+    this.sidebarService.updateSidebarInstance(this.sidebar)
     this.sidebar.setMap(this.map()!);
     this.map()!.addControl(this.sidebar);
   }

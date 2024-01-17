@@ -34,16 +34,6 @@ export class VisorSidebarComponent implements AfterViewInit {
           component: () => import('@features/visor/components/visor-sidebar-tab-no-template/visor-sidebar-tab-no-template.component').then(m => m.VisorSidebarTabNoTemplateComponent),
           inputs: visorTabsConfig.find(item => item['id'] === type)!
         }
-      case 'zoomin':
-        return {
-          component: () => import('@features/visor/components/visor-sidebar-tab-no-template/visor-sidebar-tab-no-template.component').then(m => m.VisorSidebarTabNoTemplateComponent),
-          inputs: visorTabsConfig.find(item => item['id'] === type)!
-        }
-      case 'zoomout':
-        return {
-          component: () => import('@features/visor/components/visor-sidebar-tab-no-template/visor-sidebar-tab-no-template.component').then(m => m.VisorSidebarTabNoTemplateComponent),
-          inputs: visorTabsConfig.find(item => item['id'] === type)!
-        }
       default:
         return {
           component: () => import('@features/visor/components/visor-sidebar-tab-no-template/visor-sidebar-tab-no-template.component').then(m => m.VisorSidebarTabNoTemplateComponent),
@@ -70,11 +60,6 @@ export class VisorSidebarComponent implements AfterViewInit {
           component: () => import('@features/visor/components/visor-sidebar-tab/visor-sidebar-tab.component').then(m => m.VisorSidebarTabComponent),
           inputs: visorTabsConfig.find(item => item['id'] === type)!
         }
-      case 'measurements':
-        return {
-          component: () => import('@features/visor/components/visor-sidebar-tab/visor-sidebar-tab.component').then(m => m.VisorSidebarTabComponent),
-          inputs: visorTabsConfig.find(item => item['id'] === type)!
-        }
       case 'searchbycoord':
         return {
           component: () => import('@features/visor/components/visor-sidebar-tab/visor-sidebar-tab.component').then(m => m.VisorSidebarTabComponent),
@@ -91,7 +76,7 @@ export class VisorSidebarComponent implements AfterViewInit {
   updateSidebar(): void {
     const element = this.sidebarDiv.nativeElement;
     this.divSidebar = element;
-    this.sidebar.updateSidebarNode$.next(this.divSidebar)
+    this.sidebar.updateSidebarNode(this.divSidebar)
   }
 
   ngAfterViewInit(): void {
