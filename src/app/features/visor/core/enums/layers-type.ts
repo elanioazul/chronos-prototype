@@ -1,7 +1,6 @@
 export enum LayerTypes {
 	WMS = 'WMS',
-	WMTS = 'WMTS',
-	MVT = 'MVT',
+	WMTS = 'WMTS'
 }
 export enum LayerConfigTypes {
 	overview= 'overview',
