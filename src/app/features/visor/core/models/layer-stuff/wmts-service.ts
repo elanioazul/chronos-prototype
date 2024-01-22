@@ -54,7 +54,7 @@ export class WMTSChronosService extends ChronosService {
         maxResolution: null,
         minResolution: null,
         draggable: this.isDraggable,
-        zIndex: this.zIndex++,
+        zIndex: undefined,
       };
       wmtsLayerProps = {
         ...commonLayerProps,
@@ -84,7 +84,7 @@ export class WMTSChronosService extends ChronosService {
         maxResolution: null,
         minResolution: null,
         draggable: this.isDraggable,
-        zIndex: this.zIndex++,
+        zIndex: undefined,
       };
       wmtsLayerProps = {
         ...commonLayerProps,
