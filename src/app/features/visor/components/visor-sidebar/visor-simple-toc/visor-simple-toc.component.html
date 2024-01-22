@@ -1,0 +1,14 @@
+<div
+	cdkDropList
+	(cdkDropListDropped)="dropLayer($event)"
+	class="simple-layer-list-container"
+>
+	<ng-container
+		*ngFor="let layer of tocLyrs()"
+		cdkDragLockAxis="y"
+	>
+		<app-simple-layer-item
+			[layer]="layer"
+		></app-simple-layer-item>
+	</ng-container>
+</div>

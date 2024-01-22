@@ -25,9 +25,13 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { PaginatorModule } from 'primeng/paginator';
 import { TreeModule } from 'primeng/tree';
-
+import { CheckboxModule } from 'primeng/checkbox';
+import { SliderModule } from 'primeng/slider';
 //Primeng customized components
 import { TableComponent } from './primeng/table/table.component';
+
+// drag material cdk
+import { DragDropModule } from '@angular/cdk/drag-drop';
 @NgModule({
   declarations: [
     TableComponent
@@ -51,7 +55,9 @@ import { TableComponent } from './primeng/table/table.component';
     ProgressSpinnerModule,
     InputNumberModule,
     PaginatorModule,
-    TreeModule
+    TreeModule,
+    CheckboxModule,
+    SliderModule
   ],
   exports: [
     MessagesModule,
@@ -68,7 +74,10 @@ import { TableComponent } from './primeng/table/table.component';
     TableComponent,
     InputNumberModule,
     PaginatorModule,
-    TreeModule
+    TreeModule,
+    CheckboxModule,
+    SliderModule,
+    DragDropModule
   ],
 })
 export class SharedModule {

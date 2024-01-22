@@ -35,8 +35,8 @@ export class VisorComponent {
     this.mapService.createMap$.next(this.visorToMapMapperService.transform(this.config()!))
     this.mapService.populateMap(this.config()!);
     this.mapService.applyConfigData(this.config()!);
-    // console.log(this.mapService.services());
-    // console.log(this.mapService.map());
+    console.log(this.mapService.services());
+    console.log(this.mapService.map());
     this.sidebarService.sidebarDiv$.subscribe((domNode) => {
       if (domNode) {
         this.sidebarDiv = domNode;

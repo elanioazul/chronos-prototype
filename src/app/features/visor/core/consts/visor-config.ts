@@ -1,9 +1,11 @@
 import { Extent } from "ol/extent";
 import { IReadVisor } from "../interfaces/visor-stuff/visor.interfaz";
 import { LayerTypes } from "../enums/layers-type";
+import { Coordinate } from 'ol/coordinate';
 
-
-const predifinedSpainExtent: Extent = [-1.181030, 40.480381, 3.625488, 43.016697]; //EPSG:4326
+const spainExtent: Extent = [-1.181030, 40.480381, 3.625488, 43.016697]; //EPSG:4326 //http://bboxfinder.com/
+const cataloniaExtent: Extent = [-0.686646, 40.815666, 4.540100, 42.718768]; //EPSG:4326 //http://bboxfinder.com/
+export const bcnCoords:  Coordinate = [2.173404, 41.385063];
 
 export const mockVisor: IReadVisor = {
 	id: 666,
@@ -14,7 +16,7 @@ export const mockVisor: IReadVisor = {
 		authority: 'EPSG',
 		srid: 25831,
 	},
-	extent: predifinedSpainExtent,
+	extent: cataloniaExtent,
 	serviciosBase: [
 		{
 			id: 1,
@@ -44,7 +46,8 @@ export const mockVisor: IReadVisor = {
 					identificador: 'OI.OrthoimageCoverage',
 				},
 			],
-			capabilities: null
+			capabilities: null,
+			draggable: false
 		},
 		{
 			id: 2,
@@ -75,7 +78,8 @@ export const mockVisor: IReadVisor = {
 			autoInfo: false,
 			toolTip: false,
 			visible: true,
-			capabilities: null
+			capabilities: null,
+			draggable: false
 		},
 	],
 	serviciosOverview: [
@@ -107,7 +111,8 @@ export const mockVisor: IReadVisor = {
 					identificador: '0',
 				},
 			],
-			capabilities: null
+			capabilities: null,
+			draggable: false
 		}
 	],
 	serviciosInicio: [
@@ -261,7 +266,8 @@ export const mockVisor: IReadVisor = {
 			matrixSet: undefined,
 			tiled: false,
 			id: 1,
-			capabilities: null
+			capabilities: null,
+			draggable: true
 		},
 		{
 			capas: [
@@ -349,7 +355,8 @@ export const mockVisor: IReadVisor = {
 			matrixSet: undefined,
 			tiled: false,
 			id: 2,
-			capabilities: null
+			capabilities: null,
+			draggable: true
 		},
 		{
 			capas: [
@@ -357,32 +364,17 @@ export const mockVisor: IReadVisor = {
 					id: 1,
 					campos: [
 						{
-							nombre: 'NAME',
-							alias: 'NAME',
+							nombre: 'NEIGHBOURHOOD',
+							alias: 'NEIGHBOURHOOD',
 						},
 						{
-							nombre: 'TARGET_TABLE',
-							alias: 'TARGET_TABLE',
+							nombre: 'BOROUGH_ID',
+							alias: 'BOROUGH_ID',
 						},
 						{
-							nombre: 'COUNTRY_ID',
-							alias: 'COUNTRY_ID',
+							nombre: 'BOROUGH',
+							alias: 'BOROUGH',
 						},
-						{
-							nombre: 'COUNTRY',
-							alias: 'COUNTRY',
-						},
-						{
-							nombre: 'PRIORITY',
-							alias: 'PRIORITY',
-						}
-					],
-					nombre: 'COUNTRY_ETRS89',
-					identificador: 'chronos-admin-division:COUNTRY_ETRS89',
-				},
-				{
-					id: 2,
-					campos: [
 						{
 							nombre: 'LOCALADMIN_ID',
 							alias: 'LOCALADMIN_ID',
@@ -390,6 +382,22 @@ export const mockVisor: IReadVisor = {
 						{
 							nombre: 'LOCALADMIN',
 							alias: 'LOCALADMIN',
+						},
+						{
+							nombre: 'MACROCOUNTY_ID',
+							alias: 'MACROCOUNTY_ID',
+						},
+						{
+							nombre: 'MACROCOUNTY',
+							alias: 'MACROCOUNTY',
+						},
+						{
+							nombre: 'REGION_ID',
+							alias: 'REGION_ID',
+						},
+						{
+							nombre: 'REGION',
+							alias: 'REGION',
 						},
 						{
 							nombre: 'COUNTRY_ID',
@@ -408,11 +416,11 @@ export const mockVisor: IReadVisor = {
 							alias: 'SOURCE_DATA',
 						}
 					],
-					nombre: 'LOCALADMIN_AND_ETRS89',
-					identificador: 'chronos-admin-division:LOCALADMIN_AND_ETRS89',
+					nombre: 'NEIGHBOURHOOD_BCN_ETRS89',
+					identificador: 'chronos-admin-division:NEIGHBOURHOOD_BCN_ETRS89',
 				},
 				{
-					id: 3,
+					id: 2,
 					campos: [
 						{
 							nombre: 'LOCALADMIN',
@@ -453,6 +461,37 @@ export const mockVisor: IReadVisor = {
 					],
 					nombre: 'LOCALADMIN_CAT_ETRS89',
 					identificador: 'chronos-admin-division:LOCALADMIN_CAT_ETRS89',
+				},
+				{
+					id: 3,
+					campos: [
+						{
+							nombre: 'LOCALADMIN_ID',
+							alias: 'LOCALADMIN_ID',
+						},
+						{
+							nombre: 'LOCALADMIN',
+							alias: 'LOCALADMIN',
+						},
+						{
+							nombre: 'COUNTRY_ID',
+							alias: 'COUNTRY_ID',
+						},
+						{
+							nombre: 'COUNTRY',
+							alias: 'COUNTRY',
+						},
+						{
+							nombre: 'LAYER',
+							alias: 'LAYER',
+						},
+						{
+							nombre: 'SOURCE_DATA',
+							alias: 'SOURCE_DATA',
+						}
+					],
+					nombre: 'LOCALADMIN_AND_ETRS89',
+					identificador: 'chronos-admin-division:LOCALADMIN_AND_ETRS89',
 				},
 				{
 					id: 4,
@@ -544,40 +583,12 @@ export const mockVisor: IReadVisor = {
 					id: 6,
 					campos: [
 						{
-							nombre: 'NEIGHBOURHOOD',
-							alias: 'NEIGHBOURHOOD',
+							nombre: 'NAME',
+							alias: 'NAME',
 						},
 						{
-							nombre: 'BOROUGH_ID',
-							alias: 'BOROUGH_ID',
-						},
-						{
-							nombre: 'BOROUGH',
-							alias: 'BOROUGH',
-						},
-						{
-							nombre: 'LOCALADMIN_ID',
-							alias: 'LOCALADMIN_ID',
-						},
-						{
-							nombre: 'LOCALADMIN',
-							alias: 'LOCALADMIN',
-						},
-						{
-							nombre: 'MACROCOUNTY_ID',
-							alias: 'MACROCOUNTY_ID',
-						},
-						{
-							nombre: 'MACROCOUNTY',
-							alias: 'MACROCOUNTY',
-						},
-						{
-							nombre: 'REGION_ID',
-							alias: 'REGION_ID',
-						},
-						{
-							nombre: 'REGION',
-							alias: 'REGION',
+							nombre: 'TARGET_TABLE',
+							alias: 'TARGET_TABLE',
 						},
 						{
 							nombre: 'COUNTRY_ID',
@@ -588,16 +599,12 @@ export const mockVisor: IReadVisor = {
 							alias: 'COUNTRY',
 						},
 						{
-							nombre: 'LAYER',
-							alias: 'LAYER',
-						},
-						{
-							nombre: 'SOURCE_DATA',
-							alias: 'SOURCE_DATA',
+							nombre: 'PRIORITY',
+							alias: 'PRIORITY',
 						}
 					],
-					nombre: 'NEIGHBOURHOOD_BCN_ETRS89',
-					identificador: 'chronos-admin-division:NEIGHBOURHOOD_BCN_ETRS89',
+					nombre: 'COUNTRY_ETRS89',
+					identificador: 'chronos-admin-division:COUNTRY_ETRS89',
 				},
 			],
 			autoInfo: true,
@@ -620,7 +627,8 @@ export const mockVisor: IReadVisor = {
 			matrixSet: undefined,
 			tiled: false,
 			id: 3,
-			capabilities: null
+			capabilities: null,
+			draggable: true
 		}
 	],
 };

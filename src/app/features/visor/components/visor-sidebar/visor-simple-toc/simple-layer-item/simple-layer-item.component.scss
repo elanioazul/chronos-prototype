@@ -1,0 +1,13 @@
+
+
+.simple-lyr-container {
+    min-width: 300px;
+    padding-top: 10px;
+    .title {
+    /*width: 40%;*/
+    text-overflow: ellipsis;
+    }
+    .drag-icon {
+    width: 16px;
+    }
+}

@@ -4,6 +4,7 @@ export const visorTabsConfig: ISidebarTab[] = [
   {
     id: 'layers',
     title: 'Commutador de capes',
+    widget: () => import('@features/visor/components/visor-sidebar/visor-simple-toc/visor-simple-toc.component').then(m => m.VisorSimpleTocComponent),
     openableSidebarNeeded: true,
     largeSidebarNeeded: false,
     icon: 'fg-layers-o fg-4x',

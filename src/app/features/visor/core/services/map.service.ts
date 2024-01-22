@@ -21,7 +21,7 @@ import { ChronosLayer } from '../models/layer-stuff/chronos-layer';
 import { ServiceType } from '../types/ol-layer-service.types';
 import { IReadService } from '../interfaces/layer-stuff/service.interfaz';
 import { IExtendedReadService } from '../interfaces/layer-stuff/service.extended.interfaz';
-import { LayerTypes } from '../enums/layers-type';
+import { LayerTypes, LayerConfigTypes } from '../enums/layers-type';
 import { WMSChronosService } from '../models/layer-stuff/wms-service';
 import { WMTSChronosService } from '../models/layer-stuff/wmts-service';
 import { MVTChronosService } from '../models/layer-stuff/mvt-service';
@@ -87,7 +87,7 @@ export class MapService {
   simpleTocLayers = computed(() =>
     this.state().services.flatMap((srv) =>
       srv.layers.filter(
-        (lyr) => lyr.type === 'initial' || lyr.type === 'available'
+        (lyr) => lyr.type === LayerConfigTypes.initial
       )
     )
   );
@@ -166,6 +166,7 @@ export class MapService {
   }
 
   private addLayer(layer: ChronosLayer, zIndex: number): void {
+    layer.ol.setZIndex(zIndex);
     this.map()!.addLayer(layer.ol);
     layer.zIndex = zIndex;
   }
@@ -226,20 +227,26 @@ export class MapService {
     srvs.forEach((serviceInfo) => {
       const service: ChronosService = this.createService(
         serviceInfo,
-        'overview'
+        LayerConfigTypes.overview
       );
       this.setService$.next(service);
       service.layers.forEach((overviewLayer: ChronosLayer) => {
-        this.addLayer(overviewLayer, 0);
+        //this.addLayer(overviewLayer, 0);
+        console.log(overviewLayer);
+        
       });
     });
   }
   private handleBaseServices (srvs: IReadService[]): void {
     srvs.forEach((serviceInfo) => {
-      const service: ChronosService = this.createService(serviceInfo, 'base');
+      const service: ChronosService = this.createService(
+        serviceInfo,
+        LayerConfigTypes.base
+      );
       this.setService$.next(service);
       service.layers.forEach((baseLayer: ChronosLayer) => {
-        this.addLayer(baseLayer, 0);
+        //this.addLayer(baseLayer, 0);
+        console.log(baseLayer);
       });
     });
   }
@@ -248,11 +255,11 @@ export class MapService {
       (serviceInfo: IReadService, index) => {
         const service: ChronosService = this.createService(
           serviceInfo,
-          'initial'
+          LayerConfigTypes.initial
         );
         this.setService$.next(service);
-        service.layers.forEach((initialLayer: ChronosLayer) => {
-          this.addLayer(initialLayer, 100 - index);
+        service.layers.forEach((initialLayer: ChronosLayer, indexPrima) => {
+          this.addLayer(initialLayer, 100 - index - indexPrima);
           // Capas iniciales por defecto con visibilidad
           initialLayer.visible = serviceInfo.visible;
           initialLayer.opacity = serviceInfo.opacidad;

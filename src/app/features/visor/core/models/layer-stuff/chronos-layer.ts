@@ -14,6 +14,7 @@ export abstract class ChronosLayer {
   private _imageFormat!: string;
   private _type!: ServiceType;
   private _opacity!: number;
+  private _isDraggable: boolean;
 
   /* Observable properties según OL (src: https://openlayers.org/en/latest/apidoc/module-ol_layer_Base-BaseLayer.html) */
   // extent, maxResolution, maxZoom, minResolution, minZoom, opacity, visible, zIndex
@@ -102,6 +103,9 @@ export abstract class ChronosLayer {
   get imageFormat(): string {
     return this._imageFormat;
   }
+  get isDraggable(): boolean {
+		return this._isDraggable;
+	}
 
   private visibleSource = new BehaviorSubject<boolean>(false);
 
@@ -114,6 +118,7 @@ export abstract class ChronosLayer {
     this._displayInLegend = options.showInLegend;
     this._imageFormat = options.imageFormat;
     this._type = options.type;
+    this._isDraggable = options.draggable;
 
     if (options.hasOwnProperty('serviceId')) {
       this._serviceId = options.serviceId;

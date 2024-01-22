@@ -11,7 +11,6 @@ import { ChronosService } from './chronos-service';
 import { HttpProxyService } from '../../services/http-proxy.service';
 
 export class WMSChronosService extends ChronosService {
-  zIndex = 10;
   constructor(
     private options: IExtendedReadService,
     private httpProxyService: HttpProxyService
@@ -46,7 +45,8 @@ export class WMSChronosService extends ChronosService {
         minZoom: this.minZoom,
         maxResolution: null,
         minResolution: null,
-        zIndex: this.zIndex++,
+        draggable: this.isDraggable,
+        zIndex: undefined,
       };
       wmsLayerProps = {
         ...commonLayerProps,
@@ -71,7 +71,8 @@ export class WMSChronosService extends ChronosService {
         minZoom: this.minZoom,
         maxResolution: null,
         minResolution: null,
-        zIndex: this.zIndex++,
+        draggable: this.isDraggable,
+        zIndex: undefined,
       };
       wmsLayerProps = {
         ...commonLayerProps,

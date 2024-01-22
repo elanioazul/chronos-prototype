@@ -30,6 +30,7 @@ export abstract class ChronosService {
   private _capabilities!: any;
   private _autoInfo: boolean;
 	private _toolTip: boolean;
+  private _isDraggable: boolean;
 
   get id(): number {
     return this._id;
@@ -82,6 +83,9 @@ export abstract class ChronosService {
   get capabilities(): any {
     return this._capabilities;
   }
+  get isDraggable(): boolean {
+		return this._isDraggable;
+	}
 	get autoInfo(): boolean {
 		return this._autoInfo;
 	}
@@ -99,10 +103,11 @@ export abstract class ChronosService {
     this._showInLegend = options.displayInLegend;
     this._type = options.type;
     this._capabilities = options.capabilities;
+    this._isDraggable = options.draggable
     this._autoInfo = options.autoInfo;
 		this._toolTip = options.toolTip;
 
-    // Parámetros opcionales propios de un servicio genérico (pueden venir o no de BD, depende del backend)
+    // Parámetros opcionales propios de un servicio genérico (pueden venir o no de del mock de config de visor)
     if (options.hasOwnProperty('name')) {
       this._name = options.nombre;
     }

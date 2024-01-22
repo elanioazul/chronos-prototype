@@ -13,6 +13,8 @@ import { VisorNavigatorComponent } from './components/visor-sidebar/visor-naviga
 import { VisorNavigatorByClicksComponent } from './components/visor-sidebar/visor-navigator-by-clicks/visor-navigator-by-clicks.component';
 import { VisorInfoComponent } from './components/visor-sidebar/visor-info/visor-info.component';
 import { SharedModule } from '@shared/shared.module';
+import { VisorSimpleTocComponent } from './components/visor-sidebar/visor-simple-toc/visor-simple-toc.component';
+import { SimpleLayerItemComponent } from './components/visor-sidebar/visor-simple-toc/simple-layer-item/simple-layer-item.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import { SharedModule } from '@shared/shared.module';
     VisorNavigatorComponent,
     VisorNavigatorByClicksComponent,
     VisorInfoComponent,
+    VisorSimpleTocComponent,
+    SimpleLayerItemComponent,
   ],
   imports: [CommonModule, VisorRoutingModule, SharedModule],
 })

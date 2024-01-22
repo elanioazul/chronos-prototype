@@ -5,7 +5,6 @@ import { ChronosService } from './chronos-service';
 import { MVTChronosLayer } from './mvt-layer';
 
 export class MVTChronosService extends ChronosService {
-  zIndex = 30;
   constructor(private options: IExtendedReadService) {
     super(options);
     if (options.capas && options.capas.length > 0) {
@@ -34,7 +33,8 @@ export class MVTChronosService extends ChronosService {
         minZoom: this.minZoom,
         maxResolution: null,
         minResolution: null,
-        zIndex: this.zIndex++,
+        draggable: this.isDraggable,
+        zIndex: undefined,
       };
     } else {
       commonLayerProps = {
@@ -54,7 +54,8 @@ export class MVTChronosService extends ChronosService {
         minZoom: this.minZoom,
         maxResolution: null,
         minResolution: null,
-        zIndex: this.zIndex++,
+        draggable: this.isDraggable,
+        zIndex: undefined,
       };
     }
     return new MVTChronosLayer(commonLayerProps);
