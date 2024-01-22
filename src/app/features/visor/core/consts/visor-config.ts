@@ -48,39 +48,7 @@ export const mockVisor: IReadVisor = {
 			],
 			capabilities: null,
 			draggable: false
-		},
-		{
-			id: 2,
-			nombre: 'Mapa Base Vector Tiles',
-			alias: 'Mapa Base Vector Tiles',
-			descripcion:
-				'Servicios de Teselas Vectoriales del Instituto Geográfico Nacional (España)',
-			opacidad: 1.0,
-			identificable: false,
-			displayInLegend: false,
-			format: 'pbf',
-			extent: null,
-			tiled: true,
-			matrixSet: undefined,
-			minZoom: null,
-			maxZoom: null,
-			host: {
-				url: 'https://igo.idee.es/style/mapa-base-igo-v1.json',
-				tipo: LayerTypes.MVT,
-			},
-			capas: [
-				{
-					id: 1,
-					nombre: 'Mapa Base Vector Tiles IGN',
-					identificador: 'Mapa Base Vector Tiles IGN',
-				},
-			],
-			autoInfo: false,
-			toolTip: false,
-			visible: true,
-			capabilities: null,
-			draggable: false
-		},
+		}
 	],
 	serviciosOverview: [
 		{

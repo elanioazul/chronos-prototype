@@ -24,7 +24,6 @@ import { IExtendedReadService } from '../interfaces/layer-stuff/service.extended
 import { LayerTypes, LayerConfigTypes } from '../enums/layers-type';
 import { WMSChronosService } from '../models/layer-stuff/wms-service';
 import { WMTSChronosService } from '../models/layer-stuff/wmts-service';
-import { MVTChronosService } from '../models/layer-stuff/mvt-service';
 import { HttpProxyService } from './http-proxy.service';
 import { ImageWMS, TileWMS } from 'ol/source';
 import TileLayer from 'ol/layer/Tile';
@@ -287,9 +286,6 @@ export class MapService {
         break;
       case LayerTypes.WMTS:
         chronosService = new WMTSChronosService(props, this.getMapProjCode());
-        break;
-      case LayerTypes.MVT:
-        chronosService = new MVTChronosService(props);
         break;
     }
     return chronosService;
