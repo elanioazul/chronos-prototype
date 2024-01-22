@@ -1,0 +1,79 @@
+<div *ngIf="layer.isDraggable; else noSortableLyr">
+	<div
+		*ngIf="tocLayersAvailable && tocLayersAvailable.length > 1; else noDrag"
+		cdkDrag
+		class="align-items-center grid grid-nogutter simple-lyr-container"
+	>
+		<div class="flex col-1">
+			<p-checkbox
+				[disabled]="false"
+				checkboxIcon="pi pi-check-square"
+				[(ngModel)]="layer.visible"
+				[binary]="true"
+			></p-checkbox>
+		</div>
+		<div class="flex justify-content-start col-7 pl-1">
+			<div class="title overflow-hidden">{{ layer.name }}</div>
+		</div>
+		<div class="flex justify-content-center col-3">
+			<p-slider
+				[disabled]="!layer.visible"
+				[ngStyle]="{ width: '80%' }"
+				(onChange)="setOpacity($event)"
+				[(ngModel)]="opacity"
+			></p-slider>
+		</div>
+		<div class="flex justify-content-center col-1">
+			<div
+				class="pi pi-sort cursor-move text-center drag-icon"
+				cdkDragHandle
+			></div>
+		</div>
+	</div>
+	<ng-template #noDrag>
+		<div class="align-items-center grid grid-nogutter simple-lyr-container">
+			<div class="flex col-1">
+				<p-checkbox
+					[disabled]="false"
+					checkboxIcon="pi pi-check-square"
+					[(ngModel)]="layer.visible"
+					[binary]="true"
+				></p-checkbox>
+			</div>
+			<div class="flex justify-content-start col-7 pl-1">
+				<div class="title overflow-hidden">{{ layer.name }}</div>
+			</div>
+			<div class="flex justify-content-center col-3">
+				<p-slider
+					[disabled]="!layer.visible"
+					[ngStyle]="{ width: '80%' }"
+					(onChange)="setOpacity($event)"
+					[(ngModel)]="opacity"
+				></p-slider>
+			</div>
+		</div>
+	</ng-template>
+</div>
+<ng-template #noSortableLyr>
+	<div class="align-items-center grid grid-nogutter simple-lyr-container">
+		<div class="flex col-1">
+			<p-checkbox
+				[disabled]="true"
+				checkboxIcon="pi pi-check-square"
+				[(ngModel)]="layer.visible"
+				[binary]="true"
+			></p-checkbox>
+		</div>
+		<div class="flex justify-content-start col-7 pl-1">
+			<div class="title overflow-hidden">{{ layer.name }}</div>
+		</div>
+		<div class="flex justify-content-center col-3">
+			<p-slider
+				[disabled]="true"
+				[ngStyle]="{ width: '80%' }"
+				(onChange)="setOpacity($event)"
+				[(ngModel)]="opacity"
+			></p-slider>
+		</div>
+	</div>
+</ng-template>

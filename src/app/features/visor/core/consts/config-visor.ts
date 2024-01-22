@@ -1,9 +1,11 @@
 import { Extent } from "ol/extent";
 import { IReadVisor } from "../interfaces/visor-stuff/visor.interfaz";
 import { LayerTypes } from "../enums/layers-type";
+import { Coordinate } from 'ol/coordinate';
 
-
-const predifinedSpainExtent: Extent = [-1.181030, 40.480381, 3.625488, 43.016697]; //EPSG:4326
+const spainExtent: Extent = [-1.181030, 40.480381, 3.625488, 43.016697]; //EPSG:4326 //http://bboxfinder.com/
+const cataloniaExtent: Extent = [-0.686646, 40.815666, 4.540100, 42.718768]; //EPSG:4326 //http://bboxfinder.com/
+export const bcnCoords:  Coordinate = [2.173404, 41.385063];
 
 export const mockVisor: IReadVisor = {
 	id: 666,
@@ -14,7 +16,7 @@ export const mockVisor: IReadVisor = {
 		authority: 'EPSG',
 		srid: 25831,
 	},
-	extent: predifinedSpainExtent,
+	extent: cataloniaExtent,
 	serviciosBase: [
 		{
 			id: 1,
@@ -44,7 +46,8 @@ export const mockVisor: IReadVisor = {
 					identificador: 'OI.OrthoimageCoverage',
 				},
 			],
-			capabilities: null
+			capabilities: null,
+			draggable: false
 		},
 		{
 			id: 2,
@@ -75,7 +78,8 @@ export const mockVisor: IReadVisor = {
 			autoInfo: false,
 			toolTip: false,
 			visible: true,
-			capabilities: null
+			capabilities: null,
+			draggable: false
 		},
 	],
 	serviciosOverview: [
@@ -107,7 +111,8 @@ export const mockVisor: IReadVisor = {
 					identificador: '0',
 				},
 			],
-			capabilities: null
+			capabilities: null,
+			draggable: false
 		}
 	],
 	serviciosInicio: [
@@ -261,7 +266,8 @@ export const mockVisor: IReadVisor = {
 			matrixSet: undefined,
 			tiled: false,
 			id: 1,
-			capabilities: null
+			capabilities: null,
+			draggable: true
 		},
 		{
 			capas: [
@@ -349,7 +355,8 @@ export const mockVisor: IReadVisor = {
 			matrixSet: undefined,
 			tiled: false,
 			id: 2,
-			capabilities: null
+			capabilities: null,
+			draggable: true
 		},
 		{
 			capas: [
@@ -620,7 +627,8 @@ export const mockVisor: IReadVisor = {
 			matrixSet: undefined,
 			tiled: false,
 			id: 3,
-			capabilities: null
+			capabilities: null,
+			draggable: true
 		}
 	],
 };

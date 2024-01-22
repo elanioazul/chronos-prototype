@@ -21,4 +21,5 @@ export interface IReadService {
 	toolTip: boolean;
   visible: boolean;
   capabilities: any;
+  draggable: boolean;
 }

@@ -46,6 +46,7 @@ export class WMSChronosService extends ChronosService {
         minZoom: this.minZoom,
         maxResolution: null,
         minResolution: null,
+        draggable: this.isDraggable,
         zIndex: this.zIndex++,
       };
       wmsLayerProps = {
@@ -71,6 +72,7 @@ export class WMSChronosService extends ChronosService {
         minZoom: this.minZoom,
         maxResolution: null,
         minResolution: null,
+        draggable: this.isDraggable,
         zIndex: this.zIndex++,
       };
       wmsLayerProps = {

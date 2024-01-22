@@ -24,4 +24,5 @@ export interface ILayer {
 	serviceId: number;
 	autoInfo: boolean;
 	toolTip: boolean;
+	draggable: boolean
 }

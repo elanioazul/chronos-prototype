@@ -34,6 +34,7 @@ export class MVTChronosService extends ChronosService {
         minZoom: this.minZoom,
         maxResolution: null,
         minResolution: null,
+        draggable: this.isDraggable,
         zIndex: this.zIndex++,
       };
     } else {
@@ -54,6 +55,7 @@ export class MVTChronosService extends ChronosService {
         minZoom: this.minZoom,
         maxResolution: null,
         minResolution: null,
+        draggable: this.isDraggable,
         zIndex: this.zIndex++,
       };
     }

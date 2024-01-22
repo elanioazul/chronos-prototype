@@ -1,4 +1,5 @@
 import { Component, ElementRef, Input, Signal, ViewChild, inject } from '@angular/core';
+import { bcnCoords } from '@features/visor/core/consts/config-visor';
 import { ChronosMap } from '@features/visor/core/models/map-stuff/chronos-map';
 import { CursorStyleService } from '@features/visor/core/services/cursor-style.service';
 @Component({
@@ -20,5 +21,12 @@ export class VisorMapComponent {
     this.mapRef.nativeElement.style.cursor  = this.cursorService.style();
 
     this.map?.setTarget(this.mapRef.nativeElement);
+    
+    this.setInitialView();
+  }
+
+  setInitialView(): void {
+    this.map?.getView().setZoom(5);
+    this.map?.getView().setCenter(bcnCoords);
   }
 }
