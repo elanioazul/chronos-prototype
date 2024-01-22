@@ -27,21 +27,13 @@ import { WMTSChronosService } from '../models/layer-stuff/wmts-service';
 import { HttpProxyService } from './http-proxy.service';
 import { ImageWMS, TileWMS } from 'ol/source';
 import TileLayer from 'ol/layer/Tile';
-import { WmsUtfGrid } from '../models/layer-stuff/utf-grid-source';
 
 import { VisorToMapMapperService } from './visor-to-map-mapper.service';
 
-interface AutoInfoLayer {
-  utf: TileLayer<WmsUtfGrid>;
-  fields?: string[];
-  //codigo: string;
-  callback?: Function;
-}
 
 export interface MapState {
   map: ChronosMap | null;
   services: ChronosService[];
-  autoInfolayers: AutoInfoLayer[];
   overviewLayers: ChronosLayer[];
   tileDebugLayer: boolean;
   // view: View | null,
@@ -63,7 +55,6 @@ export class MapService {
   private state = signal<MapState>({
     map: null,
     services: [],
-    autoInfolayers: [],
     overviewLayers: [],
     tileDebugLayer: false,
     predefinedExtent: null,
@@ -76,7 +67,6 @@ export class MapService {
   // selectors
   map = computed(() => this.state().map);
   services = computed(() => this.state().services);
-  autoInfolayers = computed(() => this.state().autoInfolayers);
   overviewlayers = computed(() => this.state().overviewLayers);
   tileDebugLayer = computed(() => this.state().tileDebugLayer);
   predefinedExtent = computed(() => this.state().predefinedExtent);
@@ -95,7 +85,6 @@ export class MapService {
   createMap$ = new Subject<IMap>();
   setPredefinedExtent$ = new Subject<Extent>();
   setService$ = new Subject<ChronosService>();
-  setAutoInfolayer$ = new Subject<AutoInfoLayer>();
   setOverviewLayer$ = new Subject<ChronosLayer>();
 
   //   centerMap$ = new Subject<Coordinate>();
@@ -130,15 +119,6 @@ export class MapService {
         this.state.update((state) => ({
           ...state,
           services: [...state.services, service],
-        }))
-      );
-
-    this.setAutoInfolayer$
-      .pipe(takeUntilDestroyed())
-      .subscribe((autoInfoLyr: AutoInfoLayer) =>
-        this.state.update((state) => ({
-          ...state,
-          autoInfolayers: [...state.autoInfolayers, autoInfoLyr],
         }))
       );
 
@@ -264,10 +244,11 @@ export class MapService {
           initialLayer.opacity = serviceInfo.opacidad;
         });
         if (service.toolTip) {
-          const firstLyr = service.layers[0].id;
-          if (firstLyr !== undefined) {
-            this.setAutoInfoLayers([firstLyr]);
-          }
+          //TODO implementar utfcgrid
+          // const firstLyr = service.layers[0].id;
+          // if (firstLyr !== undefined) {
+          //   this.setAutoInfoLayers([firstLyr]);
+          // }
         }
       }
     );
@@ -291,58 +272,5 @@ export class MapService {
     return chronosService;
   }
 
-  private setAutoInfoLayers(autoLayerIds: Array<number>) {
-    if (autoLayerIds?.length) {
-      const services: ChronosService[] = this.services();
-      const layers: ChronosLayer[] = services.flatMap((srv) => srv.layers);
-      autoLayerIds.forEach((layerId) => {
-        const layer: ChronosLayer | undefined = layers.find(
-          (lyr) => lyr.id === layerId
-        );
-        if (layer) {
-          this.createAutoInfoLayer(layer, ['figura_lp', 'sitename']);
-        }
-      });
-    }
-  }
 
-  // A través del parámetro opcional fields controlamos
-  // si la capa mostrará info en el hover o si tendrá un comportamiento particular
-  private createAutoInfoLayer(
-    layer: ChronosLayer,
-    fields?: string[],
-    callback?: Function
-  ): void {
-    const source = layer.ol.getSource();
-    let url;
-    let layers;
-    if (source instanceof ImageWMS) {
-      url = source.getUrl();
-    } else if (source instanceof TileWMS) {
-      //url = source.getUrls()[0];
-      url = source.getUrls();
-    }
-    if (source instanceof ImageWMS || source instanceof TileWMS) {
-      layers = source.getParams().LAYERS;
-    }
-    const autoInfoLyr: AutoInfoLayer = {
-      utf: new TileLayer<WmsUtfGrid>({
-        source: new WmsUtfGrid(
-          this.httpProxyService.proxyfyURL(url),
-          layers,
-          this.map()!.getView().getProjection(),
-          undefined,
-          undefined
-        ),
-      }),
-      fields,
-      callback,
-    };
-    this.setAutoInfolayer$.next(autoInfoLyr);
-    autoInfoLyr.utf.setMap(this.map());
-    autoInfoLyr.utf.setVisible(layer.ol.getVisible());
-    layer.ol.on('change:visible', () => {
-      autoInfoLyr.utf.setVisible(layer.ol.getVisible());
-    });
-  }
 }
