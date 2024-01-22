@@ -1,5 +1,12 @@
-import { Component, ElementRef, Input, Signal, ViewChild, inject } from '@angular/core';
-import { bcnCoords } from '@features/visor/core/consts/config-visor';
+import {
+  Component,
+  ElementRef,
+  Input,
+  Signal,
+  ViewChild,
+  inject,
+} from '@angular/core';
+import { bcnCoords } from '@features/visor/core/consts/visor-config';
 import { ChronosMap } from '@features/visor/core/models/map-stuff/chronos-map';
 import { CursorStyleService } from '@features/visor/core/services/cursor-style.service';
 @Component({
@@ -14,14 +21,13 @@ export class VisorMapComponent {
 
   @Input('map') map!: ChronosMap | null;
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   ngAfterViewInit(): void {
-    this.mapRef.nativeElement.style.cursor  = this.cursorService.style();
+    this.mapRef.nativeElement.style.cursor = this.cursorService.style();
 
     this.map?.setTarget(this.mapRef.nativeElement);
-    
+
     this.setInitialView();
   }
 
