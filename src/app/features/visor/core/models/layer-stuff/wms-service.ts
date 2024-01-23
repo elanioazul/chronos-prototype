@@ -32,7 +32,7 @@ export class WMSChronosService extends ChronosService {
         name: dbLayer.nombre,
         url: this.url,
         showInLegend: this.showInLegend,
-        imageFormat: this.imageFormat,
+        format: this.format,
         opacity: this.opacity,
         type: this.type,
         visible:
@@ -58,7 +58,7 @@ export class WMSChronosService extends ChronosService {
         name: dbLayer.name,
         url: this.url,
         showInLegend: this.showInLegend,
-        imageFormat: this.imageFormat,
+        format: this.format,
         opacity: this.opacity,
         type: this.type,
         visible:

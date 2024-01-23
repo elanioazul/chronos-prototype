@@ -8,7 +8,7 @@ export interface IReadService {
   descripcion: string;
   displayInLegend: boolean;
   identificable: boolean;
-  tiled: boolean;
+  tiled: boolean | null;
   format: string;
   opacidad: number;
   host: IHost;

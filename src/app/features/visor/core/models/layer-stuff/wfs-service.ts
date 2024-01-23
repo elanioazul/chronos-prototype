@@ -5,24 +5,18 @@ import {
   IReadCapa,
 } from '@features/visor/core/interfaces/dto/capa.dto';
 import { ILayer } from '@features/visor/core/interfaces/layer-stuff/layer.interfaz';
-import { IWMTSLayer } from '../../interfaces/layer-stuff/wmts-layer.interfaz';
 import { IExtendedReadService } from '@features/visor/core/interfaces/layer-stuff/service.extended.interfaz';
 import { ChronosService } from './chronos-service';
-import { WMTSChronosLayer } from './wmts-layer';
-import { Extent } from 'ol/extent';
-import { ProjUtilities } from '../../utils/utils-proj';
-import { get as getProjection} from 'ol/proj';
+import { HttpProxyService } from '../../services/http-proxy.service';
+import { IWFSLayer } from '../../interfaces/layer-stuff/wfs-layer';
+import { WFSChronosLayer } from './wfs-layer';
 
-export class WMTSChronosService extends ChronosService {
-  private _projection!: string;
-  get projection(): string {
-    return this._projection;
-  }
-  constructor(private options: IExtendedReadService, projection?: string) {
+export class WFSChronosService extends ChronosService {
+  constructor(
+    private options: IExtendedReadService,
+    private httpProxyService: HttpProxyService
+  ) {
     super(options);
-    if (projection) {
-      this._projection = projection;
-    }
     if (options.capas && options.capas.length > 0) {
       this._layers = this.setLayers(options.capas);
     }
@@ -30,9 +24,9 @@ export class WMTSChronosService extends ChronosService {
 
   public createLayer(
     dbLayer: IReadCapa | ICapabilitesCapa
-  ): WMTSChronosLayer {
+  ): WFSChronosLayer {
     let commonLayerProps: ILayer;
-    let wmtsLayerProps: IWMTSLayer;
+    let wfsLayerProps: IWFSLayer;
     if ('id' in dbLayer) {
       commonLayerProps = {
         id: dbLayer.id,
@@ -46,8 +40,8 @@ export class WMTSChronosService extends ChronosService {
           this.type === 'available' || this.type === 'base' ? false : true,
         serviceId: this.id,
         autoInfo: this.autoInfo,
-				toolTip: this.toolTip,
-        extent: this.extent !== null ? this.reprojectExtentToServiceProjection(this.extent, this.projection) : this.extent,
+		toolTip: this.toolTip,
+        extent: this.extent,
         maxZoom: this.maxZoom,
         minZoom: this.minZoom,
         maxResolution: null,
@@ -55,14 +49,10 @@ export class WMTSChronosService extends ChronosService {
         draggable: this.isDraggable,
         zIndex: undefined,
       };
-      wmtsLayerProps = {
+      wfsLayerProps = {
         ...commonLayerProps,
         identifier: dbLayer.identificador,
-				matrixSet: this.matrixSet,
-				projection: this.projection,
-				selectedStyleName: dbLayer.defaultStyle
-					? dbLayer.defaultStyle
-					: 'default',
+        version: '1.0.0'
       };
     } else {
       commonLayerProps = {
@@ -76,7 +66,7 @@ export class WMTSChronosService extends ChronosService {
           this.type === 'available' || this.type === 'base' ? false : true,
         serviceId: this.id,
         autoInfo: this.autoInfo,
-				toolTip: this.toolTip,
+		toolTip: this.toolTip,
         extent: this.extent,
         maxZoom: this.maxZoom,
         minZoom: this.minZoom,
@@ -85,44 +75,20 @@ export class WMTSChronosService extends ChronosService {
         draggable: this.isDraggable,
         zIndex: undefined,
       };
-      wmtsLayerProps = {
+      wfsLayerProps = {
         ...commonLayerProps,
         identifier: dbLayer.name,
-				matrixSet: this.matrixSet,
-				projection: this.projection,
-				selectedStyleName: 'default',
+        version: '1.0.0'
       };
     }
-    return new WMTSChronosLayer(wmtsLayerProps);
+    return new WFSChronosLayer(wfsLayerProps, this.httpProxyService);
   }
 
   protected setLayers(
     dbLayers: IReadCapa[] | ICapabilitesCapa[]
-  ): WMTSChronosLayer[] {
+  ): WFSChronosLayer[] {
     return (dbLayers as (IReadCapa | ICapabilitesCapa)[]).map((dbLayer) =>
       this.createLayer(dbLayer)
     );
-  }
-
-  protected reprojectExtentToServiceProjection(extent: Extent, epsg: string): Extent {
-    const lowerCornerTransformed = ProjUtilities.transform(
-      [extent[0], extent[1]],
-      'EPSG:4326',
-      epsg
-    )
-    const upperCornerTransformed = ProjUtilities.transform(
-      [extent[2], extent[3]],
-      'EPSG:4326',
-      epsg
-    )
-    const outExtent = lowerCornerTransformed.concat(upperCornerTransformed);
-    const projection = getProjection(epsg);
-    const projectionExtent = projection?.getExtent();
-    if (projectionExtent) {
-      ProjUtilities.enlargeExtentForGivenProjection(epsg, outExtent);
-    } else {
-      ProjUtilities.setExtentToProjection(epsg, outExtent)
-    }
-    return outExtent
   }
 }

@@ -11,7 +11,7 @@ export abstract class ChronosLayer {
   private _serviceId!: number;
   private _displayInLegend!: boolean;
   private _url!: string;
-  private _imageFormat!: string;
+  private _format!: string;
   private _type!: ServiceType;
   private _opacity!: number;
   private _isDraggable: boolean;
@@ -100,8 +100,8 @@ export abstract class ChronosLayer {
   get url(): string {
     return this._url;
   }
-  get imageFormat(): string {
-    return this._imageFormat;
+  get format(): string {
+    return this._format;
   }
   get isDraggable(): boolean {
 		return this._isDraggable;
@@ -116,7 +116,7 @@ export abstract class ChronosLayer {
     this.visible = options.visible;
     this.opacity = options.opacity;
     this._displayInLegend = options.showInLegend;
-    this._imageFormat = options.imageFormat;
+    this._format = options.format;
     this._type = options.type;
     this._isDraggable = options.draggable;
 

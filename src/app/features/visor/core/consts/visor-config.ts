@@ -217,26 +217,179 @@ export const mockVisor: IReadVisor = {
 			autoInfo: true,
 			toolTip: false,
 			visible: true,
-			nombre: 'Servicios de recursos',
-			alias: 'Servicios de recursos',
-			descripcion: 'Servicios de recursos desc',
+			nombre: 'Servicios de recursos WFS',
+			alias: 'Servicios de recursos WFS',
+			descripcion: 'Servicios de recursos WFS desc',
 			opacidad: 1.0,
 			identificable: true,
 			displayInLegend: false,
-			format: 'image/png',
+			format: 'application/json',
 			minZoom: null,
 			maxZoom: null,
 			host: {
-				url: 'http://localhost:8080/geoserver/chronos-recursos/wms?',
-				tipo: LayerTypes.WMS,
+				url: 'http://localhost:8080/geoserver/chronos-recursos/wfs?',
+				tipo: LayerTypes.WFS,
 			},
-			extent: [0.284193968135119, 40.5424652584572, 3.28576420492974, 42.7015647693928],//Native SRS de la capa más amplia
+			extent: [0.284193968135119, 40.5424652584572, 3.28576420492974, 42.7015647693928],//LatLongBoundingBox de la capa en el WFS
 			matrixSet: undefined,
-			tiled: false,
-			id: 1,
+			tiled: null,
+			id: 0,
 			capabilities: null,
 			draggable: true
 		},
+		// {
+		// 	capas: [
+		// 		{
+		// 			id: 1,
+		// 			campos: [
+		// 				{
+		// 					nombre: 'ABSCISA_ED50_UTM31N',
+		// 					alias: 'ABSCISA_ED50_UTM31N',
+		// 				},
+		// 				{
+		// 					nombre: 'ACTIVAR',
+		// 					alias: 'ACTIVAR',
+		// 				},
+		// 				{
+		// 					nombre: 'AYUDANTE',
+		// 					alias: 'AYUDANTE',
+		// 				},
+		// 				{
+		// 					nombre: 'BASE',
+		// 					alias: 'BASE',
+		// 				},
+		// 				{
+		// 					nombre: 'CODEMPRESA',
+		// 					alias: 'CODEMPRESA',
+		// 				},
+		// 				{
+		// 					nombre: 'COORDX_ETRS89_UTM31N',
+		// 					alias: 'COORDX_ETRS89_UTM31N',
+		// 				},
+		// 				{
+		// 					nombre: 'COORDY_ETRS89_UTM31N',
+		// 					alias: 'COORDY_ETRS89_UTM31N',
+		// 				},
+		// 				{
+		// 					nombre: 'DATA_ALTA',
+		// 					alias: 'DATA_ALTA',
+		// 				},
+		// 				{
+		// 					nombre: 'ESTADO',
+		// 					alias: 'ESTADO',
+		// 				},
+		// 				{
+		// 					nombre: 'FEC_CAMBIOTURNO',
+		// 					alias: 'FEC_CAMBIOTURNO',
+		// 				},
+		// 				{
+		// 					nombre: 'GPS_START_BASE',
+		// 					alias: 'GPS_START_BASE',
+		// 				},
+		// 				{
+		// 					nombre: 'GW_NOTIFY_STATE',
+		// 					alias: 'GW_NOTIFY_STATE',
+		// 				},
+		// 				{
+		// 					nombre: 'HORARIO_FIN',
+		// 					alias: 'HORARIO_FIN',
+		// 				},
+		// 				{
+		// 					nombre: 'HORARIO_INI',
+		// 					alias: 'HORARIO_INI',
+		// 				},
+		// 				{
+		// 					nombre: 'HORAS_DISPONIBLE',
+		// 					alias: 'HORAS_DISPONIBLE',
+		// 				},
+		// 				{
+		// 					nombre: 'ID_VEHICLE',
+		// 					alias: 'ID_VEHICLE',
+		// 				},
+		// 				{
+		// 					nombre: 'ISSI_MOBIL',
+		// 					alias: 'ISSI_MOBIL',
+		// 				},
+		// 				{
+		// 					nombre: 'LAST_INI_FIN',
+		// 					alias: 'LAST_INI_FIN',
+		// 				},
+		// 				{
+		// 					nombre: 'LAT_WGS84',
+		// 					alias: 'LAT_WGS84',
+		// 				},
+		// 				{
+		// 					nombre: 'LNG_WGS84',
+		// 					alias: 'LNG_WGS84',
+		// 				},
+		// 				{
+		// 					nombre: 'MATRICULA',
+		// 					alias: 'MATRICULA',
+		// 				},
+		// 				{
+		// 					nombre: 'MNEMONIC_MOBIL',
+		// 					alias: 'MNEMONIC_MOBIL',
+		// 				},
+		// 				{
+		// 					nombre: 'ORDEN',
+		// 					alias: 'ORDEN',
+		// 				},
+		// 				{
+		// 					nombre: 'ORDENADA_ED50_UTM31N',
+		// 					alias: 'ORDENADA_ED50_UTM31N',
+		// 				},
+		// 				{
+		// 					nombre: 'RECURSO',
+		// 					alias: 'RECURSO',
+		// 				},
+		// 				{
+		// 					nombre: 'RECURS_EMBARCAT',
+		// 					alias: 'RERECURS_EMBARCATCURSO',
+		// 				},
+		// 				{
+		// 					nombre: 'TELEFONO',
+		// 					alias: 'TELEFONO',
+		// 				},
+		// 				{
+		// 					nombre: 'TIME_LASTCOORD',
+		// 					alias: 'TIME_LASTCOORD',
+		// 				},
+		// 				{
+		// 					nombre: 'TIPORECURSO',
+		// 					alias: 'TIPORECURSO',
+		// 				},
+		// 				{
+		// 					nombre: 'ZONA_COBERTURA',
+		// 					alias: 'ZONA_COBERTURA',
+		// 				},
+		// 			],
+		// 			nombre: 'RESOURCES',
+		// 			identificador: 'chronos-recursos:RESOURCES',
+		// 		},
+		// 	],
+		// 	autoInfo: true,
+		// 	toolTip: false,
+		// 	visible: true,
+		// 	nombre: 'Servicios de recursos',
+		// 	alias: 'Servicios de recursos',
+		// 	descripcion: 'Servicios de recursos desc',
+		// 	opacidad: 1.0,
+		// 	identificable: true,
+		// 	displayInLegend: false,
+		// 	format: 'image/png',
+		// 	minZoom: null,
+		// 	maxZoom: null,
+		// 	host: {
+		// 		url: 'http://localhost:8080/geoserver/chronos-recursos/wms?',
+		// 		tipo: LayerTypes.WMS,
+		// 	},
+		// 	extent: [0.284193968135119, 40.5424652584572, 3.28576420492974, 42.7015647693928],//Native SRS de la capa más amplia
+		// 	matrixSet: undefined,
+		// 	tiled: false,
+		// 	id: 1,
+		// 	capabilities: null,
+		// 	draggable: true
+		// },
 		{
 			capas: [
 				{
