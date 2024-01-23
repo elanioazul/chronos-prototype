@@ -18,8 +18,8 @@ export abstract class ChronosService {
   private _url!: string;
   private _opacity!: number;
   private _extent!: Extent | null;
-  private _tiled!: boolean;
-  private _imageFormat!: string;
+  private _tiled!: boolean | null;
+  private _format!: string;
   private _queryable!: boolean;
   private _showInLegend!: boolean;
   private _matrixSet?: string;
@@ -53,11 +53,11 @@ export abstract class ChronosService {
   get extent(): Extent | null {
     return this._extent;
   }
-  get tiled(): boolean {
+  get tiled(): boolean | null {
     return this._tiled;
   }
-  get imageFormat(): string {
-    return this._imageFormat;
+  get format(): string {
+    return this._format;
   }
   get queryable(): boolean {
     return this._queryable;
@@ -99,7 +99,7 @@ export abstract class ChronosService {
     this._url = options.host.url;
     this._opacity = options.opacidad;
     this._tiled = options.tiled;
-    this._imageFormat = options.format;
+    this._format = options.format;
     this._showInLegend = options.displayInLegend;
     this._type = options.type;
     this._capabilities = options.capabilities;

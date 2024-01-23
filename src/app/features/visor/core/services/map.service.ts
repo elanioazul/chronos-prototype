@@ -29,6 +29,7 @@ import { ImageWMS, TileWMS } from 'ol/source';
 import TileLayer from 'ol/layer/Tile';
 
 import { VisorToMapMapperService } from './visor-to-map-mapper.service';
+import { WFSChronosService } from '../models/layer-stuff/wfs-service';
 
 
 export interface MapState {
@@ -211,7 +212,7 @@ export class MapService {
       this.setService$.next(service);
       service.layers.forEach((overviewLayer: ChronosLayer) => {
         //this.addLayer(overviewLayer, 0);
-        console.log(overviewLayer);
+        //console.log(overviewLayer);
         
       });
     });
@@ -225,7 +226,7 @@ export class MapService {
       this.setService$.next(service);
       service.layers.forEach((baseLayer: ChronosLayer) => {
         //this.addLayer(baseLayer, 0);
-        console.log(baseLayer);
+        //console.log(baseLayer);
       });
     });
   }
@@ -267,6 +268,9 @@ export class MapService {
         break;
       case LayerTypes.WMTS:
         chronosService = new WMTSChronosService(props, this.getMapProjCode());
+        break;
+      case LayerTypes.WFS:
+        chronosService = new WFSChronosService(props, this.httpProxyService);
         break;
     }
     return chronosService;

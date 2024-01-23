@@ -12,12 +12,12 @@ import { HttpProxyService } from '../../services/http-proxy.service';
 
 export class WMSChronosLayer extends ChronosLayer {
   private _version: string;
-  private _tiled: boolean;
+  private _tiled: boolean | null;
   private _identifier: string;
 
   private selectionLayer!: WMSChronosLayer;
 
-  get tiled(): boolean {
+  get tiled(): boolean | null{
     return this._tiled;
   }
   get version(): string {
@@ -109,7 +109,7 @@ export class WMSChronosLayer extends ChronosLayer {
         //SRS: this.projection,
         VERSION: this.version,
         //STYLES: this.activeStyle ? this.activeStyle.name : '',
-        FORMAT: this.imageFormat,
+        FORMAT: this.format,
       },
       //projection: this.projection,
     });
@@ -130,7 +130,7 @@ export class WMSChronosLayer extends ChronosLayer {
         //SRS: this.projection,
         VERSION: this.version,
         //STYLES: this.activeStyle ? this.activeStyle.name : '',
-        FORMAT: this.imageFormat,
+        FORMAT: this.format,
       },
     });
 

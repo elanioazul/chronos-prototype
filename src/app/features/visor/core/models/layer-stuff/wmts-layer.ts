@@ -59,7 +59,7 @@ export class WMTSChronosLayer extends ChronosLayer {
 					? 'https://wmts.mapama.gob.es/sig/comun/mapa_base/gwc/service/wmts?'
 					: this.url,*/
 			matrixSet: this.matrixSet,
-			format: this.imageFormat,
+			format: this.format,
 			layer: this.identifier,
 			tileGrid: defaultTileGrid,
 			style: this.activeStyleName,

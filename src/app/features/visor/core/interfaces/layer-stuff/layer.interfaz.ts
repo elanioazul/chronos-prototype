@@ -19,7 +19,7 @@ export interface ILayer {
 	name: string;
 	showInLegend: boolean;
 	url: string;
-	imageFormat: string;
+	format: string;
 	type: ServiceType;
 	serviceId: number;
 	autoInfo: boolean;
