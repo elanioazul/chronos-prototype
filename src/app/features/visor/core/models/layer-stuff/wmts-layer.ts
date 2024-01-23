@@ -51,6 +51,9 @@ export class WMTSChronosLayer extends ChronosLayer {
 		const defaultTileGrid: WMTSTileGrid = this.createDefaultTileGrid(
 			this.projection
 		);
+		const scaleDenominatorTileGrid: WMTSTileGrid = this.createTileGridBasedOnScaleDenominator(
+			this.projection
+		);
 
 		const layerSource = new WMTS({
 			// 20220125 @ADR: Pendiente cambiar el valor del host en BD
@@ -60,8 +63,8 @@ export class WMTSChronosLayer extends ChronosLayer {
 					: this.url,*/
 			matrixSet: this.matrixSet,
 			format: this.format,
-			layer: this.identifier,
-			tileGrid: defaultTileGrid,
+			layer: this.name,
+			tileGrid: scaleDenominatorTileGrid,
 			style: this.activeStyleName,
 		});
 
@@ -93,4 +96,34 @@ export class WMTSChronosLayer extends ChronosLayer {
 			matrixIds,
 		});
 	}
+
+	private createTileGridBasedOnScaleDenominator = (epsg: string): WMTSTileGrid => {
+		const projection = olproj.get(epsg);
+		const projectionExtent = projection!.getExtent();
+	  
+		//https://geoserveis.icgc.cat/icc_mapesmultibase/utm/wmts/service?service=wmts&request=getCapabilities
+		const scaleDenominators = [
+		  3928571.428571428, 1964285.714285714, 982142.857142857, 357142.8571428571,
+		  178571.42857142855, 89285.71428571428, 35714.28571428571,
+		  17857.142857142855, 7142.857142857142, 3571.428571428571,
+		  1785.7142857142856, 892.8571428571428, 357.1428571428571,
+		];
+		const matrixIds = new Array(13);
+		const resolutions = new Array(13);
+		const meterPerUnit = 0.00028; 
+		for (let z = 0; z < 13; ++z) {
+		  resolutions[z] = meterPerUnit * scaleDenominators[z]; 
+		  matrixIds[z] = z;
+		}
+	  
+		// console.log('TileGridBasedOnScaleDenominator-resolutions', resolutions);
+		// console.log('TileGridBasedOnScaleDenominator-matrixIds', matrixIds);
+	  
+	  
+		return new WMTSTileGrid({
+		  origin: extentGetTopLeft(projectionExtent),
+		  resolutions,
+		  matrixIds,
+		});
+	  };
 }
