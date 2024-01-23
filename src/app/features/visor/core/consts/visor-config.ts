@@ -53,15 +53,77 @@ export const mockVisor: IReadVisor = {
 	serviciosOverview: [
 		{
 			id: 1,
-			nombre: 'WMTS Bases - ICGC',
+			nombre: 'topo',
 			descripcion: 'Servei WMTS Bases - ICGC',
-			alias: 'topogris',
+			alias: 'WMTS Bases - ICGC - topogris',
 			opacidad: 1.0,
 			identificable: false,
 			displayInLegend: false,
 			format: 'image/jpeg',
 			extent: [0.030420432536880683, 40.480444616083936, 3.486242225112867, 43.05147116664476], // WGS84BoundingBox at https://geoserveis.icgc.cat/icc_mapesmultibase/utm/wmts/service?service=wmts&request=getCapabilities
-			matrixSet: 'EPSG:25831',
+			matrixSet: 'UTM25831',
+			minZoom: null,
+			maxZoom: null,
+			tiled: true,
+			autoInfo: false,
+			toolTip: false,
+			visible: true,
+			host: {
+				url: 'https://geoserveis.icgc.cat/icc_mapesmultibase/utm/wmts/service?',
+				tipo: LayerTypes.WMTS,
+			},
+			capas: [
+				{
+					id: 1,
+					nombre: 'topo',
+					identificador: '0',
+				},
+			],
+			capabilities: null,
+			draggable: false
+		},
+		{
+			id: 2,
+			nombre: 'orto',
+			descripcion: 'Servei WMTS Bases - ICGC',
+			alias: 'WMTS Bases - ICGC - orto',
+			opacidad: 1.0,
+			identificable: false,
+			displayInLegend: false,
+			format: 'image/png',
+			extent: [0.030420432536880683, 40.480444616083936, 3.486242225112867, 43.05147116664476], // WGS84BoundingBox at https://geoserveis.icgc.cat/icc_mapesmultibase/utm/wmts/service?service=wmts&request=getCapabilities
+			matrixSet: 'UTM25831',
+			minZoom: null,
+			maxZoom: null,
+			tiled: true,
+			autoInfo: false,
+			toolTip: false,
+			visible: true,
+			host: {
+				url: 'https://geoserveis.icgc.cat/icc_mapesmultibase/utm/wmts/service?',
+				tipo: LayerTypes.WMTS,
+			},
+			capas: [
+				{
+					id: 1,
+					nombre: 'orto',
+					identificador: '0',
+				},
+			],
+			capabilities: null,
+			draggable: false
+		},
+		{
+			id: 2,
+			nombre: 'topogris',
+			descripcion: 'Servei WMTS Bases - ICGC',
+			alias: 'WMTS Bases - ICGC - orto',
+			opacidad: 1.0,
+			identificable: false,
+			displayInLegend: false,
+			format: 'image/jpeg',
+			extent: [0.030420432536880683, 40.480444616083936, 3.486242225112867, 43.05147116664476], // WGS84BoundingBox at https://geoserveis.icgc.cat/icc_mapesmultibase/utm/wmts/service?service=wmts&request=getCapabilities
+			matrixSet: 'UTM25831',
 			minZoom: null,
 			maxZoom: null,
 			tiled: true,
