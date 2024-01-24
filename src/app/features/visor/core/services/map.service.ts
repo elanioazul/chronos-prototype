@@ -211,7 +211,7 @@ export class MapService {
       );
       this.setService$.next(service);
       service.layers.forEach((overviewLayer: ChronosLayer) => {
-        // this.addLayer(overviewLayer, 0);
+        this.addLayer(overviewLayer, 0);
         // console.log(overviewLayer);
         
       });
@@ -225,8 +225,8 @@ export class MapService {
       );
       this.setService$.next(service);
       service.layers.forEach((baseLayer: ChronosLayer) => {
-        this.addLayer(baseLayer, 1);
-        console.log(baseLayer);
+        //this.addLayer(baseLayer, 1);
+        //console.log(baseLayer);
       });
     });
   }

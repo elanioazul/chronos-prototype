@@ -4,7 +4,22 @@ import { LayerTypes } from "../enums/layers-type";
 import { Coordinate } from 'ol/coordinate';
 
 const spainExtent: Extent = [-1.181030, 40.480381, 3.625488, 43.016697]; //EPSG:4326 //http://bboxfinder.com/
-const cataloniaExtent: Extent = [-0.686646, 40.815666, 4.540100, 42.718768]; //EPSG:4326 //http://bboxfinder.com/
+const icgcExtent: Extent = [0.030420432536880683, 40.480444616083936, 3.486242225112867, 43.05147116664476]; //WGS84BoundingBox at https://geoserveis.icgc.cat/icc_mapesmultibase/utm/wmts/service?service=wmts&request=getCapabilities
+const scaleDenominatorsICGC = [
+	3928571.428571428, 1964285.714285714, 982142.857142857, 357142.8571428571,
+	178571.42857142855, 89285.71428571428, 35714.28571428571,
+	17857.142857142855, 7142.857142857142, 3571.428571428571,
+	1785.7142857142856, 892.8571428571428, 357.1428571428571,
+  ];
+const scaleDenominatorsPnoa = [
+	2.795411320714286E8, 1.397705660357143E8, 6.988528301785715E7, 3.4942641508928575E7,
+	1.7471320754464287E7, 8735660.377232144, 4367830.188616072,
+	2183915.094308036, 1091957.547154018, 545978.773577009,
+	272989.3867885045, 136494.69339425224, 68247.34669712612,
+	34123.67334856306, 17061.83667428153, 8530.918337140765,
+	4265.459168570383, 2132.7295842851913, 1066.364792142596, 
+	533.182396071298
+  ];
 export const bcnCoords:  Coordinate = [2.173404, 41.385063];
 
 export const mockVisor: IReadVisor = {
@@ -16,24 +31,24 @@ export const mockVisor: IReadVisor = {
 		authority: 'EPSG',
 		srid: 25831,
 	},
-	extent: cataloniaExtent,
+	extent: icgcExtent,
 	serviciosBase: [
 		{
 			id: 1,
-			nombre: 'Ortoimágenes de España (satélite Sentinel2 y ortofotos del PNOA máxima actualidad)',
+			nombre: 'OI.OrthoimageCoverage',
 			alias: 'Ortoimágenes de España (satélite Sentinel2 y ortofotos del PNOA máxima actualidad)',
 			descripcion: `Ortofotos de máxima actualidad del proyecto PNOA (Plan Nacional de Ortofotografía Aérea) visibles a partir de una escala aproximada 1:70.000. Para escalas menores se visualizan las imágenes de satélite Sentinel2 de 10 metros de resolución. Ortoimagen Melilla: Pléiades Neo © Airbus DS (2022). La cobertura PNOA está constituida por mosaicos de distinta fecha de adquisición y distinta resolución (50 y 25 cm). Los datos PNOA se actualizan varias veces al año y los datos Sentinel2 se actualizan semestralmente. Las imágenes mundiales de fondo provienen del espectrorradiómetro de imágenes de resolución moderada de la NASA (MODIS).Estas actualizaciones se anuncian en el canal RSS del IGN (https://www.ign.es/ign/rss). Servicio de visualización Teselado conforme al perfil INSPIRE de Web Map Tile Service (WMTS) 1.0.0. Las teselas se pregeneran en formato JPEG y hasta el nivel 19 (correspondiente con una escala aproximada 1:1.000) en el Sistema de Referencia por Coordenadas WGS84 Web Mercator (EPSG:3857).`,
 			opacidad: 1.0,
 			identificable: false,
 			displayInLegend: false,
 			format: 'image/jpeg',
-			extent: null,
+			extent: icgcExtent,
 			matrixSet: 'EPSG:25831',
 			minZoom: null,
 			maxZoom: null,
 			tiled: true,
 			host: {
-				url: 'https://www.ign.es/wmts/pnoa-ma',
+				url: 'http://www.ign.es/wmts/pnoa-ma?',
 				tipo: LayerTypes.WMTS,
 			},
 			autoInfo: false,
@@ -42,8 +57,8 @@ export const mockVisor: IReadVisor = {
 			capas: [
 				{
 					id: 1,
-					nombre: 'Imágenes de satélite Sentinel y ortofotos PNOA',
-					identificador: 'OI.OrthoimageCoverage',
+					nombre: 'OI.OrthoimageCoverage',
+					identificador: '0',
 				},
 			],
 			capabilities: null,
@@ -53,14 +68,14 @@ export const mockVisor: IReadVisor = {
 	serviciosOverview: [
 		{
 			id: 1,
-			nombre: 'topo',
-			descripcion: 'Servei WMTS Bases - ICGC',
-			alias: 'WMTS Bases - ICGC - topogris',
+			nombre: 'Servei WMTS Bases - ICGC - jpeg',
+			descripcion: 'Servei WMTS Bases - ICGC - jpeg',
+			alias: 'WMTS Bases - ICGC - jpeg',
 			opacidad: 1.0,
 			identificable: false,
 			displayInLegend: false,
 			format: 'image/jpeg',
-			extent: [0.030420432536880683, 40.480444616083936, 3.486242225112867, 43.05147116664476], // WGS84BoundingBox at https://geoserveis.icgc.cat/icc_mapesmultibase/utm/wmts/service?service=wmts&request=getCapabilities
+			extent: icgcExtent,
 			matrixSet: 'UTM25831',
 			minZoom: null,
 			maxZoom: null,
@@ -76,22 +91,27 @@ export const mockVisor: IReadVisor = {
 				{
 					id: 1,
 					nombre: 'topo',
-					identificador: '0',
+					identificador: 'topo',
 				},
+				{
+					id: 2,
+					nombre: 'topogris',
+					identificador: 'topogris',
+				}
 			],
 			capabilities: null,
 			draggable: false
 		},
 		{
-			id: 2,
-			nombre: 'orto',
-			descripcion: 'Servei WMTS Bases - ICGC',
-			alias: 'WMTS Bases - ICGC - orto',
+			id: 1,
+			nombre: 'Servei WMTS Bases - ICGC - png',
+			descripcion: 'Servei WMTS Bases - ICGC - png',
+			alias: 'WMTS Bases - ICGC - png',
 			opacidad: 1.0,
 			identificable: false,
 			displayInLegend: false,
 			format: 'image/png',
-			extent: [0.030420432536880683, 40.480444616083936, 3.486242225112867, 43.05147116664476], // WGS84BoundingBox at https://geoserveis.icgc.cat/icc_mapesmultibase/utm/wmts/service?service=wmts&request=getCapabilities
+			extent: icgcExtent,
 			matrixSet: 'UTM25831',
 			minZoom: null,
 			maxZoom: null,
@@ -107,37 +127,6 @@ export const mockVisor: IReadVisor = {
 				{
 					id: 1,
 					nombre: 'orto',
-					identificador: '0',
-				},
-			],
-			capabilities: null,
-			draggable: false
-		},
-		{
-			id: 2,
-			nombre: 'topogris',
-			descripcion: 'Servei WMTS Bases - ICGC',
-			alias: 'WMTS Bases - ICGC - orto',
-			opacidad: 1.0,
-			identificable: false,
-			displayInLegend: false,
-			format: 'image/jpeg',
-			extent: [0.030420432536880683, 40.480444616083936, 3.486242225112867, 43.05147116664476], // WGS84BoundingBox at https://geoserveis.icgc.cat/icc_mapesmultibase/utm/wmts/service?service=wmts&request=getCapabilities
-			matrixSet: 'UTM25831',
-			minZoom: null,
-			maxZoom: null,
-			tiled: true,
-			autoInfo: false,
-			toolTip: false,
-			visible: true,
-			host: {
-				url: 'https://geoserveis.icgc.cat/icc_mapesmultibase/utm/wmts/service?',
-				tipo: LayerTypes.WMTS,
-			},
-			capas: [
-				{
-					id: 1,
-					nombre: 'topogris',
 					identificador: '0',
 				},
 			],
