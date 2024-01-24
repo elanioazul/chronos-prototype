@@ -23,6 +23,7 @@ export abstract class ChronosService {
   private _queryable!: boolean;
   private _showInLegend!: boolean;
   private _matrixSet?: string;
+  private _scaleDenominators?: number[];
   private _minZoom!: number | null;
   private _maxZoom!: number | null;
 
@@ -67,6 +68,9 @@ export abstract class ChronosService {
   }
   get matrixSet(): string | undefined {
 		return this._matrixSet;
+	}
+  get scaleDenominators(): number[] | undefined {
+		return this._scaleDenominators;
 	}
   get minZoom(): number | null {
     return this._minZoom;
@@ -119,6 +123,9 @@ export abstract class ChronosService {
     }
     if (options.hasOwnProperty('matrixSet')) {
 			this._matrixSet = options.matrixSet;
+		}
+    if (options.hasOwnProperty('scaleDenominators')) {
+			this._scaleDenominators = options.scaleDenominators;
 		}
     if (options.hasOwnProperty('maxZoom')) {
       this._maxZoom = options.maxZoom;

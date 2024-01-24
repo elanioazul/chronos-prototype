@@ -11,7 +11,7 @@ const scaleDenominatorsICGC = [
 	17857.142857142855, 7142.857142857142, 3571.428571428571,
 	1785.7142857142856, 892.8571428571428, 357.1428571428571,
   ];
-const scaleDenominatorsPnoa = [
+const scaleDenominatorsPNOA = [
 	2.795411320714286E8, 1.397705660357143E8, 6.988528301785715E7, 3.4942641508928575E7,
 	1.7471320754464287E7, 8735660.377232144, 4367830.188616072,
 	2183915.094308036, 1091957.547154018, 545978.773577009,
@@ -44,6 +44,7 @@ export const mockVisor: IReadVisor = {
 			format: 'image/jpeg',
 			extent: icgcExtent,
 			matrixSet: 'EPSG:25831',
+			scaleDenominators: scaleDenominatorsPNOA,
 			minZoom: null,
 			maxZoom: null,
 			tiled: true,
@@ -77,6 +78,7 @@ export const mockVisor: IReadVisor = {
 			format: 'image/jpeg',
 			extent: icgcExtent,
 			matrixSet: 'UTM25831',
+			scaleDenominators: scaleDenominatorsICGC,
 			minZoom: null,
 			maxZoom: null,
 			tiled: true,
@@ -113,6 +115,7 @@ export const mockVisor: IReadVisor = {
 			format: 'image/png',
 			extent: icgcExtent,
 			matrixSet: 'UTM25831',
+			scaleDenominators: scaleDenominatorsICGC,
 			minZoom: null,
 			maxZoom: null,
 			tiled: true,
@@ -283,6 +286,7 @@ export const mockVisor: IReadVisor = {
 			},
 			extent: [0.284193968135119, 40.5424652584572, 3.28576420492974, 42.7015647693928],//LatLongBoundingBox de la capa en el WFS
 			matrixSet: undefined,
+			scaleDenominators: undefined,
 			tiled: null,
 			id: 0,
 			capabilities: null,
@@ -525,6 +529,7 @@ export const mockVisor: IReadVisor = {
 			},
 			extent: [0.158543097516996, 40.52291819670317, 3.33985063914339, 42.861455494161085],//Native SRS de la capa más amplia
 			matrixSet: undefined,
+			scaleDenominators: undefined,
 			tiled: false,
 			id: 2,
 			capabilities: null,
@@ -797,6 +802,7 @@ export const mockVisor: IReadVisor = {
 			},
 			extent: [-18.3201264155889, 27.637723150776, 4.34014226940938, 43.9215181349627],//Native SRS de la capa más amplia
 			matrixSet: undefined,
+			scaleDenominators: undefined,
 			tiled: false,
 			id: 3,
 			capabilities: null,

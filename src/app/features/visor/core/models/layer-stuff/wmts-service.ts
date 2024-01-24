@@ -59,6 +59,7 @@ export class WMTSChronosService extends ChronosService {
         ...commonLayerProps,
         identifier: dbLayer.identificador,
 				matrixSet: this.matrixSet,
+        scaleDenominators: this.scaleDenominators,
 				projection: this.projection,
 				selectedStyleName: dbLayer.defaultStyle
 					? dbLayer.defaultStyle
@@ -89,6 +90,7 @@ export class WMTSChronosService extends ChronosService {
         ...commonLayerProps,
         identifier: dbLayer.name,
 				matrixSet: this.matrixSet,
+        scaleDenominators: this.scaleDenominators,
 				projection: this.projection,
 				selectedStyleName: 'default',
       };

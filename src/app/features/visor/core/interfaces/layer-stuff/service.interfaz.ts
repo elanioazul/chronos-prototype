@@ -15,6 +15,7 @@ export interface IReadService {
   capas: IReadCapa[] | ICapabilitesCapa[];
   extent: Extent | null;
   matrixSet: string | undefined;
+  scaleDenominators: number[] | undefined;
   minZoom: number | null;
   maxZoom: number | null;
   autoInfo: boolean;
