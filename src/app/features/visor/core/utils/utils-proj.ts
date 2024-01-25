@@ -9,6 +9,7 @@ import {
 	getTopLeft as extentGetTopLeft,
 	getWidth as extentGetWidth,
   } from 'ol/extent.js';
+import { EPSGs } from '../enums/epsgs';
 
 export class ProjUtilities {
     public static getOlProj(spatialReference: ISpatialReference): Projection {
@@ -17,26 +18,26 @@ export class ProjUtilities {
 		proj4.defs([
 			[epsgCode, spatialReference.proj4js], //la que viene de la config del visor, la que quiere Fernando
 			[
-				'EPSG:23031',
+				EPSGs.EPSG23031,
 				'+proj=utm +zone=31 +ellps=intl +towgs84=-87,-98,-121,0,0,0,0 +units=m +no_defs +type=crs'
 			],
 			[
-				'EPSG:3857',
+				EPSGs.EPSG3857,
 				'+proj=merc +a=6378137 +b=6378137 +lat_ts=0 +lon_0=0 +x_0=0 +y_0=0 +k=1 +units=m +nadgrids=@null +wktext +no_defs +type=crs'
 			],
 			[
-				'EPSG:4326',
+				EPSGs.EPSG4326,
 				'+proj=longlat +datum=WGS84 +no_defs +type=crs'
 			],
 			[
-				'EPSG:4258',
+				EPSGs.EPSG4258,
 				'+proj=longlat +ellps=GRS80 +no_defs +type=cr'
 			]
 		]);
 		register(proj4);
 		olProjProj4.register(proj4);
         return getProjection(epsgCode) ?? new Projection({
-            code: 'EPSG:3857',
+            code: EPSGs.EPSG3857,
             extent: [-20037508.342789244, -20037508.342789244, 20037508.342789244, 20037508.342789244],
             units: 'm',
         });

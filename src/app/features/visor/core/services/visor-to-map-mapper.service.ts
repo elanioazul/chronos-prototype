@@ -35,7 +35,7 @@ export class VisorToMapMapperService extends MapperGeneric<IReadVisor, IMap> {
         projection,
         extent,
         enableRotation: false,
-        maxZoom: 16,
+        maxZoom: 20,
       }),
       // The ratio between physical pixels and device-independent pixels (dips) on the device.
       // Si no se pone a 1, provoca errores de encuadre entre capas

@@ -10,6 +10,7 @@ import {
 	getTopLeft as extentGetTopLeft,
 	getWidth as extentGetWidth,
 } from 'ol/extent.js';
+import { EPSGs } from "../../enums/epsgs";
 export class WMTSChronosLayer extends ChronosLayer {
 	private _matrixSet: string;
 	private _scaleDenominators: number[] | undefined;
@@ -68,6 +69,7 @@ export class WMTSChronosLayer extends ChronosLayer {
 			layer: this.name,
 			tileGrid: this.scaleDenominators === undefined ? defaultTileGrid : scaleDenominatorTileGrid,
 			style: this.activeStyleName,
+			projection: EPSGs.EPSG25831
 		});
 
 		const tileGrid = layerSource.getTileGrid();
@@ -119,6 +121,7 @@ export class WMTSChronosLayer extends ChronosLayer {
 		  origin: extentGetTopLeft(projectionExtent),
 		  resolutions,
 		  matrixIds,
+		  tileSize: [256, 256],
 		});
 	  };
 }

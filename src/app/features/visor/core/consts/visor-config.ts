@@ -2,6 +2,7 @@ import { Extent } from "ol/extent";
 import { IReadVisor } from "../interfaces/visor-stuff/visor.interfaz";
 import { LayerTypes } from "../enums/layers-type";
 import { Coordinate } from 'ol/coordinate';
+import { EPSGs } from '../enums/epsgs';
 
 const spainExtent: Extent = [-1.181030, 40.480381, 3.625488, 43.016697]; //EPSG:4326 //http://bboxfinder.com/
 const icgcExtent: Extent = [0.030420432536880683, 40.480444616083936, 3.486242225112867, 43.05147116664476]; //WGS84BoundingBox at https://geoserveis.icgc.cat/icc_mapesmultibase/utm/wmts/service?service=wmts&request=getCapabilities
@@ -43,7 +44,7 @@ export const mockVisor: IReadVisor = {
 			displayInLegend: false,
 			format: 'image/jpeg',
 			extent: icgcExtent,
-			matrixSet: 'EPSG:25831',
+			matrixSet: EPSGs.EPSG25831,
 			scaleDenominators: scaleDenominatorsPNOA,
 			minZoom: null,
 			maxZoom: null,
