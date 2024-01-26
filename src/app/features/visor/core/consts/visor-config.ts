@@ -12,6 +12,7 @@ const scaleDenominatorsICGC = [
 	17857.142857142855, 7142.857142857142, 3571.428571428571,
 	1785.7142857142856, 892.8571428571428, 357.1428571428571,
   ];
+const topLeftCornerICGC = [258000.0, 4766600.0];
 const scaleDenominatorsPNOA = [
 	2.795411320714286E8, 1.397705660357143E8, 6.988528301785715E7, 3.4942641508928575E7,
 	1.7471320754464287E7, 8735660.377232144, 4367830.188616072,
@@ -21,6 +22,7 @@ const scaleDenominatorsPNOA = [
 	4265.459168570383, 2132.7295842851913, 1066.364792142596, 
 	533.182396071298
   ];
+  const topLeftCornerPNOA = [-1714549.1480570585, 5179611.0];
 export const bcnCoords:  Coordinate = [2.173404, 41.385063];
 
 export const mockVisor: IReadVisor = {
@@ -46,6 +48,7 @@ export const mockVisor: IReadVisor = {
 			extent: icgcExtent,
 			matrixSet: EPSGs.EPSG25831,
 			scaleDenominators: scaleDenominatorsPNOA,
+			topLeftCorner: topLeftCornerPNOA,
 			minZoom: null,
 			maxZoom: null,
 			tiled: true,
@@ -80,6 +83,7 @@ export const mockVisor: IReadVisor = {
 			extent: icgcExtent,
 			matrixSet: 'UTM25831',
 			scaleDenominators: scaleDenominatorsICGC,
+			topLeftCorner: topLeftCornerICGC,
 			minZoom: null,
 			maxZoom: null,
 			tiled: true,
@@ -117,6 +121,7 @@ export const mockVisor: IReadVisor = {
 			extent: icgcExtent,
 			matrixSet: 'UTM25831',
 			scaleDenominators: scaleDenominatorsICGC,
+			topLeftCorner: topLeftCornerICGC,
 			minZoom: null,
 			maxZoom: null,
 			tiled: true,
@@ -288,6 +293,7 @@ export const mockVisor: IReadVisor = {
 			extent: [0.284193968135119, 40.5424652584572, 3.28576420492974, 42.7015647693928],//LatLongBoundingBox de la capa en el WFS
 			matrixSet: undefined,
 			scaleDenominators: undefined,
+			topLeftCorner: undefined,
 			tiled: null,
 			id: 0,
 			capabilities: null,
@@ -531,6 +537,7 @@ export const mockVisor: IReadVisor = {
 			extent: [0.158543097516996, 40.52291819670317, 3.33985063914339, 42.861455494161085],//Native SRS de la capa más amplia
 			matrixSet: undefined,
 			scaleDenominators: undefined,
+			topLeftCorner: undefined,
 			tiled: false,
 			id: 2,
 			capabilities: null,
@@ -804,6 +811,7 @@ export const mockVisor: IReadVisor = {
 			extent: [-18.3201264155889, 27.637723150776, 4.34014226940938, 43.9215181349627],//Native SRS de la capa más amplia
 			matrixSet: undefined,
 			scaleDenominators: undefined,
+			topLeftCorner: undefined,
 			tiled: false,
 			id: 3,
 			capabilities: null,
