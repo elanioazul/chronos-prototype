@@ -4,6 +4,7 @@ import { ServiceType } from '../../types/ol-layer-service.types';
 import { IExtendedReadService } from '@features/visor/core/interfaces/layer-stuff/service.extended.interfaz';
 import { Extent } from 'ol/extent';
 import { ChronosLayer } from './chronos-layer';
+import { Coordinate } from 'ol/coordinate';
 
 export abstract class ChronosService {
   protected _layers!: ChronosLayer[];
@@ -23,6 +24,8 @@ export abstract class ChronosService {
   private _queryable!: boolean;
   private _showInLegend!: boolean;
   private _matrixSet?: string;
+  private _scaleDenominators?: number[];
+  private _topLeftCorner?: Coordinate;
   private _minZoom!: number | null;
   private _maxZoom!: number | null;
 
@@ -67,6 +70,12 @@ export abstract class ChronosService {
   }
   get matrixSet(): string | undefined {
 		return this._matrixSet;
+	}
+  get scaleDenominators(): number[] | undefined {
+		return this._scaleDenominators;
+	}
+  get topLeftCorner(): Coordinate | undefined {
+		return this._topLeftCorner;
 	}
   get minZoom(): number | null {
     return this._minZoom;
@@ -119,6 +128,12 @@ export abstract class ChronosService {
     }
     if (options.hasOwnProperty('matrixSet')) {
 			this._matrixSet = options.matrixSet;
+		}
+    if (options.hasOwnProperty('scaleDenominators')) {
+			this._scaleDenominators = options.scaleDenominators;
+		}
+    if (options.hasOwnProperty('topLeftCorner')) {
+			this._topLeftCorner = options.topLeftCorner;
 		}
     if (options.hasOwnProperty('maxZoom')) {
       this._maxZoom = options.maxZoom;

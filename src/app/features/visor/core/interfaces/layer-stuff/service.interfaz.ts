@@ -1,6 +1,7 @@
 import { IHost } from '../host.interfaz';
 import { IReadCapa, ICapabilitesCapa } from '../dto/capa.dto';
 import { Extent } from 'ol/extent';
+import { Coordinate } from 'ol/coordinate';
 export interface IReadService {
   id: number;
   nombre: string;
@@ -15,6 +16,8 @@ export interface IReadService {
   capas: IReadCapa[] | ICapabilitesCapa[];
   extent: Extent | null;
   matrixSet: string | undefined;
+  scaleDenominators: number[] | undefined;
+  topLeftCorner: Coordinate | undefined;
   minZoom: number | null;
   maxZoom: number | null;
   autoInfo: boolean;

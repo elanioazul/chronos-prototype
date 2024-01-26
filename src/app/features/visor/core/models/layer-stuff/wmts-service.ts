@@ -12,6 +12,7 @@ import { WMTSChronosLayer } from './wmts-layer';
 import { Extent } from 'ol/extent';
 import { ProjUtilities } from '../../utils/utils-proj';
 import { get as getProjection} from 'ol/proj';
+import { EPSGs } from '../../enums/epsgs';
 
 export class WMTSChronosService extends ChronosService {
   private _projection!: string;
@@ -59,6 +60,8 @@ export class WMTSChronosService extends ChronosService {
         ...commonLayerProps,
         identifier: dbLayer.identificador,
 				matrixSet: this.matrixSet,
+        scaleDenominators: this.scaleDenominators,
+        topLeftCorner: this.topLeftCorner,
 				projection: this.projection,
 				selectedStyleName: dbLayer.defaultStyle
 					? dbLayer.defaultStyle
@@ -89,6 +92,8 @@ export class WMTSChronosService extends ChronosService {
         ...commonLayerProps,
         identifier: dbLayer.name,
 				matrixSet: this.matrixSet,
+        scaleDenominators: this.scaleDenominators,
+        topLeftCorner: this.topLeftCorner,
 				projection: this.projection,
 				selectedStyleName: 'default',
       };
@@ -107,12 +112,12 @@ export class WMTSChronosService extends ChronosService {
   protected reprojectExtentToServiceProjection(extent: Extent, epsg: string): Extent {
     const lowerCornerTransformed = ProjUtilities.transform(
       [extent[0], extent[1]],
-      'EPSG:4326',
+      EPSGs.EPSG4326,
       epsg
     )
     const upperCornerTransformed = ProjUtilities.transform(
       [extent[2], extent[3]],
-      'EPSG:4326',
+      EPSGs.EPSG4326,
       epsg
     )
     const outExtent = lowerCornerTransformed.concat(upperCornerTransformed);

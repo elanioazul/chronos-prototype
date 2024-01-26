@@ -1,11 +1,5 @@
 import { Injectable, computed, effect, inject, signal } from '@angular/core';
-import { Collection, Map, View } from 'ol';
-import { Control } from 'ol/control';
-import { Coordinate } from 'ol/coordinate';
-import BaseLayer from 'ol/layer/Base';
-import LayerGroup from 'ol/layer/Group';
-import { Observable, Subject, of, take } from 'rxjs';
-import { Proj4Projs } from '../enums/projs.enum';
+import { Subject } from 'rxjs';
 import { ChronosMap } from '../models/map-stuff/chronos-map';
 import { Message } from 'primeng/api';
 import { ChronosService } from '../models/layer-stuff/chronos-service';
@@ -25,11 +19,10 @@ import { LayerTypes, LayerConfigTypes } from '../enums/layers-type';
 import { WMSChronosService } from '../models/layer-stuff/wms-service';
 import { WMTSChronosService } from '../models/layer-stuff/wmts-service';
 import { HttpProxyService } from './http-proxy.service';
-import { ImageWMS, TileWMS } from 'ol/source';
-import TileLayer from 'ol/layer/Tile';
 
 import { VisorToMapMapperService } from './visor-to-map-mapper.service';
 import { WFSChronosService } from '../models/layer-stuff/wfs-service';
+import { EPSGs } from '../enums/epsgs';
 
 
 export interface MapState {
@@ -155,7 +148,7 @@ export class MapService {
     let extent = visorConfig.extent;
     const mapProj = this.getMapProjCode();
     // el extent de la config del visor viene en...4326 => transformarlo a 25381 igual que hago en VisorToMapMapperService
-    if (mapProj !== 'EPSG:25831') {
+    if (mapProj !== EPSGs.EPSG25831) {
       extent = ProjUtilities.transformExtent(
         visorConfig.extent,
         `EPSG:4326`,
@@ -211,7 +204,7 @@ export class MapService {
       );
       this.setService$.next(service);
       service.layers.forEach((overviewLayer: ChronosLayer) => {
-        // this.addLayer(overviewLayer, 0);
+        this.addLayer(overviewLayer, 0);
         // console.log(overviewLayer);
         
       });
@@ -225,8 +218,8 @@ export class MapService {
       );
       this.setService$.next(service);
       service.layers.forEach((baseLayer: ChronosLayer) => {
-        this.addLayer(baseLayer, 1);
-        console.log(baseLayer);
+        //this.addLayer(baseLayer, 1);
+        //console.log(baseLayer);
       });
     });
   }
