@@ -70,7 +70,7 @@ export class MapService {
   simpleTocLayers = computed(() =>
     this.state().services.flatMap((srv) =>
       srv.layers.filter(
-        (lyr) => lyr.type === LayerConfigTypes.initial
+        (lyr) => lyr.type === LayerConfigTypes.initial || LayerConfigTypes.overview || LayerConfigTypes.base
       )
     )
   );
@@ -218,7 +218,7 @@ export class MapService {
       );
       this.setService$.next(service);
       service.layers.forEach((baseLayer: ChronosLayer) => {
-        //this.addLayer(baseLayer, 1);
+        this.addLayer(baseLayer, 1);
         //console.log(baseLayer);
       });
     });
