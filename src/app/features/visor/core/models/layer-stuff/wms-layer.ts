@@ -38,60 +38,6 @@ export class WMSChronosLayer extends ChronosLayer {
     this.initWrapperWMSLayer();
   }
 
-  public getGeometries(
-    where: string,
-    srs: string
-  ): Observable<Array<Feature<Geometry>>> {
-    const source = this.ol.getSource();
-    let url;
-    let params;
-    if (source instanceof ImageWMS) {
-      url = source.getUrl();
-      params = source.getParams();
-    }
-    const baseUrl = url.replace(/\?$/, '');
-    let layers = [];
-    if (params.LAYERS) {
-      layers = params.LAYERS.split(',');
-    }
-
-    //Por ahora layers[0], ya veremos si hace falta preguntar a todas las capas
-    const finalParams = [
-      'REQUEST=GetFeature',
-      'SERVICE=WFS',
-      'OUTPUTFORMAT=application/json',
-      `SRSNAME=${srs}`,
-      `CQL_FILTER=${where}`,
-      `TYPENAME=${layers[0]}`,
-    ];
-    const separator = baseUrl.match(/\?/) ? '&' : '?';
-    return this.httpProxyService
-      .get<Array<Feature<Geometry>>>(
-        `${baseUrl}${separator}${finalParams.join('&')}`
-      )
-      /*.pipe(map((r) => new GeoJSON().readFeatures(r)))*/;
-  }
-
-  public select(mapa: ChronosMap, where: string, style: string) {
-    if (!this.selectionLayer) {
-      this.selectionLayer = new WMSChronosLayer(
-        this.options,
-        this.httpProxyService
-      );
-    }
-    this.selectionLayer.ol.setMap(mapa);
-    const source = (this.selectionLayer.ol as Image<ImageWMS>).getSource();
-    // 20211129 @ADR: Ñapa infame para dar estilo siendo LAYER GROUP (cogemos una de las capas)
-    /*if (this.selectionLayer.id === 4) {
-		source.updateParams({ LAYERS: 'desarrollorural:ccnn_ptosinteres_25' });
-	}*/
-    source?.updateParams({ STYLES: style });
-    source?.updateParams({ CQL_FILTER: where });
-  }
-  public clearSelect() {
-    this.selectionLayer?.ol.setMap(null);
-  }
-
   private initWrapperWMSLayer(): void {
     if (!this.tiled) {
       this.createImageLayer();
