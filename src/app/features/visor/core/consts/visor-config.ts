@@ -4,6 +4,7 @@ import { LayerTypes } from "../enums/layers-type";
 import { Coordinate } from 'ol/coordinate';
 import { EPSGs } from '../enums/epsgs';
 
+const cataloniaExtent: Extent = [-1.013489,40.751418,4.213257,42.656182];
 const spainExtent: Extent = [-1.181030, 40.480381, 3.625488, 43.016697]; //EPSG:4326 //http://bboxfinder.com/
 const icgcExtent: Extent = [0.030420432536880683, 40.480444616083936, 3.486242225112867, 43.05147116664476]; //WGS84BoundingBox at https://geoserveis.icgc.cat/icc_mapesmultibase/utm/wmts/service?service=wmts&request=getCapabilities
 const scaleDenominatorsICGC = [
@@ -22,7 +23,8 @@ const scaleDenominatorsPNOA = [
 	4265.459168570383, 2132.7295842851913, 1066.364792142596, 
 	533.182396071298
   ];
-  const topLeftCornerPNOA = [-1714549.1480570585, 5179611.0];
+  const topLeftCornersPNOA = [[-1714549.1480570585, 2.3025516E7], [-1714549.1480570585, 1.3006762E7], [-1714549.1480570585, 7997385.0], [-1714549.1480570585, 5492697.0], [-1714549.1480570585, 5492697.0], [-1714549.1480570585, 5492697.0], [-1714549.1480570585, 5179611.0], [-1714549.1480570585, 5179611.0], [-1714549.1480570585, 5179611.0], [-1714549.1480570585, 5140475.0], [-1714549.1480570585, 5120907.0], [-1714549.1480570585, 5120907.0], [-1714549.1480570585, 5116015.0], [-1714549.1480570585, 5113569.0], [-1714549.1480570585, 5113569.0], [-1714549.1480570585, 5113569.0], [-1714549.1480570585, 5113263.0], [-1714549.1480570585, 5113263.0], [-1714549.1480570585, 5113263.0], [-1714549.1480570585, 5113263.0]];
+  const extentPnoa25831: Extent = [-18.67845776, 25.33623918, 6.79134266, 46.70389306]
 export const bcnCoords:  Coordinate = [2.173404, 41.385063];
 
 export const mockVisor: IReadVisor = {
@@ -34,7 +36,7 @@ export const mockVisor: IReadVisor = {
 		authority: 'EPSG',
 		srid: 25831,
 	},
-	extent: icgcExtent,
+	extent: cataloniaExtent,
 	serviciosBase: [
 		{
 			id: 1,
@@ -44,16 +46,16 @@ export const mockVisor: IReadVisor = {
 			opacidad: 1.0,
 			identificable: false,
 			displayInLegend: false,
-			format: 'image/jpeg',
-			extent: icgcExtent,
+			format: 'image/png',
+			extent: extentPnoa25831/*icgcExtent*/,
 			matrixSet: EPSGs.EPSG25831,
 			scaleDenominators: scaleDenominatorsPNOA,
-			topLeftCorner: topLeftCornerPNOA,
+			topLeftCorner: topLeftCornersPNOA,
 			minZoom: null,
 			maxZoom: null,
 			tiled: true,
 			host: {
-				url: 'http://www.ign.es/wmts/pnoa-ma?',
+				url: 'https://www.ign.es/wmts/pnoa-ma?',
 				tipo: LayerTypes.WMTS,
 			},
 			autoInfo: false,
@@ -63,7 +65,7 @@ export const mockVisor: IReadVisor = {
 				{
 					id: 1,
 					nombre: 'OI.OrthoimageCoverage',
-					identificador: '0',
+					identificador: 'OI.OrthoimageCoverage',
 				},
 			],
 			capabilities: null,

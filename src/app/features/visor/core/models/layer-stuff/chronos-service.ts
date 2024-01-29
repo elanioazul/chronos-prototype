@@ -25,7 +25,7 @@ export abstract class ChronosService {
   private _showInLegend!: boolean;
   private _matrixSet?: string;
   private _scaleDenominators?: number[];
-  private _topLeftCorner?: Coordinate;
+  private _topLeftCorner?: Coordinate | Coordinate[];
   private _minZoom!: number | null;
   private _maxZoom!: number | null;
 
@@ -74,7 +74,7 @@ export abstract class ChronosService {
   get scaleDenominators(): number[] | undefined {
 		return this._scaleDenominators;
 	}
-  get topLeftCorner(): Coordinate | undefined {
+  get topLeftCorner(): Coordinate | Coordinate[] | undefined {
 		return this._topLeftCorner;
 	}
   get minZoom(): number | null {

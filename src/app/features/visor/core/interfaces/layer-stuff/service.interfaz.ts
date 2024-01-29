@@ -17,7 +17,7 @@ export interface IReadService {
   extent: Extent | null;
   matrixSet: string | undefined;
   scaleDenominators: number[] | undefined;
-  topLeftCorner: Coordinate | undefined;
+  topLeftCorner: Coordinate | Coordinate[] | undefined;
   minZoom: number | null;
   maxZoom: number | null;
   autoInfo: boolean;
