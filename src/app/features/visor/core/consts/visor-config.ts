@@ -143,6 +143,44 @@ export const mockVisor: IReadVisor = {
 			],
 			capabilities: null,
 			draggable: false
+		},
+		{
+			id: 1,
+			nombre: 'Servicios WMS Rafa',
+			descripcion: 'Servicios WMS Rafa',
+			alias: 'Servicios WMS Rafa',
+			opacidad: 1.0,
+			identificable: false,
+			displayInLegend: false,
+			format: 'image/jpeg',
+			extent: icgcExtent,
+			matrixSet: undefined,
+			scaleDenominators: undefined,
+			topLeftCorner: undefined,
+			minZoom: null,
+			maxZoom: null,
+			tiled: true,
+			autoInfo: false,
+			toolTip: false,
+			visible: true,
+			host: {
+				url: 'https://gsc-gateway.apps.aroas.westeurope.aroapp.io/geoserver/cloud/ows?',
+				tipo: LayerTypes.WMS,
+			},
+			capas: [
+				{
+					id: 1,
+					nombre: 'Topo rafa layer group',
+					identificador: 'SEM:Topográfico',
+				},
+				{
+					id: 2,
+					nombre: 'Topo rafa topoGeoTIFF_enteroGenerated_lowResolution',
+					identificador: 'SEM:topoGeoTIFF_enteroGenerated_lowResolution',
+				},
+			],
+			capabilities: null,
+			draggable: false
 		}
 	],
 	serviciosInicio: [
