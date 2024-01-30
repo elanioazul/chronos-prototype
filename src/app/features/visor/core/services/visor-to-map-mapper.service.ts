@@ -10,7 +10,6 @@ import * as condition from 'ol/events/condition';
 import { Collection } from 'ol';
 import {
   overviewMapControl,
-  scaleControl,
   zoomControl,
   autoInfoOverlay,
   routePopup,
@@ -52,7 +51,7 @@ export class VisorToMapMapperService extends MapperGeneric<IReadVisor, IMap> {
         }),
       ]),
       overlays: [autoInfoOverlay, routePopup, coordsPopup],
-      controls: new Collection([overviewMapControl, zoomControl, scaleControl]),
+      controls: new Collection([overviewMapControl, zoomControl]),
     };
   }
 }

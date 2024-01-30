@@ -1,9 +1,13 @@
 <div class="notification-bar">
     <div class="notification-bar__messages"></div>
     <div class="notification-bar__mapinfo">
-        <div class="notification-bar__mapinfo-scale" #scale id="scale"></div>
-        <div class="notification-bar__mapinfo-coords">
-            <div #coordinates id="coordinates"></div>
+        <div class="notification-bar__mapinfo-viewbox">
+            <div class="notification-bar__mapinfo-numericscale" #numericscale id="numericscale"></div>
+            <div class="notification-bar__mapinfo-linescale" #linescale id="linescale"></div>
+        </div>
+        <div class="notification-bar__mapinfo-coordsbox">
+            <div class="notification-bar__mapinfo-zoomlevel" #zoomlevel id="zoomlevel">Nivel de zoom: {{this.currZoom}}</div>
+            <div class="notification-bar__mapinfo-coordinates" #coordinates id="coordinates"></div>
         </div>
     </div>
 </div>

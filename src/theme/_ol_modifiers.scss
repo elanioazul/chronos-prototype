@@ -13,8 +13,14 @@
 .ol-scale-line {
   background-color: $lightblue;
   left: unset;
-  right: 1em;
+  bottom: 2px;
+  position: static;
 }
+.ol-scale-line-inner {
+  font-size: 16px;
+  border-width: 0px 2px 2px 2px;
+}
+
 
 //zoomControl
 .ol-zoom {

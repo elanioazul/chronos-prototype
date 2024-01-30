@@ -34,7 +34,6 @@ export const coordsPopup = new Popup({
 });
 
 //controles
-export const scaleControl = new ScaleLine({ units: 'metric' });
 export const zoomControl = new Zoom();
 export const overviewMapControl = new OverviewMap({
   className: 'ol-overviewmap ol-custom-overviewmap',
@@ -74,22 +73,25 @@ export const addMouseControlToMap = (target: HTMLElement, map: Map) => {
 export const addNumericScaleToMap = (target: HTMLElement, map: Map) => {
   map.addControl(new Scale({ target: target, editable: true }));
 }
+export const addLineScaleToMap = (target: HTMLElement, map: Map) => {
+  map.addControl(new ScaleLine({ target: target, units: 'metric' }));
+}
 
-export const monitorZoomAndScale = (map: Map) => {
-  let currZoom = map.getView().getZoom();
-  map.on('moveend', (e) => {
-    const newZoom = map.getView().getZoom();
-    const resolution = map.getView().getResolution();
-    const scale = resolution! / (standardizedRenderingPixelSize / 1000); //projection 25831 es metros
+// export const monitorZoomAndScale = (map: Map) => {
+//   let currZoom = map.getView().getZoom();
+//   map.on('moveend', (e) => {
+//     const newZoom = map.getView().getZoom();
+//     const resolution = map.getView().getResolution();
+//     const scale = resolution! / (standardizedRenderingPixelSize / 1000); //projection 25831 es metros
 
-    if (currZoom !== newZoom) {
-      console.log(
-        'Zoom changed, new zoom: ' + newZoom + ', new scale: ' + scale
-      );
-      currZoom = newZoom;
-    }
-  });
-};
+//     if (currZoom !== newZoom) {
+//       console.log(
+//         'Zoom changed, new zoom: ' + newZoom + ', new scale: ' + scale
+//       );
+//       currZoom = newZoom;
+//     }
+//   });
+// };
 
 export const fitToExtent = (map: Map, ext: Extent): void => {
   return map
