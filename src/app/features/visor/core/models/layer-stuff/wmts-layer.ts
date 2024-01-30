@@ -12,6 +12,7 @@ import {
 } from 'ol/extent.js';
 import { EPSGs } from '../../enums/epsgs';
 import { Coordinate } from 'ol/coordinate';
+import { standardizedRenderingPixelSize } from '../../consts/pixel-size';
 export class WMTSChronosLayer extends ChronosLayer {
   private _matrixSet: string;
   private _scaleDenominators: number[] | undefined;
@@ -124,7 +125,7 @@ export class WMTSChronosLayer extends ChronosLayer {
 
     const matrixIds = new Array(scaleDenominators.length);
     const resolutions = new Array(scaleDenominators.length);
-    const meterPerUnit = 0.00028;
+    const meterPerUnit = standardizedRenderingPixelSize / 1000; //projection 25831 es metros
     for (let z = 0; z < scaleDenominators.length; ++z) {
       resolutions[z] = meterPerUnit * scaleDenominators[z];
       matrixIds[z] = z;

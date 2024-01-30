@@ -1,0 +1,1 @@
+export const standardizedRenderingPixelSize = 0.28; //(milimeters, (mm))
