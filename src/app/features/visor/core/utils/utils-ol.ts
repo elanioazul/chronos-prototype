@@ -4,6 +4,8 @@ import TileLayer from 'ol/layer/Tile';
 import OSM from 'ol/source/OSM';
 import Popup from 'ol-ext/overlay/Popup';
 import { Extent } from 'ol/extent';
+import { standardizedRenderingPixelSize } from '../consts/pixel-size';
+import Scale from 'ol-ext/control/Scale';
 
 //Popups
 export const autoInfoOverlay = new Popup({
@@ -32,7 +34,7 @@ export const coordsPopup = new Popup({
 });
 
 //controles
-export const scaleControl = new ScaleLine();
+export const scaleControl = new ScaleLine({ units: 'metric' });
 export const zoomControl = new Zoom();
 export const overviewMapControl = new OverviewMap({
   className: 'ol-overviewmap ol-custom-overviewmap',
@@ -50,24 +52,44 @@ export const overviewMapControl = new OverviewMap({
 });
 
 //map logic
-// export const addMouseControlToMap = (target: HTMLElement, map: Map) => {
-//   const mouse = new MousePosition({
-//     coordinateFormat: function (coordinates) {
-//       var coord_x = coordinates?.[0].toFixed(3);
-//       var coord_y = coordinates?.[1].toFixed(3);
-//       return (
-//         `x:` +
-//         coord_x +
-//         ' | ' +
-//         `y:` +
-//         coord_y +
-//         ` (${map.getView().getProjection().getCode()})`
-//       );
-//     },
-//     target: target,
-//   });
-//   map.addControl(mouse);
-// };
+export const addMouseControlToMap = (target: HTMLElement, map: Map) => {
+  const mouse = new MousePosition({
+    coordinateFormat: function (coordinates) {
+      var coord_x = coordinates?.[0].toFixed(3);
+      var coord_y = coordinates?.[1].toFixed(3);
+      return (
+        `x:` +
+        coord_x +
+        ' | ' +
+        `y:` +
+        coord_y +
+        ` (${map.getView().getProjection().getCode()})`
+      );
+    },
+    target: target,
+  });
+  map.addControl(mouse);
+};
+
+export const addNumericScaleToMap = (target: HTMLElement, map: Map) => {
+  map.addControl(new Scale({ target: target, editable: true }));
+}
+
+export const monitorZoomAndScale = (map: Map) => {
+  let currZoom = map.getView().getZoom();
+  map.on('moveend', (e) => {
+    const newZoom = map.getView().getZoom();
+    const resolution = map.getView().getResolution();
+    const scale = resolution! / (standardizedRenderingPixelSize / 1000); //projection 25831 es metros
+
+    if (currZoom !== newZoom) {
+      console.log(
+        'Zoom changed, new zoom: ' + newZoom + ', new scale: ' + scale
+      );
+      currZoom = newZoom;
+    }
+  });
+};
 
 export const fitToExtent = (map: Map, ext: Extent): void => {
   return map

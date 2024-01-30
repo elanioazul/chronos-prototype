@@ -3,22 +3,45 @@
 .notification-bar {
     width: 100%;
     height: 2em;
-    display: table;
+    display: flex;
+    flex-direction: row;
     background-color: $lightblue;
-}
-.notification-bar > div {
-    height: 100%;
-    display: table-cell;
-    border: 1px solid $lightblue;
-    width: 34%;
-    box-sizing: border-box;
-    vertical-align: middle;
-}
-.notification-bar .message-bar {
-    width: 66%;
-}
-.notification-bar .ol-mouse-position {
-    font-family: monospace;
-    text-align: center;
-    position: static;
+
+    &__messages {
+        width: 66%;
+    }
+
+    &__mapinfo {
+        width: 33%;
+
+        display: flex;
+        flex-direction: row;
+
+
+        font-family: monospace;
+        text-align: center;
+        position: static;
+
+        border-left: 1px solid $mediumblue;
+
+        &-scale {
+            width: 66%;
+
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        &-coords {
+            width: 100%;
+
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            align-items: center;
+
+            background-color: $lightblue;
+        }
+    }
 }
