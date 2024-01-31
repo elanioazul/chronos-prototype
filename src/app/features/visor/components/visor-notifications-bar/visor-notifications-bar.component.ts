@@ -52,10 +52,18 @@ export class VisorNotificationsBarComponent
       const newZoom = this.mapService.map()!.getView().getZoom();
       const resolution = this.mapService.map()!.getView().getResolution();
       const scale = resolution! / (standardizedRenderingPixelSize / 1000); //projection 25831 es metros
+
+      const inchesPerMeter = 39.3701;
+      const dotsPerInch = 96;
+      const conversionFactor = inchesPerMeter * dotsPerInch;
+      const scale96 = resolution! * conversionFactor;
   
       if (this.currZoom !== newZoom) {
         console.log(
           'Zoom changed, new zoom: ' + newZoom + ', new scale: ' + scale
+        );
+        console.log(
+          'Zoom changed, new zoom: ' + newZoom + ', new scale96: ' + scale96
         );
         this.currZoom = Math.round(newZoom!);
       }
