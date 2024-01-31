@@ -112,7 +112,7 @@ export const mockVisor: IReadVisor = {
 			draggable: false
 		},
 		{
-			id: 1,
+			id: 2,
 			nombre: 'Servei WMTS Bases - ICGC - png',
 			descripcion: 'Servei WMTS Bases - ICGC - png',
 			alias: 'WMTS Bases - ICGC - png',
@@ -145,7 +145,7 @@ export const mockVisor: IReadVisor = {
 			draggable: false
 		},
 		{
-			id: 1,
+			id: 3,
 			nombre: 'Servicios WMS Rafa',
 			descripcion: 'Servicios WMS Rafa',
 			alias: 'Servicios WMS Rafa',
@@ -181,7 +181,40 @@ export const mockVisor: IReadVisor = {
 			],
 			capabilities: null,
 			draggable: false
-		}
+		},
+		{
+			id: 4,
+			nombre: 'Servei WMS Bases - ICGC',
+			descripcion: 'Servei WTS Bases - ',
+			alias: 'WMS Bases - ICGC',
+			opacidad: 1.0,
+			identificable: false,
+			displayInLegend: false,
+			format: 'image/png',
+			extent: icgcExtent,
+			matrixSet: undefined,
+			scaleDenominators: undefined,
+			topLeftCorner: undefined,
+			minZoom: null,
+			maxZoom: null,
+			tiled: false,
+			autoInfo: false,
+			toolTip: false,
+			visible: true,
+			host: {
+				url: 'https://geoserveis.icgc.cat/icc_mapesmultibase/utm/wms/service?',
+				tipo: LayerTypes.WMS,
+			},
+			capas: [
+				{
+					id: 1,
+					nombre: 'Orto WMS ICGC',
+					identificador: 'orto',
+				},
+			],
+			capabilities: null,
+			draggable: false
+		},
 	],
 	serviciosInicio: [
 		{
