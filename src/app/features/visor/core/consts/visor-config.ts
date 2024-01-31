@@ -178,11 +178,6 @@ export const mockVisor: IReadVisor = {
 					nombre: 'Ortofoto rafa layer group',
 					identificador: 'SEM:Ortofoto',
 				},
-				{
-					id: 3,
-					nombre: 'Topo rafa topoGeoTIFF_enteroGenerated_lowResolution',
-					identificador: 'SEM:topoGeoTIFF_enteroGenerated_lowResolution',
-				},
 			],
 			capabilities: null,
 			draggable: false
