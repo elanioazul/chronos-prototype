@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { VisorComponent } from './visor.component';
+import { Layout1Component } from './layout1.component';
 
-describe('VisorComponent', () => {
-  let component: VisorComponent;
-  let fixture: ComponentFixture<VisorComponent>;
+describe('Layout1Component', () => {
+  let component: Layout1Component;
+  let fixture: ComponentFixture<Layout1Component>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [VisorComponent]
+      declarations: [Layout1Component]
     });
-    fixture = TestBed.createComponent(VisorComponent);
+    fixture = TestBed.createComponent(Layout1Component);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

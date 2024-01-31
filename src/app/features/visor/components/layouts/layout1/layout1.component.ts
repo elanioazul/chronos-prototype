@@ -1,18 +1,19 @@
 import { Component, ElementRef, OnInit, computed, inject } from '@angular/core';
-import { SidebarService } from '../core/services/sidebar.service';
-import { MapService } from '../core/services/map.service';
-import { VisorService } from '../core/services/visor.service';
-import { VisorToMapMapperService } from '../core/services/visor-to-map-mapper.service';
+import { SidebarService } from '@core/services/sidebar.service';
+import { MapService } from '@core/services/map.service';
+import { VisorService } from '@core/services/visor.service';
+import { VisorToMapMapperService } from '@core/services/visor-to-map-mapper.service';
 import Sidebar from '@core/js/ol5-sidebar.js';
-import { visorTabsConfig } from '../core/consts/visor-tab-config';
-import { ISidebarTab } from '../core/interfaces/sidebar/sidebar-tab.interfaz';
+import { visorTabsConfig } from '@core/consts/visor-tab-config';
+import { ISidebarTab } from '@core/interfaces/sidebar/sidebar-tab.interfaz';
 
 @Component({
-  selector: 'app-visor',
-  templateUrl: './visor.component.html',
-  styleUrls: ['./visor.component.scss'],
+  selector: 'app-layout1',
+  templateUrl: './layout1.component.html',
+  styleUrls: ['./layout1.component.scss'],
 })
-export class VisorComponent {
+export class Layout1Component {
+  
   sidebarService = inject(SidebarService);
   mapService = inject(MapService);
   visorService = inject(VisorService);
@@ -29,6 +30,9 @@ export class VisorComponent {
   map = computed(() =>
     this.mapService.map()
   )
+  isLoaded = computed(() => 
+    this.visorService.loaded()
+  );
 
   constructor(
   ) {

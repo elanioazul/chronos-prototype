@@ -77,7 +77,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     TreeModule,
     CheckboxModule,
     SliderModule,
-    DragDropModule
+    DragDropModule,
+    ProgressSpinnerModule
   ],
 })
 export class SharedModule {

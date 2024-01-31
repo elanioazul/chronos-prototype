@@ -1,0 +1,47 @@
+<div class="fixed flex flex-column w-full h-full" *ngIf="this.isLoaded() == true; else loadingTemplate">
+	<app-visor-header></app-visor-header>
+    <app-visor-map *ngIf="map" [map]="map()"></app-visor-map>
+    <div class="grid grid-nogutter h-full">
+		<div class="flex justify-content-start col-4" style="height: 50%">
+
+		</div>
+		<div class="flex justify-content-center col-4" style="height: 50%">
+
+		</div>
+		<div class="flex justify-content-end col-4" style="height: 50%">
+
+		</div>
+		<div
+			class="flex align-items-end justify-content-start col-4"
+			style="height: 50%"
+		>
+		</div>
+		<div
+			class="flex align-items-end justify-content-center col-4"
+			style="height: 50%"
+		>
+		</div>
+		<div
+			class="flex align-items-end justify-content-end col-4"
+			style="height: 50%"
+		>
+			<div class="flex flex-column align-items-end bottom-right-container">
+
+			</div>
+		</div>
+	</div>
+    <app-visor-notifications-bar class="z-1"></app-visor-notifications-bar>
+    <app-visor-sidebar></app-visor-sidebar>
+</div>
+<ng-template #loadingTemplate>
+    <div class="
+			flex
+			align-items-center
+			justify-content-center
+			h-full
+			w-full
+			bg-primary
+		">
+        <p-progressSpinner *ngIf="this.isLoaded()"></p-progressSpinner>
+    </div>
+</ng-template>

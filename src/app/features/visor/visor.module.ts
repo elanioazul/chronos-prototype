@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { VisorRoutingModule } from './visor-routing.module';
-import { VisorComponent } from './components/visor.component';
 import { VisorHeaderComponent } from './components/visor-header/visor-header.component';
 import { VisorMapComponent } from './components/visor-map/visor-map.component';
 import { VisorNotificationsBarComponent } from './components/visor-notifications-bar/visor-notifications-bar.component';
@@ -15,10 +14,10 @@ import { VisorInfoComponent } from './components/visor-sidebar/visor-info/visor-
 import { SharedModule } from '@shared/shared.module';
 import { VisorSimpleTocComponent } from './components/visor-sidebar/visor-simple-toc/visor-simple-toc.component';
 import { SimpleLayerItemComponent } from './components/visor-sidebar/visor-simple-toc/simple-layer-item/simple-layer-item.component';
+import { Layout1Component } from './components/layouts/layout1/layout1.component';
 
 @NgModule({
   declarations: [
-    VisorComponent,
     VisorHeaderComponent,
     VisorMapComponent,
     VisorNotificationsBarComponent,
@@ -31,6 +30,7 @@ import { SimpleLayerItemComponent } from './components/visor-sidebar/visor-simpl
     VisorInfoComponent,
     VisorSimpleTocComponent,
     SimpleLayerItemComponent,
+    Layout1Component,
   ],
   imports: [CommonModule, VisorRoutingModule, SharedModule],
 })
