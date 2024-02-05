@@ -1,4 +1,4 @@
-<div class="fixed flex flex-column w-full h-full" *ngIf="this.isLoaded() == true; else loadingTemplate">
+<div class="fixed flex flex-column w-full h-full layout1" *ngIf="this.isLoaded() == true; else loadingTemplate">
 	<app-visor-header></app-visor-header>
     <app-visor-map *ngIf="map" [map]="map()"></app-visor-map>
     <div class="grid grid-nogutter h-full">
@@ -26,7 +26,10 @@
 			style="height: 50%"
 		>
 			<div class="flex flex-column align-items-end bottom-right-container">
-
+				<app-widget-container
+					class="bottom-right"
+					position="bottom-right"
+				></app-widget-container>
 			</div>
 		</div>
 	</div>

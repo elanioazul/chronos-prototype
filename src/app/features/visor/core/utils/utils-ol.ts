@@ -98,3 +98,12 @@ export const fitToExtent = (map: Map, ext: Extent): void => {
     .getView()
     .fit(ext, { padding: [100, 100, 100, 100], duration: 250 });
 };
+
+export const getEpsgFromMap = (map: Map): string => {
+  return map.getView().getProjection().getCode();
+}
+
+export const getsridFromMap = (map: Map): number => {
+  const code = map.getView().getProjection().getCode();
+  return parseInt(code.split(':')[1]);
+}

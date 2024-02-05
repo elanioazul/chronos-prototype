@@ -1,6 +1,7 @@
 import { Extent } from 'ol/extent';
 import { IReadService } from '../layer-stuff/service.interfaz';
 import { ISpatialReference } from '../spatial-reference.interfaz';
+import { IWidget } from '../widgets/widget.interfaz';
 
 export interface IReadVisor {
   id: number,
@@ -10,4 +11,5 @@ export interface IReadVisor {
   serviciosInicio?: IReadService[];
   serviciosBase?: IReadService[];
   serviciosOverview?: IReadService[];
+  widgets: IWidget[];
 }

@@ -1,0 +1,14 @@
+<ng-container *ngFor="let widget of configWidgets()">
+    <ng-container
+        [ngSwitch]="widget.config.type"
+    >
+        <app-widget-dialog
+            *ngSwitchCase="'dialogWidget'"
+            [widget]="widget"
+        ></app-widget-dialog>
+        <app-widget-button
+            *ngSwitchCase="'buttonWidget'"
+            [widget]="widget"
+        ></app-widget-button>
+    </ng-container>
+</ng-container>

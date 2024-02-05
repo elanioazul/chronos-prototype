@@ -1,0 +1,17 @@
+<div class="button-widget-container">
+    <p-button 
+        *ngIf="widget" [icon]="widget.config.icon" 
+        (onClick)="onClick()" 
+        [styleClass]="
+                widget.key === 'overviewMap'
+                    ? 'p-button-rounded p-button-white p-button-m text-5xl'
+                    : 'p-button-rounded p-button-white p-button-s'
+        " 
+        [pTooltip]="widget.nombre" 
+        [ngClass]="{
+                active: this.mapActiveWidget()?.key === widget.key && widget.config.active
+        }"
+        [attr.aria-label]="widget.nombre">
+    </p-button>
+</div>
+<ng-container #container></ng-container>

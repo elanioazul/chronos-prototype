@@ -3,12 +3,23 @@ import { IReadVisor } from '../interfaces/visor-stuff/visor.interfaz';
 import { Message } from 'primeng/api';
 import { Subject } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { IWidget } from '../interfaces/widgets/widget.interfaz';
+import { widgetType } from '../enums/wiget-type';
 
 export interface VisorState {
   config: IReadVisor | null;
+  mapWidgets: IWidget[],
+  mapActiveWidget: IWidget | null;
   loaded: boolean;
   error: Message | null;
 }
+
+// export interface IWdgt {
+// 	key: string;
+// 	type: widgetType;
+// 	toolContainer: string;
+// 	active: boolean;
+// }
 
 @Injectable({
   providedIn: 'root',
@@ -18,16 +29,22 @@ export class VisorService {
   // state
   private state = signal<VisorState>({
     config: null,
+    mapWidgets: [],
+    mapActiveWidget: null,
     loaded: false,
     error: null,
   });
 
   //selectors
   config = computed(() => this.state().config)
+  mapWidgets = computed(() => this.state().mapWidgets)
+  mapActiveWidget = computed(() => this.state().mapActiveWidget)
   loaded = computed(() => this.state().loaded)
 
   //sources
   readVisorConfig$ = new Subject<IReadVisor>();
+  addWidget$ = new Subject<IWidget>();
+  toogleWidget$ = new Subject<IWidget>();
   //buildMap$ = new Subject<boolean>();
 
   constructor() {
@@ -39,6 +56,25 @@ export class VisorService {
           loaded: true
         })),
       error: (err) => this.state.update((state) => ({ ...state, error: err })),
+    })
+
+    this.addWidget$.pipe(takeUntilDestroyed()).subscribe((wgdt: IWidget) =>
+      this.state.update((state) => ({
+        ...state,
+        mapWidgets: [...state.mapWidgets, wgdt]
+      }))
+    )
+
+    this.toogleWidget$.pipe(takeUntilDestroyed()).subscribe((wgdt: IWidget) => {
+      this.state.update((state) => ({
+        ...state,
+        mapWidgets: state.mapWidgets.map((item: IWidget) =>
+          item.key === wgdt.key
+            ? { ...item, checked: !item.config.active }
+            : item
+        ),
+        mapActiveWidget: wgdt
+      }))
     })
   
 

@@ -3,6 +3,7 @@ import { IReadVisor } from "../interfaces/visor-stuff/visor.interfaz";
 import { LayerTypes } from "../enums/layers-type";
 import { Coordinate } from 'ol/coordinate';
 import { EPSGs } from '../enums/epsgs';
+import { widgetType } from "../enums/wiget-type";
 
 const cataloniaExtent: Extent = [-1.013489,40.751418,4.213257,42.656182];
 const spainExtent: Extent = [-1.181030, 40.480381, 3.625488, 43.016697]; //EPSG:4326 //http://bboxfinder.com/
@@ -891,6 +892,82 @@ export const mockVisor: IReadVisor = {
 			draggable: true
 		}
 	],
+	widgets: [
+		{
+			id: 1,
+			nombre: 'Zoom in',
+			key: 'zoomIn',
+			widget: () => import('@features/visor/components/layouts/widgets/zoom-in/zoom-in.component').then((c) => c.ZoomInComponent),
+			config: {
+				icon: 'fg-zoom-in fg-2x',
+				type: widgetType.buttonWidget,
+				active: true,
+				position: {
+					desktop: 'bottom-right',
+					mobile: 'bottom-right',
+				},
+			},
+		},
+		{
+			id: 2,
+			nombre: 'Zoom out',
+			key: 'zoomOut',
+			widget: () => import('@features/visor/components/layouts/widgets/zoom-out/zoom-out.component').then((c) => c.ZoomOutComponent),
+			config: {
+				icon: 'fg-zoom-out fg-2x',
+				type: widgetType.buttonWidget,
+				active: true,
+				position: {
+					desktop: 'bottom-right',
+					mobile: 'bottom-right',
+				},
+			},
+		},
+		{
+			id: 3,
+			nombre: 'Zoom ventana',
+			key: 'dragZoom',
+			widget: () => import('@features/visor/components/layouts/widgets/drag-zoom/drag-zoom.component').then((c) => c.DragZoomComponent),
+			config: {
+				icon: 'fg-square-o fg-2x',
+				type: widgetType.buttonWidget,
+				active: true,
+				position: {
+					desktop: 'bottom-right',
+					mobile: 'bottom-right',
+				},
+			},
+		},
+		{
+			id: 4,
+			nombre: 'Extensión predeterminada',
+			key: 'homeExtent',
+			widget: () => import('@features/visor/components/layouts/widgets/home-extent/home-extent.component').then((c) => c.HomeExtentComponent),
+			config: {
+				icon: 'fg-search-home fg-2x',
+				type: widgetType.buttonWidget,
+				position: {
+					desktop: 'bottom-left',
+					mobile: 'bottom-right',
+				},
+			},
+		},
+		{
+			id: 5,
+			nombre: 'Mapa de situación',
+			key: 'overviewMap',
+			widget: () => import('@features/visor/components/layouts/widgets/overview-map/overview-map.component').then((c) => c.OverviewMapComponent),
+			config: {
+				icon: 'fg-search-globe fg-2x',
+				type: widgetType.buttonWidget,
+				active: true,
+				position: {
+					desktop: 'bottom-right',
+					mobile: 'bottom-right',
+				},
+			},
+		},
+	]
 };
 
 export const initialPositionsBasedOnUsers = new Map();

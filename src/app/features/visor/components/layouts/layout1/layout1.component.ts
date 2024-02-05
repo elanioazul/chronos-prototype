@@ -4,7 +4,7 @@ import { MapService } from '@core/services/map.service';
 import { VisorService } from '@core/services/visor.service';
 import { VisorToMapMapperService } from '@core/services/visor-to-map-mapper.service';
 import Sidebar from '@core/js/ol5-sidebar.js';
-import { visorTabsConfig } from '@core/consts/visor-tab-config';
+import { visorTabsConfig } from '@features/visor/core/consts/visor-sidebar-tabs-config';
 import { ISidebarTab } from '@core/interfaces/sidebar/sidebar-tab.interfaz';
 
 @Component({
@@ -13,7 +13,6 @@ import { ISidebarTab } from '@core/interfaces/sidebar/sidebar-tab.interfaz';
   styleUrls: ['./layout1.component.scss'],
 })
 export class Layout1Component {
-  
   sidebarService = inject(SidebarService);
   mapService = inject(MapService);
   visorService = inject(VisorService);
@@ -24,19 +23,14 @@ export class Layout1Component {
 
   visorTabsConfig = visorTabsConfig;
 
-  config = computed(() =>
-    this.visorService.config()
-  )
-  map = computed(() =>
-    this.mapService.map()
-  )
-  isLoaded = computed(() => 
-    this.visorService.loaded()
-  );
+  config = computed(() => this.visorService.config());
+  map = computed(() => this.mapService.map());
+  isLoaded = computed(() => this.visorService.loaded());
 
-  constructor(
-  ) {
-    this.mapService.createMap$.next(this.visorToMapMapperService.transform(this.config()!))
+  constructor() {
+    this.mapService.createMap$.next(
+      this.visorToMapMapperService.transform(this.config()!)
+    );
     this.mapService.populateMap(this.config()!);
     this.mapService.applyConfigData(this.config()!);
     console.log(this.mapService.services());
@@ -46,16 +40,20 @@ export class Layout1Component {
         this.sidebarDiv = domNode;
         this.setSideBar();
       }
-    })
+    });
   }
 
   refreshSidebar(): void {
     this.sidebar = new Sidebar({
       element: this.sidebarDiv,
-      nonOpenableTabs: this.visorTabsConfig.filter((tab: ISidebarTab) => !tab.openableSidebarNeeded),
-      largerTabs: this.visorTabsConfig.filter((tab: ISidebarTab) => tab.largeSidebarNeeded),
+      nonOpenableTabs: this.visorTabsConfig.filter(
+        (tab: ISidebarTab) => !tab.openableSidebarNeeded
+      ),
+      largerTabs: this.visorTabsConfig.filter(
+        (tab: ISidebarTab) => tab.largeSidebarNeeded
+      ),
     });
-    this.sidebarService.updateSidebarInstance(this.sidebar)
+    this.sidebarService.updateSidebarInstance(this.sidebar);
     this.sidebar.setMap(this.map()!);
     this.map()!.addControl(this.sidebar);
   }
