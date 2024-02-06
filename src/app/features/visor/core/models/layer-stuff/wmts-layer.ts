@@ -71,7 +71,7 @@ export class WMTSChronosLayer extends ChronosLayer {
       url: this.url,
       matrixSet: this.matrixSet,
       format: this.format,
-      layer: this.name,
+      layer: this.identifier,
       tileGrid:
         this.scaleDenominators === undefined && this.topLeftCorner === undefined
           ? defaultTileGrid
