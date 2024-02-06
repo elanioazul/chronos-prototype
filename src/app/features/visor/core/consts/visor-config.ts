@@ -64,17 +64,15 @@ export const mockVisor: IReadVisor = {
 			capas: [
 				{
 					id: 1,
-					nombre: 'OI.OrthoimageCoverage',
+					nombre: 'PNOA WMTS',
 					identificador: 'OI.OrthoimageCoverage',
 				},
 			],
 			capabilities: null,
 			draggable: false
-		}
-	],
-	serviciosOverview: [
+		},
 		{
-			id: 1,
+			id: 2,
 			nombre: 'Servei WMTS Bases - ICGC - jpeg',
 			descripcion: 'Servei WMTS Bases - ICGC - jpeg',
 			alias: 'WMTS Bases - ICGC - jpeg',
@@ -99,12 +97,12 @@ export const mockVisor: IReadVisor = {
 			capas: [
 				{
 					id: 1,
-					nombre: 'topo',
+					nombre: 'ICGC WMTS topo',
 					identificador: 'topo',
 				},
 				{
 					id: 2,
-					nombre: 'topogris',
+					nombre: 'ICGC WMTS topogris',
 					identificador: 'topogris',
 				}
 			],
@@ -112,7 +110,7 @@ export const mockVisor: IReadVisor = {
 			draggable: false
 		},
 		{
-			id: 2,
+			id: 3,
 			nombre: 'Servei WMTS Bases - ICGC - png',
 			descripcion: 'Servei WMTS Bases - ICGC - png',
 			alias: 'WMTS Bases - ICGC - png',
@@ -137,18 +135,20 @@ export const mockVisor: IReadVisor = {
 			capas: [
 				{
 					id: 1,
-					nombre: 'orto',
-					identificador: '0',
+					nombre: 'ICGC WMTS orto',
+					identificador: 'orto',
 				},
 			],
 			capabilities: null,
 			draggable: false
 		},
+	],
+	serviciosOverview: [
 		{
-			id: 3,
-			nombre: 'Servicios WMS Rafa',
-			descripcion: 'Servicios WMS Rafa',
-			alias: 'Servicios WMS Rafa',
+			id: 1,
+			nombre: 'Servicios WMS Chronos',
+			descripcion: 'Servicios WMS Chronos',
+			alias: 'Servicios WMS Chronos',
 			opacidad: 1.0,
 			identificable: false,
 			displayInLegend: false,
@@ -170,12 +170,12 @@ export const mockVisor: IReadVisor = {
 			capas: [
 				{
 					id: 1,
-					nombre: 'Topo rafa layer group',
+					nombre: 'Chronos WMS Topográfico',
 					identificador: 'SEM:Topográfico',
 				},
 				{
 					id: 2,
-					nombre: 'Ortofoto rafa layer group',
+					nombre: 'Chronos WMS Ortofoto',
 					identificador: 'SEM:Ortofoto',
 				},
 			],
@@ -183,7 +183,7 @@ export const mockVisor: IReadVisor = {
 			draggable: false
 		},
 		{
-			id: 4,
+			id: 2,
 			nombre: 'Servei WMS Bases - ICGC',
 			descripcion: 'Servei WTS Bases - ',
 			alias: 'WMS Bases - ICGC',
@@ -208,7 +208,7 @@ export const mockVisor: IReadVisor = {
 			capas: [
 				{
 					id: 1,
-					nombre: 'Orto WMS ICGC',
+					nombre: 'ICGC WMS Orto ',
 					identificador: 'orto',
 				},
 			],
@@ -343,7 +343,7 @@ export const mockVisor: IReadVisor = {
 							alias: 'ZONA_COBERTURA',
 						},
 					],
-					nombre: 'RESOURCES',
+					nombre: 'localhost WFS RESOURCES',
 					identificador: 'chronos-recursos:RESOURCES',
 				},
 			],
@@ -368,163 +368,10 @@ export const mockVisor: IReadVisor = {
 			scaleDenominators: undefined,
 			topLeftCorner: undefined,
 			tiled: null,
-			id: 0,
+			id: 1,
 			capabilities: null,
 			draggable: true
 		},
-		// {
-		// 	capas: [
-		// 		{
-		// 			id: 1,
-		// 			campos: [
-		// 				{
-		// 					nombre: 'ABSCISA_ED50_UTM31N',
-		// 					alias: 'ABSCISA_ED50_UTM31N',
-		// 				},
-		// 				{
-		// 					nombre: 'ACTIVAR',
-		// 					alias: 'ACTIVAR',
-		// 				},
-		// 				{
-		// 					nombre: 'AYUDANTE',
-		// 					alias: 'AYUDANTE',
-		// 				},
-		// 				{
-		// 					nombre: 'BASE',
-		// 					alias: 'BASE',
-		// 				},
-		// 				{
-		// 					nombre: 'CODEMPRESA',
-		// 					alias: 'CODEMPRESA',
-		// 				},
-		// 				{
-		// 					nombre: 'COORDX_ETRS89_UTM31N',
-		// 					alias: 'COORDX_ETRS89_UTM31N',
-		// 				},
-		// 				{
-		// 					nombre: 'COORDY_ETRS89_UTM31N',
-		// 					alias: 'COORDY_ETRS89_UTM31N',
-		// 				},
-		// 				{
-		// 					nombre: 'DATA_ALTA',
-		// 					alias: 'DATA_ALTA',
-		// 				},
-		// 				{
-		// 					nombre: 'ESTADO',
-		// 					alias: 'ESTADO',
-		// 				},
-		// 				{
-		// 					nombre: 'FEC_CAMBIOTURNO',
-		// 					alias: 'FEC_CAMBIOTURNO',
-		// 				},
-		// 				{
-		// 					nombre: 'GPS_START_BASE',
-		// 					alias: 'GPS_START_BASE',
-		// 				},
-		// 				{
-		// 					nombre: 'GW_NOTIFY_STATE',
-		// 					alias: 'GW_NOTIFY_STATE',
-		// 				},
-		// 				{
-		// 					nombre: 'HORARIO_FIN',
-		// 					alias: 'HORARIO_FIN',
-		// 				},
-		// 				{
-		// 					nombre: 'HORARIO_INI',
-		// 					alias: 'HORARIO_INI',
-		// 				},
-		// 				{
-		// 					nombre: 'HORAS_DISPONIBLE',
-		// 					alias: 'HORAS_DISPONIBLE',
-		// 				},
-		// 				{
-		// 					nombre: 'ID_VEHICLE',
-		// 					alias: 'ID_VEHICLE',
-		// 				},
-		// 				{
-		// 					nombre: 'ISSI_MOBIL',
-		// 					alias: 'ISSI_MOBIL',
-		// 				},
-		// 				{
-		// 					nombre: 'LAST_INI_FIN',
-		// 					alias: 'LAST_INI_FIN',
-		// 				},
-		// 				{
-		// 					nombre: 'LAT_WGS84',
-		// 					alias: 'LAT_WGS84',
-		// 				},
-		// 				{
-		// 					nombre: 'LNG_WGS84',
-		// 					alias: 'LNG_WGS84',
-		// 				},
-		// 				{
-		// 					nombre: 'MATRICULA',
-		// 					alias: 'MATRICULA',
-		// 				},
-		// 				{
-		// 					nombre: 'MNEMONIC_MOBIL',
-		// 					alias: 'MNEMONIC_MOBIL',
-		// 				},
-		// 				{
-		// 					nombre: 'ORDEN',
-		// 					alias: 'ORDEN',
-		// 				},
-		// 				{
-		// 					nombre: 'ORDENADA_ED50_UTM31N',
-		// 					alias: 'ORDENADA_ED50_UTM31N',
-		// 				},
-		// 				{
-		// 					nombre: 'RECURSO',
-		// 					alias: 'RECURSO',
-		// 				},
-		// 				{
-		// 					nombre: 'RECURS_EMBARCAT',
-		// 					alias: 'RERECURS_EMBARCATCURSO',
-		// 				},
-		// 				{
-		// 					nombre: 'TELEFONO',
-		// 					alias: 'TELEFONO',
-		// 				},
-		// 				{
-		// 					nombre: 'TIME_LASTCOORD',
-		// 					alias: 'TIME_LASTCOORD',
-		// 				},
-		// 				{
-		// 					nombre: 'TIPORECURSO',
-		// 					alias: 'TIPORECURSO',
-		// 				},
-		// 				{
-		// 					nombre: 'ZONA_COBERTURA',
-		// 					alias: 'ZONA_COBERTURA',
-		// 				},
-		// 			],
-		// 			nombre: 'RESOURCES',
-		// 			identificador: 'chronos-recursos:RESOURCES',
-		// 		},
-		// 	],
-		// 	autoInfo: true,
-		// 	toolTip: false,
-		// 	visible: true,
-		// 	nombre: 'Servicios de recursos',
-		// 	alias: 'Servicios de recursos',
-		// 	descripcion: 'Servicios de recursos desc',
-		// 	opacidad: 1.0,
-		// 	identificable: true,
-		// 	displayInLegend: false,
-		// 	format: 'image/png',
-		// 	minZoom: null,
-		// 	maxZoom: null,
-		// 	host: {
-		// 		url: 'http://localhost:8080/geoserver/chronos-recursos/wms?',
-		// 		tipo: LayerTypes.WMS,
-		// 	},
-		// 	extent: [0.284193968135119, 40.5424652584572, 3.28576420492974, 42.7015647693928],//Native SRS de la capa más amplia
-		// 	matrixSet: undefined,
-		// 	tiled: false,
-		// 	id: 1,
-		// 	capabilities: null,
-		// 	draggable: true
-		// },
 		{
 			capas: [
 				{
@@ -587,7 +434,7 @@ export const mockVisor: IReadVisor = {
 							alias: 'MODIFIED_DATE',
 						}
 					],
-					nombre: 'ABS_2020_ETRS89',
+					nombre: 'localhost WMS ABS_2020_ETRS89',
 					identificador: 'chronos-abs:ABS_2020_ETRS89',
 				},
 			],
@@ -674,7 +521,7 @@ export const mockVisor: IReadVisor = {
 							alias: 'SOURCE_DATA',
 						}
 					],
-					nombre: 'NEIGHBOURHOOD_BCN_ETRS89',
+					nombre: 'localhost WMS NEIGHBOURHOOD_BCN_ETRS89',
 					identificador: 'chronos-admin-division:NEIGHBOURHOOD_BCN_ETRS89',
 				},
 				{
@@ -717,7 +564,7 @@ export const mockVisor: IReadVisor = {
 							alias: 'SOURCE_DATA',
 						}
 					],
-					nombre: 'LOCALADMIN_CAT_ETRS89',
+					nombre: 'localhost WMS LOCALADMIN_CAT_ETRS89',
 					identificador: 'chronos-admin-division:LOCALADMIN_CAT_ETRS89',
 				},
 				{
@@ -748,7 +595,7 @@ export const mockVisor: IReadVisor = {
 							alias: 'SOURCE_DATA',
 						}
 					],
-					nombre: 'LOCALADMIN_AND_ETRS89',
+					nombre: 'localhost WMS LOCALADMIN_AND_ETRS89',
 					identificador: 'chronos-admin-division:LOCALADMIN_AND_ETRS89',
 				},
 				{
@@ -791,7 +638,7 @@ export const mockVisor: IReadVisor = {
 							alias: 'SOURCE_DATA',
 						}
 					],
-					nombre: 'LOCALADMIN_ESP_ETRS89',
+					nombre: 'localhost WMS LOCALADMIN_ESP_ETRS89',
 					identificador: 'chronos-admin-division:LOCALADMIN_ESP_ETRS89',
 				},
 				{
@@ -834,7 +681,7 @@ export const mockVisor: IReadVisor = {
 							alias: 'SOURCE_DATA',
 						}
 					],
-					nombre: 'LOCALADMIN_FRA_ETRS89',
+					nombre: 'localhost WMS LOCALADMIN_FRA_ETRS89',
 					identificador: 'chronos-admin-division:LOCALADMIN_FRA_ETRS89',
 				},
 				{
@@ -861,7 +708,7 @@ export const mockVisor: IReadVisor = {
 							alias: 'PRIORITY',
 						}
 					],
-					nombre: 'COUNTRY_ETRS89',
+					nombre: 'localhost WMS COUNTRY_ETRS89',
 					identificador: 'chronos-admin-division:COUNTRY_ETRS89',
 				},
 			],
