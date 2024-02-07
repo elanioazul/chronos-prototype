@@ -47,6 +47,7 @@ export class WFSChronosLayer extends ChronosLayer {
     const lyrSource = new VectorSource({
       url: this.url.concat(finalUrlParams.join('&')),
       format: new GeoJSON()
+      //format: new GeoJSON({dataProjection: 'EPSG:25831', featureProjection: 'EPSG:25831'})
     })
 
     this.ol = new VectorLayer({
