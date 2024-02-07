@@ -343,8 +343,8 @@ export const mockVisor: IReadVisor = {
 							alias: 'ZONA_COBERTURA',
 						},
 					],
-					nombre: 'localhost WFS RESOURCES',
-					identificador: 'chronos-recursos:RESOURCES',
+					nombre: 'Chronos WFS RESOURCES',
+					identificador: 'SEM:resources',
 				},
 			],
 			autoInfo: true,
@@ -360,7 +360,7 @@ export const mockVisor: IReadVisor = {
 			minZoom: null,
 			maxZoom: null,
 			host: {
-				url: 'http://localhost:8080/geoserver/chronos-recursos/wfs?',
+				url: 'https://gsc-gateway.apps.aroas.westeurope.aroapp.io/geoserver/cloud/ows?',
 				tipo: LayerTypes.WFS,
 			},
 			extent: [0.284193968135119, 40.5424652584572, 3.28576420492974, 42.7015647693928],//LatLongBoundingBox de la capa en el WFS
