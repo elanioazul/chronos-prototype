@@ -24,8 +24,10 @@ const scaleDenominatorsPNOA = [
 	533.182396071298
   ];
   const topLeftCornersPNOA = [[-1714549.1480570585, 2.3025516E7], [-1714549.1480570585, 1.3006762E7], [-1714549.1480570585, 7997385.0], [-1714549.1480570585, 5492697.0], [-1714549.1480570585, 5492697.0], [-1714549.1480570585, 5492697.0], [-1714549.1480570585, 5179611.0], [-1714549.1480570585, 5179611.0], [-1714549.1480570585, 5179611.0], [-1714549.1480570585, 5140475.0], [-1714549.1480570585, 5120907.0], [-1714549.1480570585, 5120907.0], [-1714549.1480570585, 5116015.0], [-1714549.1480570585, 5113569.0], [-1714549.1480570585, 5113569.0], [-1714549.1480570585, 5113569.0], [-1714549.1480570585, 5113263.0], [-1714549.1480570585, 5113263.0], [-1714549.1480570585, 5113263.0], [-1714549.1480570585, 5113263.0]];
-  const extentPnoa25831: Extent = [-18.67845776, 25.33623918, 6.79134266, 46.70389306]
-export const bcnCoords:  Coordinate = [2.173404, 41.385063];
+  const extentPnoa25831: Extent = [-18.67845776, 25.33623918, 6.79134266, 46.70389306];
+  const scaleDenominatorsChronosUTM25831 = [3928571.428571428, 1964285.714285714, 982142.857142857, 357142.8571428571, 178571.42857142855, 89285.71428571428, 35714.28571428571, 17857.142857142855, 7142.857142857142, 3571.428571428571, 1785.7142857142856, 892.8571428571428, 357.1428571428571]
+  const topLeftCornersChronosUTM25831 = [[233037.87982459686, 9163672.0], [233037.87982459686, 9163672.0], [233037.87982459686, 9163672.0], [233037.87982459686, 9163672.0], [233037.87982459686, 9163672.0], [233037.87982459686, 9157272.0], [233037.87982459686, 9153432.0], [233037.87982459686, 9152152.0], [233037.87982459686, 9151896.0], [233037.87982459686, 9151896.0], [233037.87982459686, 9151768.0], [233037.87982459686, 9151768.0], [233037.87982459686, 9151768.0]];
+  export const bcnCoords:  Coordinate = [2.173404, 41.385063];
 
 export const mockVisor: IReadVisor = {
 	id: 666,
@@ -38,39 +40,39 @@ export const mockVisor: IReadVisor = {
 	},
 	extent: cataloniaExtent,
 	serviciosBase: [
-		{
-			id: 1,
-			nombre: 'OI.OrthoimageCoverage',
-			alias: 'Ortoimágenes de España (satélite Sentinel2 y ortofotos del PNOA máxima actualidad)',
-			descripcion: `Ortofotos de máxima actualidad del proyecto PNOA (Plan Nacional de Ortofotografía Aérea) visibles a partir de una escala aproximada 1:70.000. Para escalas menores se visualizan las imágenes de satélite Sentinel2 de 10 metros de resolución. Ortoimagen Melilla: Pléiades Neo © Airbus DS (2022). La cobertura PNOA está constituida por mosaicos de distinta fecha de adquisición y distinta resolución (50 y 25 cm). Los datos PNOA se actualizan varias veces al año y los datos Sentinel2 se actualizan semestralmente. Las imágenes mundiales de fondo provienen del espectrorradiómetro de imágenes de resolución moderada de la NASA (MODIS).Estas actualizaciones se anuncian en el canal RSS del IGN (https://www.ign.es/ign/rss). Servicio de visualización Teselado conforme al perfil INSPIRE de Web Map Tile Service (WMTS) 1.0.0. Las teselas se pregeneran en formato JPEG y hasta el nivel 19 (correspondiente con una escala aproximada 1:1.000) en el Sistema de Referencia por Coordenadas WGS84 Web Mercator (EPSG:3857).`,
-			opacidad: 1.0,
-			identificable: false,
-			displayInLegend: false,
-			format: 'image/png',
-			extent: extentPnoa25831/*icgcExtent*/,
-			matrixSet: EPSGs.EPSG25831,
-			scaleDenominators: scaleDenominatorsPNOA,
-			topLeftCorner: topLeftCornersPNOA,
-			minZoom: null,
-			maxZoom: null,
-			tiled: true,
-			host: {
-				url: 'https://www.ign.es/wmts/pnoa-ma?',
-				tipo: LayerTypes.WMTS,
-			},
-			autoInfo: false,
-			toolTip: false,
-			visible: true,
-			capas: [
-				{
-					id: 1,
-					nombre: 'PNOA WMTS',
-					identificador: 'OI.OrthoimageCoverage',
-				},
-			],
-			capabilities: null,
-			draggable: false
-		},
+		// {
+		// 	id: 1,
+		// 	nombre: 'OI.OrthoimageCoverage',
+		// 	alias: 'Ortoimágenes de España (satélite Sentinel2 y ortofotos del PNOA máxima actualidad)',
+		// 	descripcion: `Ortofotos de máxima actualidad del proyecto PNOA (Plan Nacional de Ortofotografía Aérea) visibles a partir de una escala aproximada 1:70.000. Para escalas menores se visualizan las imágenes de satélite Sentinel2 de 10 metros de resolución. Ortoimagen Melilla: Pléiades Neo © Airbus DS (2022). La cobertura PNOA está constituida por mosaicos de distinta fecha de adquisición y distinta resolución (50 y 25 cm). Los datos PNOA se actualizan varias veces al año y los datos Sentinel2 se actualizan semestralmente. Las imágenes mundiales de fondo provienen del espectrorradiómetro de imágenes de resolución moderada de la NASA (MODIS).Estas actualizaciones se anuncian en el canal RSS del IGN (https://www.ign.es/ign/rss). Servicio de visualización Teselado conforme al perfil INSPIRE de Web Map Tile Service (WMTS) 1.0.0. Las teselas se pregeneran en formato JPEG y hasta el nivel 19 (correspondiente con una escala aproximada 1:1.000) en el Sistema de Referencia por Coordenadas WGS84 Web Mercator (EPSG:3857).`,
+		// 	opacidad: 1.0,
+		// 	identificable: false,
+		// 	displayInLegend: false,
+		// 	format: 'image/png',
+		// 	extent: extentPnoa25831/*icgcExtent*/,
+		// 	matrixSet: EPSGs.EPSG25831,
+		// 	scaleDenominators: scaleDenominatorsPNOA,
+		// 	topLeftCorner: topLeftCornersPNOA,
+		// 	minZoom: null,
+		// 	maxZoom: null,
+		// 	tiled: true,
+		// 	host: {
+		// 		url: 'https://www.ign.es/wmts/pnoa-ma?',
+		// 		tipo: LayerTypes.WMTS,
+		// 	},
+		// 	autoInfo: false,
+		// 	toolTip: false,
+		// 	visible: true,
+		// 	capas: [
+		// 		{
+		// 			id: 1,
+		// 			nombre: 'PNOA WMTS',
+		// 			identificador: 'OI.OrthoimageCoverage',
+		// 		},
+		// 	],
+		// 	capabilities: null,
+		// 	draggable: false
+		// },
 		{
 			id: 2,
 			nombre: 'Servei WMTS Bases - ICGC - jpeg',
@@ -99,11 +101,6 @@ export const mockVisor: IReadVisor = {
 					id: 1,
 					nombre: 'ICGC WMTS topo',
 					identificador: 'topo',
-				},
-				{
-					id: 2,
-					nombre: 'ICGC WMTS topogris',
-					identificador: 'topogris',
 				}
 			],
 			capabilities: null,
@@ -137,6 +134,44 @@ export const mockVisor: IReadVisor = {
 					id: 1,
 					nombre: 'ICGC WMTS orto',
 					identificador: 'orto',
+				},
+				{
+					id: 2,
+					nombre: 'ICGC WMTS topogris',
+					identificador: 'topogris',
+				}
+			],
+			capabilities: null,
+			draggable: false
+		},
+		{
+			id: 4,
+			nombre: 'Servicios WMTS Chronos - png',
+			descripcion: 'Servicios WMTS Chronos - png',
+			alias: 'Servicios WMTS Chronos - png',
+			opacidad: 1.0,
+			identificable: false,
+			displayInLegend: false,
+			format: 'image/png',
+			extent: icgcExtent,
+			matrixSet: 'UTM25831',
+			scaleDenominators: scaleDenominatorsChronosUTM25831,
+			topLeftCorner: topLeftCornersChronosUTM25831,
+			minZoom: null,
+			maxZoom: null,
+			tiled: true,
+			autoInfo: false,
+			toolTip: false,
+			visible: true,
+			host: {
+				url: 'https://gsc-gateway.apps.aroas.westeurope.aroapp.io/geoserver/cloud/gwc/service/wmts?',
+				tipo: LayerTypes.WMTS,
+			},
+			capas: [
+				{
+					id: 1,
+					nombre: 'Chronos WMTS Ortofoto',
+					identificador: 'SEM:Ortofoto',
 				},
 			],
 			capabilities: null,
