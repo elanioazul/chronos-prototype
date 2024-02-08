@@ -128,7 +128,7 @@ export class WMTSChronosLayer extends ChronosLayer {
     const meterPerUnit = standardizedRenderingPixelSize / 1000; //projection 25831 es metros
     for (let z = 0; z < scaleDenominators.length; ++z) {
       resolutions[z] = meterPerUnit * scaleDenominators[z];
-      matrixIds[z] = z;
+      matrixIds[z] = '0' + z; //para pnoa ese '0' no es requerido, pero para icgc y chronos si (aunque icgc se lo come sin y chronos no)
     }
 
     // console.log(resolutions);
