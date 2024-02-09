@@ -24,8 +24,10 @@ const scaleDenominatorsPNOA = [
 	533.182396071298
   ];
   const topLeftCornersPNOA = [[-1714549.1480570585, 2.3025516E7], [-1714549.1480570585, 1.3006762E7], [-1714549.1480570585, 7997385.0], [-1714549.1480570585, 5492697.0], [-1714549.1480570585, 5492697.0], [-1714549.1480570585, 5492697.0], [-1714549.1480570585, 5179611.0], [-1714549.1480570585, 5179611.0], [-1714549.1480570585, 5179611.0], [-1714549.1480570585, 5140475.0], [-1714549.1480570585, 5120907.0], [-1714549.1480570585, 5120907.0], [-1714549.1480570585, 5116015.0], [-1714549.1480570585, 5113569.0], [-1714549.1480570585, 5113569.0], [-1714549.1480570585, 5113569.0], [-1714549.1480570585, 5113263.0], [-1714549.1480570585, 5113263.0], [-1714549.1480570585, 5113263.0], [-1714549.1480570585, 5113263.0]];
-  const extentPnoa25831: Extent = [-18.67845776, 25.33623918, 6.79134266, 46.70389306]
-export const bcnCoords:  Coordinate = [2.173404, 41.385063];
+  const extentPnoa25831: Extent = [-18.67845776, 25.33623918, 6.79134266, 46.70389306];
+  const scaleDenominatorsChronosUTM25831 = [3928571.428571428, 1964285.714285714, 982142.857142857, 357142.8571428571, 178571.42857142855, 89285.71428571428, 35714.28571428571, 17857.142857142855, 7142.857142857142, 3571.428571428571, 1785.7142857142856, 892.8571428571428, 357.1428571428571]
+  const topLeftCornersChronosUTM25831 = [[233037.87982459686, 9163672.0], [233037.87982459686, 9163672.0], [233037.87982459686, 9163672.0], [233037.87982459686, 9163672.0], [233037.87982459686, 9163672.0], [233037.87982459686, 9157272.0], [233037.87982459686, 9153432.0], [233037.87982459686, 9152152.0], [233037.87982459686, 9151896.0], [233037.87982459686, 9151896.0], [233037.87982459686, 9151768.0], [233037.87982459686, 9151768.0], [233037.87982459686, 9151768.0]];
+  export const bcnCoords:  Coordinate = [2.173404, 41.385063];
 
 export const mockVisor: IReadVisor = {
 	id: 666,
@@ -38,43 +40,41 @@ export const mockVisor: IReadVisor = {
 	},
 	extent: cataloniaExtent,
 	serviciosBase: [
+		// {
+		// 	id: 1,
+		// 	nombre: 'OI.OrthoimageCoverage',
+		// 	alias: 'Ortoimágenes de España (satélite Sentinel2 y ortofotos del PNOA máxima actualidad)',
+		// 	descripcion: `Ortofotos de máxima actualidad del proyecto PNOA (Plan Nacional de Ortofotografía Aérea) visibles a partir de una escala aproximada 1:70.000. Para escalas menores se visualizan las imágenes de satélite Sentinel2 de 10 metros de resolución. Ortoimagen Melilla: Pléiades Neo © Airbus DS (2022). La cobertura PNOA está constituida por mosaicos de distinta fecha de adquisición y distinta resolución (50 y 25 cm). Los datos PNOA se actualizan varias veces al año y los datos Sentinel2 se actualizan semestralmente. Las imágenes mundiales de fondo provienen del espectrorradiómetro de imágenes de resolución moderada de la NASA (MODIS).Estas actualizaciones se anuncian en el canal RSS del IGN (https://www.ign.es/ign/rss). Servicio de visualización Teselado conforme al perfil INSPIRE de Web Map Tile Service (WMTS) 1.0.0. Las teselas se pregeneran en formato JPEG y hasta el nivel 19 (correspondiente con una escala aproximada 1:1.000) en el Sistema de Referencia por Coordenadas WGS84 Web Mercator (EPSG:3857).`,
+		// 	opacidad: 1.0,
+		// 	identificable: false,
+		// 	displayInLegend: false,
+		// 	format: 'image/png',
+		// 	extent: extentPnoa25831/*icgcExtent*/,
+		// 	matrixSet: EPSGs.EPSG25831,
+		// 	scaleDenominators: scaleDenominatorsPNOA,
+		// 	topLeftCorner: topLeftCornersPNOA,
+		// 	minZoom: null,
+		// 	maxZoom: null,
+		// 	tiled: true,
+		// 	host: {
+		// 		url: 'https://www.ign.es/wmts/pnoa-ma?',
+		// 		tipo: LayerTypes.WMTS,
+		// 	},
+		// 	autoInfo: false,
+		// 	toolTip: false,
+		// 	visible: true,
+		// 	capas: [
+		// 		{
+		// 			id: 1,
+		// 			nombre: 'PNOA WMTS',
+		// 			identificador: 'OI.OrthoimageCoverage',
+		// 		},
+		// 	],
+		// 	capabilities: null,
+		// 	draggable: false
+		// },
 		{
-			id: 1,
-			nombre: 'OI.OrthoimageCoverage',
-			alias: 'Ortoimágenes de España (satélite Sentinel2 y ortofotos del PNOA máxima actualidad)',
-			descripcion: `Ortofotos de máxima actualidad del proyecto PNOA (Plan Nacional de Ortofotografía Aérea) visibles a partir de una escala aproximada 1:70.000. Para escalas menores se visualizan las imágenes de satélite Sentinel2 de 10 metros de resolución. Ortoimagen Melilla: Pléiades Neo © Airbus DS (2022). La cobertura PNOA está constituida por mosaicos de distinta fecha de adquisición y distinta resolución (50 y 25 cm). Los datos PNOA se actualizan varias veces al año y los datos Sentinel2 se actualizan semestralmente. Las imágenes mundiales de fondo provienen del espectrorradiómetro de imágenes de resolución moderada de la NASA (MODIS).Estas actualizaciones se anuncian en el canal RSS del IGN (https://www.ign.es/ign/rss). Servicio de visualización Teselado conforme al perfil INSPIRE de Web Map Tile Service (WMTS) 1.0.0. Las teselas se pregeneran en formato JPEG y hasta el nivel 19 (correspondiente con una escala aproximada 1:1.000) en el Sistema de Referencia por Coordenadas WGS84 Web Mercator (EPSG:3857).`,
-			opacidad: 1.0,
-			identificable: false,
-			displayInLegend: false,
-			format: 'image/png',
-			extent: extentPnoa25831/*icgcExtent*/,
-			matrixSet: EPSGs.EPSG25831,
-			scaleDenominators: scaleDenominatorsPNOA,
-			topLeftCorner: topLeftCornersPNOA,
-			minZoom: null,
-			maxZoom: null,
-			tiled: true,
-			host: {
-				url: 'https://www.ign.es/wmts/pnoa-ma?',
-				tipo: LayerTypes.WMTS,
-			},
-			autoInfo: false,
-			toolTip: false,
-			visible: true,
-			capas: [
-				{
-					id: 1,
-					nombre: 'OI.OrthoimageCoverage',
-					identificador: 'OI.OrthoimageCoverage',
-				},
-			],
-			capabilities: null,
-			draggable: false
-		}
-	],
-	serviciosOverview: [
-		{
-			id: 1,
+			id: 2,
 			nombre: 'Servei WMTS Bases - ICGC - jpeg',
 			descripcion: 'Servei WMTS Bases - ICGC - jpeg',
 			alias: 'WMTS Bases - ICGC - jpeg',
@@ -99,20 +99,15 @@ export const mockVisor: IReadVisor = {
 			capas: [
 				{
 					id: 1,
-					nombre: 'topo',
+					nombre: 'ICGC WMTS topo',
 					identificador: 'topo',
-				},
-				{
-					id: 2,
-					nombre: 'topogris',
-					identificador: 'topogris',
 				}
 			],
 			capabilities: null,
 			draggable: false
 		},
 		{
-			id: 2,
+			id: 3,
 			nombre: 'Servei WMTS Bases - ICGC - png',
 			descripcion: 'Servei WMTS Bases - ICGC - png',
 			alias: 'WMTS Bases - ICGC - png',
@@ -137,18 +132,58 @@ export const mockVisor: IReadVisor = {
 			capas: [
 				{
 					id: 1,
-					nombre: 'orto',
-					identificador: '0',
+					nombre: 'ICGC WMTS orto',
+					identificador: 'orto',
 				},
+				{
+					id: 2,
+					nombre: 'ICGC WMTS topogris',
+					identificador: 'topogris',
+				}
 			],
 			capabilities: null,
 			draggable: false
 		},
 		{
-			id: 3,
-			nombre: 'Servicios WMS Rafa',
-			descripcion: 'Servicios WMS Rafa',
-			alias: 'Servicios WMS Rafa',
+			id: 4,
+			nombre: 'Servicios WMTS Chronos - png',
+			descripcion: 'Servicios WMTS Chronos - png',
+			alias: 'Servicios WMTS Chronos - png',
+			opacidad: 1.0,
+			identificable: false,
+			displayInLegend: false,
+			format: 'image/png',
+			extent: icgcExtent,
+			matrixSet: 'UTM25831',
+			scaleDenominators: scaleDenominatorsChronosUTM25831,
+			topLeftCorner: topLeftCornersChronosUTM25831,
+			minZoom: null,
+			maxZoom: null,
+			tiled: true,
+			autoInfo: false,
+			toolTip: false,
+			visible: true,
+			host: {
+				url: 'https://gsc-gateway.apps.aroas.westeurope.aroapp.io/geoserver/cloud/gwc/service/wmts?',
+				tipo: LayerTypes.WMTS,
+			},
+			capas: [
+				{
+					id: 1,
+					nombre: 'Chronos WMTS Ortofoto',
+					identificador: 'SEM:Ortofoto',
+				},
+			],
+			capabilities: null,
+			draggable: false
+		},
+	],
+	serviciosOverview: [
+		{
+			id: 1,
+			nombre: 'Servicios WMS Chronos',
+			descripcion: 'Servicios WMS Chronos',
+			alias: 'Servicios WMS Chronos',
 			opacidad: 1.0,
 			identificable: false,
 			displayInLegend: false,
@@ -170,12 +205,12 @@ export const mockVisor: IReadVisor = {
 			capas: [
 				{
 					id: 1,
-					nombre: 'Topo rafa layer group',
+					nombre: 'Chronos WMS Topográfico',
 					identificador: 'SEM:Topográfico',
 				},
 				{
 					id: 2,
-					nombre: 'Ortofoto rafa layer group',
+					nombre: 'Chronos WMS Ortofoto',
 					identificador: 'SEM:Ortofoto',
 				},
 			],
@@ -183,7 +218,7 @@ export const mockVisor: IReadVisor = {
 			draggable: false
 		},
 		{
-			id: 4,
+			id: 2,
 			nombre: 'Servei WMS Bases - ICGC',
 			descripcion: 'Servei WTS Bases - ',
 			alias: 'WMS Bases - ICGC',
@@ -208,7 +243,7 @@ export const mockVisor: IReadVisor = {
 			capas: [
 				{
 					id: 1,
-					nombre: 'Orto WMS ICGC',
+					nombre: 'ICGC WMS Orto ',
 					identificador: 'orto',
 				},
 			],
@@ -343,8 +378,8 @@ export const mockVisor: IReadVisor = {
 							alias: 'ZONA_COBERTURA',
 						},
 					],
-					nombre: 'RESOURCES',
-					identificador: 'chronos-recursos:RESOURCES',
+					nombre: 'Chronos WFS RESOURCES',
+					identificador: 'SEM:resources',
 				},
 			],
 			autoInfo: true,
@@ -360,7 +395,7 @@ export const mockVisor: IReadVisor = {
 			minZoom: null,
 			maxZoom: null,
 			host: {
-				url: 'http://localhost:8080/geoserver/chronos-recursos/wfs?',
+				url: 'https://gsc-gateway.apps.aroas.westeurope.aroapp.io/geoserver/cloud/ows?',
 				tipo: LayerTypes.WFS,
 			},
 			extent: [0.284193968135119, 40.5424652584572, 3.28576420492974, 42.7015647693928],//LatLongBoundingBox de la capa en el WFS
@@ -368,163 +403,10 @@ export const mockVisor: IReadVisor = {
 			scaleDenominators: undefined,
 			topLeftCorner: undefined,
 			tiled: null,
-			id: 0,
+			id: 1,
 			capabilities: null,
 			draggable: true
 		},
-		// {
-		// 	capas: [
-		// 		{
-		// 			id: 1,
-		// 			campos: [
-		// 				{
-		// 					nombre: 'ABSCISA_ED50_UTM31N',
-		// 					alias: 'ABSCISA_ED50_UTM31N',
-		// 				},
-		// 				{
-		// 					nombre: 'ACTIVAR',
-		// 					alias: 'ACTIVAR',
-		// 				},
-		// 				{
-		// 					nombre: 'AYUDANTE',
-		// 					alias: 'AYUDANTE',
-		// 				},
-		// 				{
-		// 					nombre: 'BASE',
-		// 					alias: 'BASE',
-		// 				},
-		// 				{
-		// 					nombre: 'CODEMPRESA',
-		// 					alias: 'CODEMPRESA',
-		// 				},
-		// 				{
-		// 					nombre: 'COORDX_ETRS89_UTM31N',
-		// 					alias: 'COORDX_ETRS89_UTM31N',
-		// 				},
-		// 				{
-		// 					nombre: 'COORDY_ETRS89_UTM31N',
-		// 					alias: 'COORDY_ETRS89_UTM31N',
-		// 				},
-		// 				{
-		// 					nombre: 'DATA_ALTA',
-		// 					alias: 'DATA_ALTA',
-		// 				},
-		// 				{
-		// 					nombre: 'ESTADO',
-		// 					alias: 'ESTADO',
-		// 				},
-		// 				{
-		// 					nombre: 'FEC_CAMBIOTURNO',
-		// 					alias: 'FEC_CAMBIOTURNO',
-		// 				},
-		// 				{
-		// 					nombre: 'GPS_START_BASE',
-		// 					alias: 'GPS_START_BASE',
-		// 				},
-		// 				{
-		// 					nombre: 'GW_NOTIFY_STATE',
-		// 					alias: 'GW_NOTIFY_STATE',
-		// 				},
-		// 				{
-		// 					nombre: 'HORARIO_FIN',
-		// 					alias: 'HORARIO_FIN',
-		// 				},
-		// 				{
-		// 					nombre: 'HORARIO_INI',
-		// 					alias: 'HORARIO_INI',
-		// 				},
-		// 				{
-		// 					nombre: 'HORAS_DISPONIBLE',
-		// 					alias: 'HORAS_DISPONIBLE',
-		// 				},
-		// 				{
-		// 					nombre: 'ID_VEHICLE',
-		// 					alias: 'ID_VEHICLE',
-		// 				},
-		// 				{
-		// 					nombre: 'ISSI_MOBIL',
-		// 					alias: 'ISSI_MOBIL',
-		// 				},
-		// 				{
-		// 					nombre: 'LAST_INI_FIN',
-		// 					alias: 'LAST_INI_FIN',
-		// 				},
-		// 				{
-		// 					nombre: 'LAT_WGS84',
-		// 					alias: 'LAT_WGS84',
-		// 				},
-		// 				{
-		// 					nombre: 'LNG_WGS84',
-		// 					alias: 'LNG_WGS84',
-		// 				},
-		// 				{
-		// 					nombre: 'MATRICULA',
-		// 					alias: 'MATRICULA',
-		// 				},
-		// 				{
-		// 					nombre: 'MNEMONIC_MOBIL',
-		// 					alias: 'MNEMONIC_MOBIL',
-		// 				},
-		// 				{
-		// 					nombre: 'ORDEN',
-		// 					alias: 'ORDEN',
-		// 				},
-		// 				{
-		// 					nombre: 'ORDENADA_ED50_UTM31N',
-		// 					alias: 'ORDENADA_ED50_UTM31N',
-		// 				},
-		// 				{
-		// 					nombre: 'RECURSO',
-		// 					alias: 'RECURSO',
-		// 				},
-		// 				{
-		// 					nombre: 'RECURS_EMBARCAT',
-		// 					alias: 'RERECURS_EMBARCATCURSO',
-		// 				},
-		// 				{
-		// 					nombre: 'TELEFONO',
-		// 					alias: 'TELEFONO',
-		// 				},
-		// 				{
-		// 					nombre: 'TIME_LASTCOORD',
-		// 					alias: 'TIME_LASTCOORD',
-		// 				},
-		// 				{
-		// 					nombre: 'TIPORECURSO',
-		// 					alias: 'TIPORECURSO',
-		// 				},
-		// 				{
-		// 					nombre: 'ZONA_COBERTURA',
-		// 					alias: 'ZONA_COBERTURA',
-		// 				},
-		// 			],
-		// 			nombre: 'RESOURCES',
-		// 			identificador: 'chronos-recursos:RESOURCES',
-		// 		},
-		// 	],
-		// 	autoInfo: true,
-		// 	toolTip: false,
-		// 	visible: true,
-		// 	nombre: 'Servicios de recursos',
-		// 	alias: 'Servicios de recursos',
-		// 	descripcion: 'Servicios de recursos desc',
-		// 	opacidad: 1.0,
-		// 	identificable: true,
-		// 	displayInLegend: false,
-		// 	format: 'image/png',
-		// 	minZoom: null,
-		// 	maxZoom: null,
-		// 	host: {
-		// 		url: 'http://localhost:8080/geoserver/chronos-recursos/wms?',
-		// 		tipo: LayerTypes.WMS,
-		// 	},
-		// 	extent: [0.284193968135119, 40.5424652584572, 3.28576420492974, 42.7015647693928],//Native SRS de la capa más amplia
-		// 	matrixSet: undefined,
-		// 	tiled: false,
-		// 	id: 1,
-		// 	capabilities: null,
-		// 	draggable: true
-		// },
 		{
 			capas: [
 				{
@@ -587,7 +469,7 @@ export const mockVisor: IReadVisor = {
 							alias: 'MODIFIED_DATE',
 						}
 					],
-					nombre: 'ABS_2020_ETRS89',
+					nombre: 'localhost WMS ABS_2020_ETRS89',
 					identificador: 'chronos-abs:ABS_2020_ETRS89',
 				},
 			],
@@ -674,7 +556,7 @@ export const mockVisor: IReadVisor = {
 							alias: 'SOURCE_DATA',
 						}
 					],
-					nombre: 'NEIGHBOURHOOD_BCN_ETRS89',
+					nombre: 'localhost WMS NEIGHBOURHOOD_BCN_ETRS89',
 					identificador: 'chronos-admin-division:NEIGHBOURHOOD_BCN_ETRS89',
 				},
 				{
@@ -717,7 +599,7 @@ export const mockVisor: IReadVisor = {
 							alias: 'SOURCE_DATA',
 						}
 					],
-					nombre: 'LOCALADMIN_CAT_ETRS89',
+					nombre: 'localhost WMS LOCALADMIN_CAT_ETRS89',
 					identificador: 'chronos-admin-division:LOCALADMIN_CAT_ETRS89',
 				},
 				{
@@ -748,7 +630,7 @@ export const mockVisor: IReadVisor = {
 							alias: 'SOURCE_DATA',
 						}
 					],
-					nombre: 'LOCALADMIN_AND_ETRS89',
+					nombre: 'localhost WMS LOCALADMIN_AND_ETRS89',
 					identificador: 'chronos-admin-division:LOCALADMIN_AND_ETRS89',
 				},
 				{
@@ -791,7 +673,7 @@ export const mockVisor: IReadVisor = {
 							alias: 'SOURCE_DATA',
 						}
 					],
-					nombre: 'LOCALADMIN_ESP_ETRS89',
+					nombre: 'localhost WMS LOCALADMIN_ESP_ETRS89',
 					identificador: 'chronos-admin-division:LOCALADMIN_ESP_ETRS89',
 				},
 				{
@@ -834,7 +716,7 @@ export const mockVisor: IReadVisor = {
 							alias: 'SOURCE_DATA',
 						}
 					],
-					nombre: 'LOCALADMIN_FRA_ETRS89',
+					nombre: 'localhost WMS LOCALADMIN_FRA_ETRS89',
 					identificador: 'chronos-admin-division:LOCALADMIN_FRA_ETRS89',
 				},
 				{
@@ -861,7 +743,7 @@ export const mockVisor: IReadVisor = {
 							alias: 'PRIORITY',
 						}
 					],
-					nombre: 'COUNTRY_ETRS89',
+					nombre: 'localhost WMS COUNTRY_ETRS89',
 					identificador: 'chronos-admin-division:COUNTRY_ETRS89',
 				},
 			],
