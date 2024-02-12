@@ -22,6 +22,7 @@ import { HttpProxyService } from './http-proxy.service';
 
 import { VisorToMapMapperService } from './visor-to-map-mapper.service';
 import { WFSChronosService } from '../models/layer-stuff/wfs-service';
+import { TMSChronosService } from '../models/layer-stuff/tms-service';
 import { EPSGs } from '../enums/epsgs';
 
 
@@ -264,6 +265,9 @@ export class MapService {
         break;
       case LayerTypes.WFS:
         chronosService = new WFSChronosService(props, this.httpProxyService);
+        break;
+      case LayerTypes.TMS:
+        chronosService = new TMSChronosService(props, this.httpProxyService);
         break;
     }
     return chronosService;
