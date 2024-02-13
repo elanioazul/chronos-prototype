@@ -4,8 +4,7 @@ import TileLayer from 'ol/layer/Tile';
 import OSM from 'ol/source/OSM';
 import { HttpProxyService } from '../../services/http-proxy.service';
 import { ITMSLayer } from '../../interfaces/layer-stuff/tms-layer.interfaz';
-import VectorLayer from 'ol/layer/Vector';
-
+import XYZ from 'ol/source/XYZ.js';
 export class TMSChronosLayer extends ChronosLayer {
   private _identifier: string;
 
@@ -29,10 +28,23 @@ export class TMSChronosLayer extends ChronosLayer {
   private createVectorLayer() {
 
     this.ol = new TileLayer({
-        source: new OSM({
-            url: this.url,
-            maxZoom: 18
-        }),
+        source: this.createSource()
     });
+  }
+
+  private createSource(): OSM | XYZ {
+    let source;
+    if (this.name.indexOf('osmfoundation') !== -1) {
+      source =  new OSM({
+        url: this.url,
+        maxZoom: 18
+      })
+    } else {
+      source = new XYZ({
+        url: this.url,
+        maxZoom: 18
+      })
+    }
+    return source;
   }
 }
