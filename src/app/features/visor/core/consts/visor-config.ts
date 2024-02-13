@@ -894,6 +894,21 @@ export const mockVisor: IReadVisor = {
 	],
 	widgets: [
 		{
+			id: 0,
+			nombre: 'Default cursor',
+			key: 'defaultCursor',
+			widget: () => import('@features/visor/components/layouts/widgets/default-cursor/default-cursor.component').then((c) => c.DefaultCursorComponent),
+			config: {
+				icon: 'fg-arrow-o fg-2x',
+				type: widgetType.buttonWidget,
+				active: true,
+				position: {
+					desktop: 'bottom-right',
+					mobile: 'bottom-right',
+				},
+			},
+		},
+		{
 			id: 1,
 			nombre: 'Zoom in',
 			key: 'zoomIn',

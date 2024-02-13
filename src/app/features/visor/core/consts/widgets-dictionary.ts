@@ -4,9 +4,13 @@ import { ZoomOutComponent } from "@features/visor/components/layouts/widgets/zoo
 import { HomeExtentComponent } from "@features/visor/components/layouts/widgets/home-extent/home-extent.component";
 import { DragZoomComponent } from "@features/visor/components/layouts/widgets/drag-zoom/drag-zoom.component";
 import { OverviewMapComponent } from "@features/visor/components/layouts/widgets/overview-map/overview-map.component";
+import { DefaultCursorComponent } from "@features/visor/components/layouts/widgets/default-cursor/default-cursor.component";
 
 
 export const widgetsIndex: WidgetsDictionary = {
+	defaultCursor: {
+		widgetComponent: DefaultCursorComponent,
+	},
     zoomIn: {
 		widgetComponent: ZoomInComponent,
 	},

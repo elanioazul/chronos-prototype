@@ -23,6 +23,7 @@ import { ZoomOutComponent } from './components/layouts/widgets/zoom-out/zoom-out
 import { DragZoomComponent } from './components/layouts/widgets/drag-zoom/drag-zoom.component';
 import { OverviewMapComponent } from './components/layouts/widgets/overview-map/overview-map.component';
 import { HomeExtentComponent } from './components/layouts/widgets/home-extent/home-extent.component';
+import { DefaultCursorComponent } from './components/layouts/widgets/default-cursor/default-cursor.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { HomeExtentComponent } from './components/layouts/widgets/home-extent/ho
     DragZoomComponent,
     OverviewMapComponent,
     HomeExtentComponent,
+    DefaultCursorComponent,
   ],
   imports: [CommonModule, VisorRoutingModule, SharedModule],
 })
