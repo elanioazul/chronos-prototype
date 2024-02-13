@@ -961,8 +961,9 @@ export const mockVisor: IReadVisor = {
 			config: {
 				icon: 'fg-search-home fg-2x',
 				type: widgetType.buttonWidget,
+				active: true,
 				position: {
-					desktop: 'bottom-left',
+					desktop: 'bottom-right',
 					mobile: 'bottom-right',
 				},
 			},

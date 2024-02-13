@@ -6,6 +6,7 @@ import Popup from 'ol-ext/overlay/Popup';
 import { Extent } from 'ol/extent';
 import { standardizedRenderingPixelSize } from '../consts/pixel-size';
 import Scale from 'ol-ext/control/Scale';
+import { FitOptions } from 'ol/View';
 
 //Popups
 export const autoInfoOverlay = new Popup({
@@ -93,10 +94,22 @@ export const addLineScaleToMap = (target: HTMLElement, map: Map) => {
 //   });
 // };
 
-export const fitToExtent = (map: Map, ext: Extent): void => {
+export const fitToExtent = (map: Map, ext: Extent, padding = false, maxZoom?: number): void => {
+  let fitOptions: FitOptions = {
+    size: map.getSize(),
+    nearest: true,
+    duration: 250,
+    maxZoom: 17,
+  };
+  if (padding) {
+    fitOptions = { ...fitOptions, padding: [300, 300, 300, 300] };
+  }
+  if (maxZoom) {
+    fitOptions = { ...fitOptions, maxZoom };
+  }
   return map
     .getView()
-    .fit(ext, { padding: [100, 100, 100, 100], duration: 250 });
+    .fit(ext, fitOptions);
 };
 
 export const getEpsgFromMap = (map: Map): string => {
