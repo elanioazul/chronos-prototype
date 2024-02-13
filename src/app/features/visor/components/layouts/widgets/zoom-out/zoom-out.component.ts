@@ -19,6 +19,10 @@ export class ZoomOutComponent extends WidgetComponent {
 
   onClick(): void {
     console.log('eee clicked from zoomOut component');
+    this.mapService.map()?.getView().animate({
+      zoom: this.mapService.map()?.getView().getZoom()! - 1,
+      duration: 250
+    })
     
   }
 }
