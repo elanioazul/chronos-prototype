@@ -1,6 +1,59 @@
+@import "../../../../../../theme/colors";
+
 .layout1 {
+
+	.bottom-right-container {
+		padding: 10px;
+	}
 
     .button-widget-container {
 		padding: 5px;
+	}
+
+	.bottom-right {
+		.widgets-container {
+			flex-direction: row;
+			// align-items: flex-end;
+			// padding: 0;
+			@media screen and (max-width: 768px) {
+				flex-direction: column;
+			}
+		}
+	}
+
+	// Capa de customización
+	.p-button {
+		&.p-button-white {
+			background: $lightblue;
+			color: $textblack;
+		}
+		&.p-button-s,
+		&.p-button-s.p-button-rounded {
+			width: 1.75rem;
+			height: 1.75rem;
+			& svg.p-button-icon {
+				font-size: medium;
+				transform: translate(-12px, -12px);
+			}
+			& span.p-button-icon {
+				font-size: medium;
+			}
+		}
+		&.p-button-m,
+		&.p-button-m.p-button-rounded {
+			width: 2.25rem;
+			height: 2.25rem;
+			& svg.p-button-icon {
+				font-size: x-large;
+				transform: translate(-12px, -12px);
+			}
+			& span.p-button-icon {
+				font-size: x-large;
+			}
+		}
+	}
+	.active>.p-button-white {
+		background-color:$mediumblue;
+		color: $superlightblue;
 	}
 }

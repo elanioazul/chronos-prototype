@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, computed, inject } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewEncapsulation, computed, inject } from '@angular/core';
 import { SidebarService } from '@core/services/sidebar.service';
 import { MapService } from '@core/services/map.service';
 import { VisorService } from '@core/services/visor.service';
@@ -11,6 +11,7 @@ import { ISidebarTab } from '@core/interfaces/sidebar/sidebar-tab.interfaz';
   selector: 'app-layout1',
   templateUrl: './layout1.component.html',
   styleUrls: ['./layout1.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class Layout1Component {
   sidebarService = inject(SidebarService);
