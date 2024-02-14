@@ -23,6 +23,7 @@ import { HttpProxyService } from './http-proxy.service';
 import { VisorToMapMapperService } from './visor-to-map-mapper.service';
 import { WFSChronosService } from '../models/layer-stuff/wfs-service';
 import { EPSGs } from '../enums/epsgs';
+import { CursorStyle } from '../enums/cursor.enum';
 
 
 export interface MapState {
@@ -267,6 +268,10 @@ export class MapService {
         break;
     }
     return chronosService;
+  }
+
+  public setCursor(cursor: CursorStyle): void {
+    this.map()!.getViewport().style.cursor = cursor;
   }
 
 

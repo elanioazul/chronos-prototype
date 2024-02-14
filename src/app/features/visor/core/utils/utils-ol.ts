@@ -130,8 +130,3 @@ export const removeGivenInteraction = (map: Map, interaction: Interaction):Map  
   map.removeInteraction(interaction);
   return map;
 }
-
-//cursor
-export const setCursor = (map: Map, cursor: CursorStyle): void => {
-  map.getViewport().style.cursor = cursor;
-}
