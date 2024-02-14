@@ -8,7 +8,7 @@ import { standardizedRenderingPixelSize } from '../consts/pixel-size';
 import Scale from 'ol-ext/control/Scale';
 import { FitOptions } from 'ol/View';
 import { Interaction } from 'ol/interaction';
-
+import { CursorStyle } from '@features/visor/core/enums/cursor.enum';
 //Popups
 export const autoInfoOverlay = new Popup({
   id: 'autoInfoOverlay',
@@ -129,4 +129,9 @@ export const getsridFromMap = (map: Map): number => {
 export const removeGivenInteraction = (map: Map, interaction: Interaction):Map  => {
   map.removeInteraction(interaction);
   return map;
+}
+
+//cursor
+export const setCursor = (map: Map, cursor: CursorStyle): void => {
+  map.getViewport().style.cursor = cursor;
 }

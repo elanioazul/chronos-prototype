@@ -4,6 +4,7 @@ import { WidgetComponent } from '@features/visor/core/models/widget-component';
 import { DragZoom } from 'ol/interaction';
 import * as condition from 'ol/events/condition';
 import Tooltip from 'ol-ext/overlay/Tooltip';
+import { setCursor } from '@features/visor/core/utils/utils-ol';
 @Component({
   selector: 'app-drag-zoom',
   templateUrl: './drag-zoom.component.html',
@@ -37,7 +38,7 @@ export class DragZoomComponent extends WidgetComponent implements OnInit/*, OnDe
   }
 
   enableDragZoom(): void {
-    this.cursorService.setCursorStyle(CursorStyle.crosshair);
+    setCursor(this.mapService.map()!, CursorStyle.crosshair);
     this.mapService.map()!.addInteraction(this.dragZoom);
     this.tooltip = new Tooltip({
 			getHTML: this.getHTML,
@@ -48,7 +49,7 @@ export class DragZoomComponent extends WidgetComponent implements OnInit/*, OnDe
   }
 
   disableDragZoom(): void {
-    this.cursorService.setCursorStyle(CursorStyle.default);
+    setCursor(this.mapService.map()!, CursorStyle.default);
     this.mapService.map()!.removeOverlay(this.tooltip);
     this.mapService.map()!.removeInteraction(this.dragZoom)
   }

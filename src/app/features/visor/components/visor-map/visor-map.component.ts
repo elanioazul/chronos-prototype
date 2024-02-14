@@ -8,7 +8,6 @@ import {
 } from '@angular/core';
 import { bcnCoords } from '@features/visor/core/consts/visor-config';
 import { ChronosMap } from '@features/visor/core/models/map-stuff/chronos-map';
-import { CursorStyleService } from '@features/visor/core/services/cursor-style.service';
 import { Subject, takeUntil } from 'rxjs';
 @Component({
   selector: 'app-visor-map',
@@ -17,7 +16,6 @@ import { Subject, takeUntil } from 'rxjs';
 })
 export class VisorMapComponent implements OnDestroy {
   private unSubscribe = new Subject<void>();
-  cursorService = inject(CursorStyleService);
 
   @ViewChild('map') mapRef!: ElementRef<HTMLElement>;
 
@@ -26,9 +24,6 @@ export class VisorMapComponent implements OnDestroy {
   ngOnInit(): void {}
 
   ngAfterViewInit(): void {
-    this.cursorService.cursorStyle$.pipe(takeUntil(this.unSubscribe),).subscribe(cursorStyle => {
-      this.mapRef.nativeElement.style.cursor = cursorStyle;
-    });
 
     this.map?.setTarget(this.mapRef.nativeElement);
 
