@@ -6,11 +6,13 @@ import { VisorService } from '@core/services//visor.service';
 import { IWidget } from '@core/interfaces/widgets/widget.interfaz';
 import { SCREEN_SIZE } from '@core/enums/screen-size.enum';
 import { getEpsgFromMap, getsridFromMap } from '@core/utils/utils-ol';
+import { CursorStyleService } from '../services/cursor-style.service';
 
 export abstract class WidgetComponent {
     visorService = inject(VisorService);
     mapService = inject(MapService);
     screeSizeService = inject(ScreenSizeService);
+    cursorService = inject(CursorStyleService);
   
     //@Output() messageEvent = new EventEmitter<string>();
   

@@ -7,6 +7,7 @@ import { Extent } from 'ol/extent';
 import { standardizedRenderingPixelSize } from '../consts/pixel-size';
 import Scale from 'ol-ext/control/Scale';
 import { FitOptions } from 'ol/View';
+import { Interaction } from 'ol/interaction';
 
 //Popups
 export const autoInfoOverlay = new Popup({
@@ -51,7 +52,7 @@ export const overviewMapControl = new OverviewMap({
   collapseLabel: '»',
 });
 
-//map logic
+//mouse
 export const addMouseControlToMap = (target: HTMLElement, map: Map) => {
   const mouse = new MousePosition({
     coordinateFormat: function (coordinates) {
@@ -71,6 +72,7 @@ export const addMouseControlToMap = (target: HTMLElement, map: Map) => {
   map.addControl(mouse);
 };
 
+//scales
 export const addNumericScaleToMap = (target: HTMLElement, map: Map) => {
   map.addControl(new Scale({ target: target, editable: true }));
 }
@@ -94,6 +96,7 @@ export const addLineScaleToMap = (target: HTMLElement, map: Map) => {
 //   });
 // };
 
+//extent
 export const fitToExtent = (map: Map, ext: Extent, padding = false, maxZoom?: number): void => {
   let fitOptions: FitOptions = {
     size: map.getSize(),
@@ -112,6 +115,7 @@ export const fitToExtent = (map: Map, ext: Extent, padding = false, maxZoom?: nu
     .fit(ext, fitOptions);
 };
 
+//projections
 export const getEpsgFromMap = (map: Map): string => {
   return map.getView().getProjection().getCode();
 }
@@ -119,4 +123,10 @@ export const getEpsgFromMap = (map: Map): string => {
 export const getsridFromMap = (map: Map): number => {
   const code = map.getView().getProjection().getCode();
   return parseInt(code.split(':')[1]);
+}
+
+//interactions
+export const removeGivenInteraction = (map: Map, interaction: Interaction):Map  => {
+  map.removeInteraction(interaction);
+  return map;
 }

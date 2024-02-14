@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CursorStyle } from '@features/visor/core/enums/cursor.enum';
 import { WidgetComponent } from '@features/visor/core/models/widget-component';
 @Component({
   selector: 'app-default-cursor',
@@ -17,6 +18,12 @@ export class DefaultCursorComponent extends WidgetComponent {
 
   onClick(): void {
     console.log('eee clicked from defaultCursor component');
+    this.cursorService.setCursorStyle(CursorStyle.default);
+    const dragZoomTooltip = this.mapService.map()!.getOverlayById('dragZoomTooltip');
+    this.mapService.map()!.removeOverlay(dragZoomTooltip);
+    // console.log(this.mapService.map()!.getInteractions());
+    
+    
     
   }
 }

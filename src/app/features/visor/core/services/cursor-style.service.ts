@@ -1,6 +1,5 @@
-import { Injectable, computed, signal } from '@angular/core';
-import { BehaviorSubject, Subject } from 'rxjs';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 export interface CursorStyleState {
   style: string;
 }
@@ -9,24 +8,17 @@ export interface CursorStyleState {
 })
 export class CursorStyleService {
 
-  //state
-  private state = signal<CursorStyleState>({
-    style: 'default',
-  });
+  private cursorStyle = new BehaviorSubject<string>('default');
+  cursorStyle$ = this.cursorStyle.asObservable();
 
-  //selectors
-  style = computed(() => this.state().style);
+  constructor() { }
 
-  //sources
-  updateStyle$ = new Subject<string>();
+  getCursorStyleValue() {
+    return this.cursorStyle.value;
+  }
 
-  constructor() {
-    this.updateStyle$.pipe(takeUntilDestroyed()).subscribe((style: string) =>
-      this.state.update((state) => ({
-        ...state,
-        style: style
-      }))
-    )
+  setCursorStyle(style: string) {
+    this.cursorStyle.next(style);
   }
 
 }

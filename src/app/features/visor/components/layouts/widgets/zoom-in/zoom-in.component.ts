@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output} from '@angular/core';
 import { WidgetComponent } from '@core/models/widget-component';
+import { CursorStyle } from '@features/visor/core/enums/cursor.enum';
 
 @Component({
   selector: 'app-zoom-in',
@@ -19,6 +20,7 @@ export class ZoomInComponent extends WidgetComponent implements OnInit {
 
   onClick(): void {
     console.log('eee clicked from zoomIn component');
+    this.cursorService.setCursorStyle(CursorStyle.default);
     this.mapService.map()?.getView().animate({
       zoom: this.mapService.map()?.getView().getZoom()! + 1,
       duration: 250

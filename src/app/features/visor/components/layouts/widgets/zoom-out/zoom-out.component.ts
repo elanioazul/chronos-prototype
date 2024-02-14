@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CursorStyle } from '@features/visor/core/enums/cursor.enum';
 import { WidgetComponent } from '@features/visor/core/models/widget-component';
 
 @Component({
@@ -19,6 +20,7 @@ export class ZoomOutComponent extends WidgetComponent {
 
   onClick(): void {
     console.log('eee clicked from zoomOut component');
+    this.cursorService.setCursorStyle(CursorStyle.default);
     this.mapService.map()?.getView().animate({
       zoom: this.mapService.map()?.getView().getZoom()! - 1,
       duration: 250

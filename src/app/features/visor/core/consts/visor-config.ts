@@ -526,371 +526,371 @@ export const mockVisor: IReadVisor = {
 		// 	capabilities: null,
 		// 	draggable: true
 		// },
-		{
-			capas: [
-				{
-					id: 1,
-					campos: [
-						{
-							nombre: 'CODIABS',
-							alias: 'CODIABS',
-						},
-						{
-							nombre: 'NOMABS',
-							alias: 'NOMABS',
-						},
-						{
-							nombre: 'CODISS',
-							alias: 'CODISS',
-						},
-						{
-							nombre: 'NOMSS',
-							alias: 'NOMSS',
-						},
-						{
-							nombre: 'CODIRS',
-							alias: 'CODIRS',
-						},
-						{
-							nombre: 'NOMRS',
-							alias: 'NOMRS',
-						},
-						{
-							nombre: 'CODIAGA',
-							alias: 'CODIAGA',
-						},
-						{
-							nombre: 'NOMAGA',
-							alias: 'NOMAGA',
-						},
-						{
-							nombre: 'ESTAT',
-							alias: 'ESTAT',
-						},
-						{
-							nombre: 'OBSER',
-							alias: 'OBSER',
-						},
-						{
-							nombre: 'CREATED_BY',
-							alias: 'CREATED_BY',
-						},
-						{
-							nombre: 'CREATED_DATE',
-							alias: 'CREATED_DATE',
-						},
-						{
-							nombre: 'MODIFIED_BY',
-							alias: 'MODIFIED_BY',
-						},
-						{
-							nombre: 'MODIFIED_DATE',
-							alias: 'MODIFIED_DATE',
-						}
-					],
-					nombre: 'ABS_2020_ETRS89',
-					identificador: 'chronos-abs:ABS_2020_ETRS89',
-				},
-			],
-			autoInfo: true,
-			toolTip: false,
-			visible: true,
-			nombre: 'Servicios de salud',
-			alias: 'Servicios de salud',
-			descripcion: 'Servicios de salud desc',
-			opacidad: 1.0,
-			identificable: true,
-			displayInLegend: false,
-			format: 'image/png',
-			minZoom: null,
-			maxZoom: null,
-			host: {
-				url: 'http://localhost:8080/geoserver/chronos-abs/wms?',
-				tipo: LayerTypes.WMS,
-			},
-			extent: [0.158543097516996, 40.52291819670317, 3.33985063914339, 42.861455494161085],//Native SRS de la capa más amplia
-			matrixSet: undefined,
-			scaleDenominators: undefined,
-			topLeftCorner: undefined,
-			tiled: false,
-			id: 2,
-			capabilities: null,
-			draggable: true
-		},
-		{
-			capas: [
-				{
-					id: 1,
-					campos: [
-						{
-							nombre: 'NEIGHBOURHOOD',
-							alias: 'NEIGHBOURHOOD',
-						},
-						{
-							nombre: 'BOROUGH_ID',
-							alias: 'BOROUGH_ID',
-						},
-						{
-							nombre: 'BOROUGH',
-							alias: 'BOROUGH',
-						},
-						{
-							nombre: 'LOCALADMIN_ID',
-							alias: 'LOCALADMIN_ID',
-						},
-						{
-							nombre: 'LOCALADMIN',
-							alias: 'LOCALADMIN',
-						},
-						{
-							nombre: 'MACROCOUNTY_ID',
-							alias: 'MACROCOUNTY_ID',
-						},
-						{
-							nombre: 'MACROCOUNTY',
-							alias: 'MACROCOUNTY',
-						},
-						{
-							nombre: 'REGION_ID',
-							alias: 'REGION_ID',
-						},
-						{
-							nombre: 'REGION',
-							alias: 'REGION',
-						},
-						{
-							nombre: 'COUNTRY_ID',
-							alias: 'COUNTRY_ID',
-						},
-						{
-							nombre: 'COUNTRY',
-							alias: 'COUNTRY',
-						},
-						{
-							nombre: 'LAYER',
-							alias: 'LAYER',
-						},
-						{
-							nombre: 'SOURCE_DATA',
-							alias: 'SOURCE_DATA',
-						}
-					],
-					nombre: 'NEIGHBOURHOOD_BCN_ETRS89',
-					identificador: 'chronos-admin-division:NEIGHBOURHOOD_BCN_ETRS89',
-				},
-				{
-					id: 2,
-					campos: [
-						{
-							nombre: 'LOCALADMIN',
-							alias: 'LOCALADMIN',
-						},
-						{
-							nombre: 'MACROCOUNTY_ID',
-							alias: 'MACROCOUNTY_ID',
-						},
-						{
-							nombre: 'MACROCOUNTY',
-							alias: 'MACROCOUNTY',
-						},
-						{
-							nombre: 'REGION_ID',
-							alias: 'REGION_ID',
-						},
-						{
-							nombre: 'REGION',
-							alias: 'REGION',
-						},
-						{
-							nombre: 'COUNTRY_ID',
-							alias: 'COUNTRY_ID',
-						},
-						{
-							nombre: 'COUNTRY',
-							alias: 'COUNTRY',
-						},
-						{
-							nombre: 'LAYER',
-							alias: 'LAYER',
-						},
-						{
-							nombre: 'SOURCE_DATA',
-							alias: 'SOURCE_DATA',
-						}
-					],
-					nombre: 'LOCALADMIN_CAT_ETRS89',
-					identificador: 'chronos-admin-division:LOCALADMIN_CAT_ETRS89',
-				},
-				{
-					id: 3,
-					campos: [
-						{
-							nombre: 'LOCALADMIN_ID',
-							alias: 'LOCALADMIN_ID',
-						},
-						{
-							nombre: 'LOCALADMIN',
-							alias: 'LOCALADMIN',
-						},
-						{
-							nombre: 'COUNTRY_ID',
-							alias: 'COUNTRY_ID',
-						},
-						{
-							nombre: 'COUNTRY',
-							alias: 'COUNTRY',
-						},
-						{
-							nombre: 'LAYER',
-							alias: 'LAYER',
-						},
-						{
-							nombre: 'SOURCE_DATA',
-							alias: 'SOURCE_DATA',
-						}
-					],
-					nombre: 'LOCALADMIN_AND_ETRS89',
-					identificador: 'chronos-admin-division:LOCALADMIN_AND_ETRS89',
-				},
-				{
-					id: 4,
-					campos: [
-						{
-							nombre: 'LOCALADMIN',
-							alias: 'LOCALADMIN',
-						},
-						{
-							nombre: 'MACROCOUNTY_ID',
-							alias: 'MACROCOUNTY_ID',
-						},
-						{
-							nombre: 'MACROCOUNTY',
-							alias: 'MACROCOUNTY',
-						},
-						{
-							nombre: 'REGION_ID',
-							alias: 'REGION_ID',
-						},
-						{
-							nombre: 'REGION',
-							alias: 'REGION',
-						},
-						{
-							nombre: 'COUNTRY_ID',
-							alias: 'COUNTRY_ID',
-						},
-						{
-							nombre: 'COUNTRY',
-							alias: 'COUNTRY',
-						},
-						{
-							nombre: 'LAYER',
-							alias: 'LAYER',
-						},
-						{
-							nombre: 'SOURCE_DATA',
-							alias: 'SOURCE_DATA',
-						}
-					],
-					nombre: 'LOCALADMIN_ESP_ETRS89',
-					identificador: 'chronos-admin-division:LOCALADMIN_ESP_ETRS89',
-				},
-				{
-					id: 5,
-					campos: [
-						{
-							nombre: 'LOCALADMIN',
-							alias: 'LOCALADMIN',
-						},
-						{
-							nombre: 'MACROCOUNTY_ID',
-							alias: 'MACROCOUNTY_ID',
-						},
-						{
-							nombre: 'MACROCOUNTY',
-							alias: 'MACROCOUNTY',
-						},
-						{
-							nombre: 'REGION_ID',
-							alias: 'REGION_ID',
-						},
-						{
-							nombre: 'REGION',
-							alias: 'REGION',
-						},
-						{
-							nombre: 'COUNTRY_ID',
-							alias: 'COUNTRY_ID',
-						},
-						{
-							nombre: 'COUNTRY',
-							alias: 'COUNTRY',
-						},
-						{
-							nombre: 'LAYER',
-							alias: 'LAYER',
-						},
-						{
-							nombre: 'SOURCE_DATA',
-							alias: 'SOURCE_DATA',
-						}
-					],
-					nombre: 'LOCALADMIN_FRA_ETRS89',
-					identificador: 'chronos-admin-division:LOCALADMIN_FRA_ETRS89',
-				},
-				{
-					id: 6,
-					campos: [
-						{
-							nombre: 'NAME',
-							alias: 'NAME',
-						},
-						{
-							nombre: 'TARGET_TABLE',
-							alias: 'TARGET_TABLE',
-						},
-						{
-							nombre: 'COUNTRY_ID',
-							alias: 'COUNTRY_ID',
-						},
-						{
-							nombre: 'COUNTRY',
-							alias: 'COUNTRY',
-						},
-						{
-							nombre: 'PRIORITY',
-							alias: 'PRIORITY',
-						}
-					],
-					nombre: 'COUNTRY_ETRS89',
-					identificador: 'chronos-admin-division:COUNTRY_ETRS89',
-				},
-			],
-			autoInfo: true,
-			toolTip: false,
-			visible: true,
-			nombre: 'Servicios de admin-division',
-			alias: 'Servicios de admin-division',
-			descripcion: 'Servicios de admin-division desc',
-			opacidad: 1.0,
-			identificable: true,
-			displayInLegend: false,
-			format: 'image/png',
-			minZoom: null,
-			maxZoom: null,
-			host: {
-				url: 'http://localhost:8080/geoserver/chronos-admin-division/wms?',
-				tipo: LayerTypes.WMS,
-			},
-			extent: [-18.3201264155889, 27.637723150776, 4.34014226940938, 43.9215181349627],//Native SRS de la capa más amplia
-			matrixSet: undefined,
-			scaleDenominators: undefined,
-			topLeftCorner: undefined,
-			tiled: false,
-			id: 3,
-			capabilities: null,
-			draggable: true
-		}
+		// {
+		// 	capas: [
+		// 		{
+		// 			id: 1,
+		// 			campos: [
+		// 				{
+		// 					nombre: 'CODIABS',
+		// 					alias: 'CODIABS',
+		// 				},
+		// 				{
+		// 					nombre: 'NOMABS',
+		// 					alias: 'NOMABS',
+		// 				},
+		// 				{
+		// 					nombre: 'CODISS',
+		// 					alias: 'CODISS',
+		// 				},
+		// 				{
+		// 					nombre: 'NOMSS',
+		// 					alias: 'NOMSS',
+		// 				},
+		// 				{
+		// 					nombre: 'CODIRS',
+		// 					alias: 'CODIRS',
+		// 				},
+		// 				{
+		// 					nombre: 'NOMRS',
+		// 					alias: 'NOMRS',
+		// 				},
+		// 				{
+		// 					nombre: 'CODIAGA',
+		// 					alias: 'CODIAGA',
+		// 				},
+		// 				{
+		// 					nombre: 'NOMAGA',
+		// 					alias: 'NOMAGA',
+		// 				},
+		// 				{
+		// 					nombre: 'ESTAT',
+		// 					alias: 'ESTAT',
+		// 				},
+		// 				{
+		// 					nombre: 'OBSER',
+		// 					alias: 'OBSER',
+		// 				},
+		// 				{
+		// 					nombre: 'CREATED_BY',
+		// 					alias: 'CREATED_BY',
+		// 				},
+		// 				{
+		// 					nombre: 'CREATED_DATE',
+		// 					alias: 'CREATED_DATE',
+		// 				},
+		// 				{
+		// 					nombre: 'MODIFIED_BY',
+		// 					alias: 'MODIFIED_BY',
+		// 				},
+		// 				{
+		// 					nombre: 'MODIFIED_DATE',
+		// 					alias: 'MODIFIED_DATE',
+		// 				}
+		// 			],
+		// 			nombre: 'ABS_2020_ETRS89',
+		// 			identificador: 'chronos-abs:ABS_2020_ETRS89',
+		// 		},
+		// 	],
+		// 	autoInfo: true,
+		// 	toolTip: false,
+		// 	visible: true,
+		// 	nombre: 'Servicios de salud',
+		// 	alias: 'Servicios de salud',
+		// 	descripcion: 'Servicios de salud desc',
+		// 	opacidad: 1.0,
+		// 	identificable: true,
+		// 	displayInLegend: false,
+		// 	format: 'image/png',
+		// 	minZoom: null,
+		// 	maxZoom: null,
+		// 	host: {
+		// 		url: 'http://localhost:8080/geoserver/chronos-abs/wms?',
+		// 		tipo: LayerTypes.WMS,
+		// 	},
+		// 	extent: [0.158543097516996, 40.52291819670317, 3.33985063914339, 42.861455494161085],//Native SRS de la capa más amplia
+		// 	matrixSet: undefined,
+		// 	scaleDenominators: undefined,
+		// 	topLeftCorner: undefined,
+		// 	tiled: false,
+		// 	id: 2,
+		// 	capabilities: null,
+		// 	draggable: true
+		// },
+		// {
+		// 	capas: [
+		// 		{
+		// 			id: 1,
+		// 			campos: [
+		// 				{
+		// 					nombre: 'NEIGHBOURHOOD',
+		// 					alias: 'NEIGHBOURHOOD',
+		// 				},
+		// 				{
+		// 					nombre: 'BOROUGH_ID',
+		// 					alias: 'BOROUGH_ID',
+		// 				},
+		// 				{
+		// 					nombre: 'BOROUGH',
+		// 					alias: 'BOROUGH',
+		// 				},
+		// 				{
+		// 					nombre: 'LOCALADMIN_ID',
+		// 					alias: 'LOCALADMIN_ID',
+		// 				},
+		// 				{
+		// 					nombre: 'LOCALADMIN',
+		// 					alias: 'LOCALADMIN',
+		// 				},
+		// 				{
+		// 					nombre: 'MACROCOUNTY_ID',
+		// 					alias: 'MACROCOUNTY_ID',
+		// 				},
+		// 				{
+		// 					nombre: 'MACROCOUNTY',
+		// 					alias: 'MACROCOUNTY',
+		// 				},
+		// 				{
+		// 					nombre: 'REGION_ID',
+		// 					alias: 'REGION_ID',
+		// 				},
+		// 				{
+		// 					nombre: 'REGION',
+		// 					alias: 'REGION',
+		// 				},
+		// 				{
+		// 					nombre: 'COUNTRY_ID',
+		// 					alias: 'COUNTRY_ID',
+		// 				},
+		// 				{
+		// 					nombre: 'COUNTRY',
+		// 					alias: 'COUNTRY',
+		// 				},
+		// 				{
+		// 					nombre: 'LAYER',
+		// 					alias: 'LAYER',
+		// 				},
+		// 				{
+		// 					nombre: 'SOURCE_DATA',
+		// 					alias: 'SOURCE_DATA',
+		// 				}
+		// 			],
+		// 			nombre: 'NEIGHBOURHOOD_BCN_ETRS89',
+		// 			identificador: 'chronos-admin-division:NEIGHBOURHOOD_BCN_ETRS89',
+		// 		},
+		// 		{
+		// 			id: 2,
+		// 			campos: [
+		// 				{
+		// 					nombre: 'LOCALADMIN',
+		// 					alias: 'LOCALADMIN',
+		// 				},
+		// 				{
+		// 					nombre: 'MACROCOUNTY_ID',
+		// 					alias: 'MACROCOUNTY_ID',
+		// 				},
+		// 				{
+		// 					nombre: 'MACROCOUNTY',
+		// 					alias: 'MACROCOUNTY',
+		// 				},
+		// 				{
+		// 					nombre: 'REGION_ID',
+		// 					alias: 'REGION_ID',
+		// 				},
+		// 				{
+		// 					nombre: 'REGION',
+		// 					alias: 'REGION',
+		// 				},
+		// 				{
+		// 					nombre: 'COUNTRY_ID',
+		// 					alias: 'COUNTRY_ID',
+		// 				},
+		// 				{
+		// 					nombre: 'COUNTRY',
+		// 					alias: 'COUNTRY',
+		// 				},
+		// 				{
+		// 					nombre: 'LAYER',
+		// 					alias: 'LAYER',
+		// 				},
+		// 				{
+		// 					nombre: 'SOURCE_DATA',
+		// 					alias: 'SOURCE_DATA',
+		// 				}
+		// 			],
+		// 			nombre: 'LOCALADMIN_CAT_ETRS89',
+		// 			identificador: 'chronos-admin-division:LOCALADMIN_CAT_ETRS89',
+		// 		},
+		// 		{
+		// 			id: 3,
+		// 			campos: [
+		// 				{
+		// 					nombre: 'LOCALADMIN_ID',
+		// 					alias: 'LOCALADMIN_ID',
+		// 				},
+		// 				{
+		// 					nombre: 'LOCALADMIN',
+		// 					alias: 'LOCALADMIN',
+		// 				},
+		// 				{
+		// 					nombre: 'COUNTRY_ID',
+		// 					alias: 'COUNTRY_ID',
+		// 				},
+		// 				{
+		// 					nombre: 'COUNTRY',
+		// 					alias: 'COUNTRY',
+		// 				},
+		// 				{
+		// 					nombre: 'LAYER',
+		// 					alias: 'LAYER',
+		// 				},
+		// 				{
+		// 					nombre: 'SOURCE_DATA',
+		// 					alias: 'SOURCE_DATA',
+		// 				}
+		// 			],
+		// 			nombre: 'LOCALADMIN_AND_ETRS89',
+		// 			identificador: 'chronos-admin-division:LOCALADMIN_AND_ETRS89',
+		// 		},
+		// 		{
+		// 			id: 4,
+		// 			campos: [
+		// 				{
+		// 					nombre: 'LOCALADMIN',
+		// 					alias: 'LOCALADMIN',
+		// 				},
+		// 				{
+		// 					nombre: 'MACROCOUNTY_ID',
+		// 					alias: 'MACROCOUNTY_ID',
+		// 				},
+		// 				{
+		// 					nombre: 'MACROCOUNTY',
+		// 					alias: 'MACROCOUNTY',
+		// 				},
+		// 				{
+		// 					nombre: 'REGION_ID',
+		// 					alias: 'REGION_ID',
+		// 				},
+		// 				{
+		// 					nombre: 'REGION',
+		// 					alias: 'REGION',
+		// 				},
+		// 				{
+		// 					nombre: 'COUNTRY_ID',
+		// 					alias: 'COUNTRY_ID',
+		// 				},
+		// 				{
+		// 					nombre: 'COUNTRY',
+		// 					alias: 'COUNTRY',
+		// 				},
+		// 				{
+		// 					nombre: 'LAYER',
+		// 					alias: 'LAYER',
+		// 				},
+		// 				{
+		// 					nombre: 'SOURCE_DATA',
+		// 					alias: 'SOURCE_DATA',
+		// 				}
+		// 			],
+		// 			nombre: 'LOCALADMIN_ESP_ETRS89',
+		// 			identificador: 'chronos-admin-division:LOCALADMIN_ESP_ETRS89',
+		// 		},
+		// 		{
+		// 			id: 5,
+		// 			campos: [
+		// 				{
+		// 					nombre: 'LOCALADMIN',
+		// 					alias: 'LOCALADMIN',
+		// 				},
+		// 				{
+		// 					nombre: 'MACROCOUNTY_ID',
+		// 					alias: 'MACROCOUNTY_ID',
+		// 				},
+		// 				{
+		// 					nombre: 'MACROCOUNTY',
+		// 					alias: 'MACROCOUNTY',
+		// 				},
+		// 				{
+		// 					nombre: 'REGION_ID',
+		// 					alias: 'REGION_ID',
+		// 				},
+		// 				{
+		// 					nombre: 'REGION',
+		// 					alias: 'REGION',
+		// 				},
+		// 				{
+		// 					nombre: 'COUNTRY_ID',
+		// 					alias: 'COUNTRY_ID',
+		// 				},
+		// 				{
+		// 					nombre: 'COUNTRY',
+		// 					alias: 'COUNTRY',
+		// 				},
+		// 				{
+		// 					nombre: 'LAYER',
+		// 					alias: 'LAYER',
+		// 				},
+		// 				{
+		// 					nombre: 'SOURCE_DATA',
+		// 					alias: 'SOURCE_DATA',
+		// 				}
+		// 			],
+		// 			nombre: 'LOCALADMIN_FRA_ETRS89',
+		// 			identificador: 'chronos-admin-division:LOCALADMIN_FRA_ETRS89',
+		// 		},
+		// 		{
+		// 			id: 6,
+		// 			campos: [
+		// 				{
+		// 					nombre: 'NAME',
+		// 					alias: 'NAME',
+		// 				},
+		// 				{
+		// 					nombre: 'TARGET_TABLE',
+		// 					alias: 'TARGET_TABLE',
+		// 				},
+		// 				{
+		// 					nombre: 'COUNTRY_ID',
+		// 					alias: 'COUNTRY_ID',
+		// 				},
+		// 				{
+		// 					nombre: 'COUNTRY',
+		// 					alias: 'COUNTRY',
+		// 				},
+		// 				{
+		// 					nombre: 'PRIORITY',
+		// 					alias: 'PRIORITY',
+		// 				}
+		// 			],
+		// 			nombre: 'COUNTRY_ETRS89',
+		// 			identificador: 'chronos-admin-division:COUNTRY_ETRS89',
+		// 		},
+		// 	],
+		// 	autoInfo: true,
+		// 	toolTip: false,
+		// 	visible: true,
+		// 	nombre: 'Servicios de admin-division',
+		// 	alias: 'Servicios de admin-division',
+		// 	descripcion: 'Servicios de admin-division desc',
+		// 	opacidad: 1.0,
+		// 	identificable: true,
+		// 	displayInLegend: false,
+		// 	format: 'image/png',
+		// 	minZoom: null,
+		// 	maxZoom: null,
+		// 	host: {
+		// 		url: 'http://localhost:8080/geoserver/chronos-admin-division/wms?',
+		// 		tipo: LayerTypes.WMS,
+		// 	},
+		// 	extent: [-18.3201264155889, 27.637723150776, 4.34014226940938, 43.9215181349627],//Native SRS de la capa más amplia
+		// 	matrixSet: undefined,
+		// 	scaleDenominators: undefined,
+		// 	topLeftCorner: undefined,
+		// 	tiled: false,
+		// 	id: 3,
+		// 	capabilities: null,
+		// 	draggable: true
+		// }
 	],
 	widgets: [
 		{

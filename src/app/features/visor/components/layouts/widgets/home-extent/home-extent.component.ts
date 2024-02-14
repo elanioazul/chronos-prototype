@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CursorStyle } from '@features/visor/core/enums/cursor.enum';
 import { WidgetComponent } from '@features/visor/core/models/widget-component';
 import { fitToExtent, getEpsgFromMap } from '@features/visor/core/utils/utils-ol';
 import { ProjUtilities } from '@features/visor/core/utils/utils-proj';
@@ -26,6 +27,7 @@ export class HomeExtentComponent extends WidgetComponent {
 
   onClick(): void {
     console.log('eee clicked from homeExtent component');
+    this.cursorService.setCursorStyle(CursorStyle.default);
     fitToExtent(this.mapService.map()!, this.predefinedExtent!)
   }
 }
