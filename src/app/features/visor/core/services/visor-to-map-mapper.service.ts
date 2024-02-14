@@ -7,10 +7,8 @@ import { ChronosMapView } from '../models/map-stuff/chronos-map-view';
 import { ProjUtilities } from '../utils/utils-proj';
 import { KeyboardPan, defaults as defaultInteractions } from 'ol/interaction';
 import * as condition from 'ol/events/condition';
-import { Collection } from 'ol';
+import { defaults as defaultControls } from 'ol/control';
 import {
-  overviewMapControl,
-  zoomControl,
   autoInfoOverlay,
   routePopup,
   coordsPopup
@@ -51,7 +49,11 @@ export class VisorToMapMapperService extends MapperGeneric<IReadVisor, IMap> {
         }),
       ]),
       overlays: [autoInfoOverlay, routePopup, coordsPopup],
-      controls: new Collection([overviewMapControl, zoomControl]),
+      controls: defaultControls({
+				attribution: false,
+				zoom: false,
+				rotate: false,
+			}),
     };
   }
 }

@@ -36,21 +36,21 @@ export const coordsPopup = new Popup({
 });
 
 //controles
-export const zoomControl = new Zoom();
-export const overviewMapControl = new OverviewMap({
-  className: 'ol-overviewmap ol-custom-overviewmap',
-  layers: [
-    new TileLayer({
-      source: new OSM({
-        url: 'https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',
-      }),
-    }),
-  ],
-  collapsed: true,
-  tipLabel: 'Mapa de referencia',
-  label: '«',
-  collapseLabel: '»',
-});
+// export const zoomControl = new Zoom();
+// export const overviewMapControl = new OverviewMap({
+//   className: 'ol-overviewmap ol-custom-overviewmap',
+//   layers: [
+//     new TileLayer({
+//       source: new OSM({
+//         url: 'https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',
+//       }),
+//     }),
+//   ],
+//   collapsed: true,
+//   tipLabel: 'Mapa de referencia',
+//   label: '«',
+//   collapseLabel: '»',
+// });
 
 //mouse
 export const addMouseControlToMap = (target: HTMLElement, map: Map) => {

@@ -250,7 +250,7 @@ export class MapService {
   }
 
   /* Este método recibe la información del servicio y devuelve un Servicio con sus capas ya creadas */
-  private createService(
+  public createService(
     serviceInfo: IReadService,
     type: ServiceType
   ): ChronosService {

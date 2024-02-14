@@ -21,91 +21,88 @@
   border-width: 0px 2px 2px 2px;
 }
 
-
 //zoomControl
-.ol-zoom {
-  left: unset;
-  right: 8px;
-}
+// .ol-zoom {
+//   left: unset;
+//   right: 8px;
+// }
 
-.ol-zoom .ol-zoom-in {
-  background-color: $lightblue;
-  width: 20px;
-  height: 20px;
-  @media(min-width:767px) {
-    width: 25px;
-    height: 25px;
-  }
+// .ol-zoom .ol-zoom-in {
+//   background-color: $lightblue;
+//   width: 20px;
+//   height: 20px;
+//   @media (min-width: 767px) {
+//     width: 25px;
+//     height: 25px;
+//   }
+// }
+// .ol-zoom .ol-zoom-in:focus {
+//   outline: none;
+// }
+// .ol-zoom .ol-zoom-out {
+//   background-color: $lightblue;
+//   width: 20px;
+//   height: 20px;
+//   @media (min-width: 767px) {
+//     width: 25px;
+//     height: 25px;
+//   }
+// }
+// .ol-zoom .ol-zoom-out:focus {
+//   outline: none;
+// }
 
-}
-.ol-zoom .ol-zoom-in:focus {
-  outline: none;
-}
-.ol-zoom .ol-zoom-out {
-  background-color: $lightblue;
-  width: 20px;
-  height: 20px;
-  @media(min-width:767px) {
-    width: 25px;
-    height: 25px;
-  }
-}
-.ol-zoom .ol-zoom-out:focus {
-  outline: none;
-}
-  
 //overViewControl
- .ol-custom-overviewmap,
- .ol-custom-overviewmap.ol-uncollapsible {
-  bottom: auto;
-  left: auto;
-  right: 8px;
-  top: 60px;
-  @media(min-width:767px) {
-    top: 65px;
-  }
+.ol-custom-overviewmap,
+.ol-custom-overviewmap.ol-uncollapsible {
+  left: unset;
+  right: 20px;
+  bottom: 160px;
+  //z-index: 10000;
+  // @media (min-width: 767px) {
+  //   top: 65px;
+  // }
 }
 
- .ol-custom-overviewmap:not(.ol-collapsed)  {
+.ol-custom-overviewmap:not(.ol-collapsed) {
   border: 2px solid $lightblue;
 }
- .ol-custom-overviewmap .ol-overviewmap-map {
+.ol-custom-overviewmap .ol-overviewmap-map {
   border: none;
-  @media(min-width:767px) {
-    width: 400px;
-    height: 300px;
+  @media (min-width: 767px) {
+    width: 150px;
+    height: 150px;
   }
 }
- .ol-custom-overviewmap .ol-overviewmap-box {
-  border: 1px solid red;
+.ol-custom-overviewmap .ol-overviewmap-box {
+  border: 1px solid $purple;
 }
- .ol-custom-overviewmap:not(.ol-collapsed) button {
-  width: 20px;
-  height: 20px;
-  @media(min-width:767px) {
-    width: 25px;
-    height: 25px;
-  }
-  background-color: rgb(185, 100, 100);
-}
- .ol-custom-overviewmap:not(.ol-collapsed) button:focus {
-  outline: none;
-}
+// .ol-custom-overviewmap:not(.ol-collapsed) button {
+//   width: 20px;
+//   height: 20px;
+//   @media (min-width: 767px) {
+//     width: 25px;
+//     height: 25px;
+//   }
+//   background-color: rgb(185, 100, 100);
+// }
+// .ol-custom-overviewmap:not(.ol-collapsed) button:focus {
+//   outline: none;
+// }
 
- .ol-custom-overviewmap button {
-  width: 20px;
-  height: 20px;
-  @media(min-width:767px) {
-    width: 25px;
-    height: 25px;
-  }
-  background-color: $lightblue;
-}
+// .ol-custom-overviewmap button {
+//   width: 20px;
+//   height: 20px;
+//   @media (min-width: 767px) {
+//     width: 25px;
+//     height: 25px;
+//   }
+//   background-color: $lightblue;
+// }
 
- .ol-custom-overviewmap button:focus {
-  outline: none;
-}
-
+// .ol-custom-overviewmap button:focus {
+//   outline: none;
+// }
 
 //DragBox interaction
 .ol-dragbox {
