@@ -25,6 +25,7 @@ export class WidgetButtonComponent implements OnInit {
   screeSizeService = inject(ScreenSizeService);
 
   @Input() widget!: IWidget;
+  @Input() toolContainer: string | null = null;
   mapActiveWidget = computed(() => this.visorService.mapActiveWidget());
   deviceSize = computed(() => this.screeSizeService.deviceSize());
 

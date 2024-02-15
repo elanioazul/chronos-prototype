@@ -1,4 +1,5 @@
 export enum widgetType {
     dialogWidget ='dialogWidget',
-    buttonWidget = 'buttonWidget'
+    buttonWidget = 'buttonWidget',
+    toolContainerWidget = 'toolContainer'
 }

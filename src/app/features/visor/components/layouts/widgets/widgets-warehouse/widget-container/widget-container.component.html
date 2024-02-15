@@ -3,6 +3,10 @@
         <ng-container
             [ngSwitch]="widget.config.type"
         >
+            <app-widget-tool-container
+                *ngSwitchCase="'toolContainer'"
+                [widget]="widget"
+            ></app-widget-tool-container>
             <app-widget-dialog
                 *ngSwitchCase="'dialogWidget'"
                 [widget]="widget"

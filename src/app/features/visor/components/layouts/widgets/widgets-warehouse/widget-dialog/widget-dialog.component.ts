@@ -8,4 +8,5 @@ import { IWidget } from '@features/visor/core/interfaces/widgets/widget.interfaz
 })
 export class WidgetDialogComponent {
   @Input() widget!: IWidget;
+  @Input() toolContainer: string | null = null;
 }
