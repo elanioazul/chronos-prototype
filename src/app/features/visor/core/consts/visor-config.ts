@@ -257,6 +257,72 @@ export const mockVisor: IReadVisor = {
 			capabilities: null,
 			draggable: false
 		},
+		{
+			id: 3,
+			nombre: 'OSM osmfoundation',
+			descripcion: 'OSM osmfoundation',
+			alias: 'OSM osmfoundation',
+			opacidad: 1.0,
+			identificable: false,
+			displayInLegend: false,
+			format: 'image/png',
+			extent: icgcExtent,
+			matrixSet: undefined,
+			scaleDenominators: undefined,
+			topLeftCorner: undefined,
+			minZoom: null,
+			maxZoom: null,
+			tiled: false,
+			autoInfo: false,
+			toolTip: false,
+			visible: true,
+			host: {
+				url: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+				tipo: LayerTypes.TMS,
+			},
+			capas: [
+				{
+					id: 1,
+					nombre: 'osmfoundation TMS osm',
+					identificador: 'osm',
+				},
+			],
+			capabilities: null,
+			draggable: false
+		},
+		// {
+		// 	id: 4,
+		// 	nombre: 'Chronos TMS Topográfico',
+		// 	descripcion: 'Chronos TMS Topográfico',
+		// 	alias: 'Chronos TMS Topográfico',
+		// 	opacidad: 1.0,
+		// 	identificable: false,
+		// 	displayInLegend: false,
+		// 	format: 'image/png',
+		// 	extent: icgcExtent,
+		// 	matrixSet: undefined,
+		// 	scaleDenominators: undefined,
+		// 	topLeftCorner: undefined,
+		// 	minZoom: null,
+		// 	maxZoom: null,
+		// 	tiled: false,
+		// 	autoInfo: false,
+		// 	toolTip: false,
+		// 	visible: true,
+		// 	host: {
+		// 		url: 'https://gsc-gateway.apps.aroas.westeurope.aroapp.io/geoserver/cloud/gwc/service/tms/1.0.0' + "/{z}/{x}/{-y}.png",
+		// 		tipo: LayerTypes.TMS,
+		// 	},
+		// 	capas: [
+		// 		{
+		// 			id: 1,
+		// 			nombre: 'Chronos TMS Topográfico',
+		// 			identificador: 'SEM:Topográfico',
+		// 		},
+		// 	],
+		// 	capabilities: null,
+		// 	draggable: false
+		// },
 	],
 	serviciosInicio: [
 		{
