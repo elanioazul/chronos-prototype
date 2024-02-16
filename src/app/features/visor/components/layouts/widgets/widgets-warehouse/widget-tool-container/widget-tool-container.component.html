@@ -1,8 +1,8 @@
 <div
-	class="flex align-items-end"
+	class="flex align-items-center tool-container-button"
 	[ngStyle]="{ 'flex-direction': getDirection(widget.config.position) }"
 >
-	<div class="tool-container-button">
+	<div>
 		<p-button
 			id="tool-container-button-{{ widget.key }}"
 			[icon]="widget.config.icon"
@@ -13,14 +13,14 @@
 			[pTooltip]="widget.nombre"
 			[attr.aria-label]="widget.nombre"
 			[styleClass]="
-				toolContainer || widget.key === 'share' || widget.key === 'help'
-					? 'p-button-white p-button-rounded p-button-s'
-					: 'p-button-dynamic-color p-button-m'
-			"
+				widget.key === 'overviewMap'
+				? 'p-button-rounded p-button-white p-button-m text-xl'
+				: 'p-button-rounded p-button-white p-button-s'
+			" 
 		></p-button>
 	</div>
 	<div
-		*ngIf="this.mapActiveWidget()"
+		*ngIf="this.mapActiveWidget() && (this.mapActiveWidget()?.key === widget.key || this.mapActiveWidget()?.key === 'measurement' || this.mapActiveWidget()?.key === 'bookmarks')"
 		class="flex flex-wrap-reverse align-self-center"
 		[ngStyle]="{ 'flex-direction': getDirection(widget.config.position) }"
 	>
@@ -32,12 +32,12 @@
 					[widget]="tool"
 				></app-widget-tool-container>
 				<app-widget-dialog
-					*ngSwitchCase="'floatingPanel'"
+					*ngSwitchCase="'fixedDialogWidget'"
 					[toolContainer]="widget.key"
 					[widget]="tool"
 				></app-widget-dialog>
 				<app-widget-button
-					*ngSwitchCase="'simpleWidget'"
+					*ngSwitchCase="'buttonWidget'"
 					[toolContainer]="widget.key"
 					[widget]="tool"
 				></app-widget-button>

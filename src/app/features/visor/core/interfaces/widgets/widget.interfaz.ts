@@ -5,12 +5,15 @@ export interface IWidget {
 	key: string;
 	nombre: string;
 	descripcion?: string;
-	widget: any,
+	widget?: any,
 	config: {
 		icon: string;
 		type: widgetType;
 		color?: string;
 		active?: boolean;
+		modes?: any[];
+		areaUnits?: any[];
+		lengthUnits?: any[];
 		position?: {
 			fixPosition?: boolean;
 			maximizable?: boolean;

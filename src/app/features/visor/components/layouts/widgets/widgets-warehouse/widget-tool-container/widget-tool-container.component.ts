@@ -1,4 +1,4 @@
-import { Component, Input, computed, inject } from '@angular/core';
+import { Component, ElementRef, Input, Renderer2, ViewChild, computed, inject } from '@angular/core';
 import { IWidget } from '@features/visor/core/interfaces/widgets/widget.interfaz';
 import { VisorService } from '@features/visor/core/services/visor.service';
 
@@ -13,7 +13,17 @@ export class WidgetToolContainerComponent {
   @Input() widget!: IWidget;
   @Input() toolContainer: string | null = null;
 
-  constructor() {}
+  @ViewChild('toolContainerButton', {
+    static: true,
+  })
+  toolContainerButton!: ElementRef<HTMLDivElement>;
+
+  constructor(private renderer: Renderer2) {}
+
+  ngOnInit() {
+    this.addWidgetToState();
+    //this.setWidgetColor();
+  }
 
   public onClick() {
     this.visorService.toogleWidget$.next(this.widget);
@@ -34,5 +44,15 @@ export class WidgetToolContainerComponent {
       default: 
         return 'column'
     }
+	}
+
+  // private setWidgetColor(): void {
+  //   this.renderer.removeClass(
+	// 		this.toolContainerButton.nativeElement,
+	// 		"tool-container-button"
+	// 	);
+	// }
+  private addWidgetToState() {
+    this.visorService.addWidget$.next(this.widget);
 	}
 }

@@ -970,6 +970,79 @@ export const mockVisor: IReadVisor = {
 		},
 		{
 			id: 5,
+			nombre: 'Herramientas',
+			key: 'tools',
+			config: {
+				icon: 'fg-measure-area-alt fg-2x',
+				type: widgetType.toolContainerWidget,
+				active: true,
+				position: {
+					desktop: 'bottom-right',
+					mobile: 'bottom-right',
+				},
+				tools: [
+					{
+						id: 6,
+						nombre: 'Mediciones',
+						key: 'measurement',
+						config: {
+							modes: [
+								{
+									geometryType: 'LineString',
+									icon: 'fas fa-ruler-vertical',
+									type: 'distancia',
+								},
+								{
+									geometryType: 'Polygon',
+									icon: 'fas fa-ruler-combined',
+									type: 'superficie',
+								},
+								{
+									geometryType: 'Point',
+									icon: 'fas fa-crosshairs',
+									type: 'coordenadas',
+								},
+							],
+							lengthUnits: [
+								{
+									code: 'km',
+									label: 'Kilómetros',
+								},
+							],
+							areaUnits: [
+								{
+									code: 'ha',
+									label: 'Hectáreas',
+								},
+								{
+									code: 'km2',
+									label: 'Kilómetros cuadrados',
+								},
+								{
+									code: 'm2',
+									label: 'Metros cuadrados',
+								},
+							],
+							icon: 'fg-measure-area fg-2x',
+							color: '#005673',
+							type: widgetType.fixedDialogWidget,
+						},
+					},
+					{
+						id: 7,
+						nombre: 'Marcadores',
+						key: 'bookmarks',
+						config: {
+							icon: 'fg-bookmark-poi fg-2x',
+							color: '#005673',
+							type: widgetType.fixedDialogWidget,
+						},
+					},
+				],
+			},
+		},
+		{
+			id: 8,
 			nombre: 'Mapa de situación',
 			key: 'overviewMap',
 			widget: () => import('@features/visor/components/layouts/widgets/overview-map/overview-map.component').then((c) => c.OverviewMapComponent),

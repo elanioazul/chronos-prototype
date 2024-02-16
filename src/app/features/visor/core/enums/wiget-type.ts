@@ -1,5 +1,7 @@
 export enum widgetType {
-    dialogWidget ='dialogWidget',
+    //dialogWidget ='dialogWidget',
+    floatingDialogWidget = 'floatingDialogWidget',
+    fixedDialogWidget = 'fixedDialogWidget',
     buttonWidget = 'buttonWidget',
     toolContainerWidget = 'toolContainer'
 }

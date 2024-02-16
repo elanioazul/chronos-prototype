@@ -6,15 +6,17 @@
 		padding: 10px;
 	}
 
-    .button-widget-container {
+    .button-widget-container,
+	.tool-container-button,
+	.dialog-widget-button {
 		padding: 5px;
 	}
 
 	.bottom-right {
 		.widgets-container {
 			flex-direction: row;
-			// align-items: flex-end;
-			// padding: 0;
+			align-items: flex-end;
+			//padding: 0;
 			@media screen and (max-width: 768px) {
 				flex-direction: column;
 			}
