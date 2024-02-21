@@ -5,6 +5,8 @@ import { HomeExtentComponent } from "@features/visor/components/layouts/widgets/
 import { DragZoomComponent } from "@features/visor/components/layouts/widgets/drag-zoom/drag-zoom.component";
 import { OverviewMapComponent } from "@features/visor/components/layouts/widgets/overview-map/overview-map.component";
 import { DefaultCursorComponent } from "@features/visor/components/layouts/widgets/default-cursor/default-cursor.component";
+import { BookmarksComponent } from "@features/visor/components/layouts/widgets/bookmarks/bookmarks.component";
+import { MeasurementsComponent } from "@features/visor/components/layouts/widgets/measurements/measurements.component";
 
 
 export const widgetsIndex: WidgetsDictionary = {
@@ -25,5 +27,11 @@ export const widgetsIndex: WidgetsDictionary = {
 	},
     dragZoom: {
 		widgetComponent: DragZoomComponent,
+	},
+    measurements: {
+		widgetComponent: MeasurementsComponent,
+	},
+    bookmarks: {
+		widgetComponent: BookmarksComponent,
 	}
 }

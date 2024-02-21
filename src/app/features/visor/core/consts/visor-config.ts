@@ -984,7 +984,8 @@ export const mockVisor: IReadVisor = {
 					{
 						id: 6,
 						nombre: 'Mediciones',
-						key: 'measurement',
+						key: 'measurements',
+						widget: () => import('@features/visor/components/layouts/widgets/measurements/measurements.component').then((c) => c.MeasurementsComponent),
 						config: {
 							modes: [
 								{
@@ -1026,16 +1027,19 @@ export const mockVisor: IReadVisor = {
 							icon: 'fg-measure-area fg-2x',
 							color: '#005673',
 							type: widgetType.fixedDialogWidget,
+							active: true,
 						},
 					},
 					{
 						id: 7,
 						nombre: 'Marcadores',
 						key: 'bookmarks',
+						widget: () => import('@features/visor/components/layouts/widgets/bookmarks/bookmarks.component').then((c) => c.BookmarksComponent),
 						config: {
 							icon: 'fg-bookmark-poi fg-2x',
 							color: '#005673',
 							type: widgetType.fixedDialogWidget,
+							active: true,
 						},
 					},
 				],

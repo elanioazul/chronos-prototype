@@ -25,6 +25,8 @@ import { OverviewMapComponent } from './components/layouts/widgets/overview-map/
 import { HomeExtentComponent } from './components/layouts/widgets/home-extent/home-extent.component';
 import { DefaultCursorComponent } from './components/layouts/widgets/default-cursor/default-cursor.component';
 import { WidgetToolContainerComponent } from './components/layouts/widgets/widgets-warehouse/widget-tool-container/widget-tool-container.component';
+import { BookmarksComponent } from './components/layouts/widgets/bookmarks/bookmarks.component';
+import { MeasurementsComponent } from './components/layouts/widgets/measurements/measurements.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +53,8 @@ import { WidgetToolContainerComponent } from './components/layouts/widgets/widge
     HomeExtentComponent,
     DefaultCursorComponent,
     WidgetToolContainerComponent,
+    BookmarksComponent,
+    MeasurementsComponent,
   ],
   imports: [CommonModule, VisorRoutingModule, SharedModule],
 })

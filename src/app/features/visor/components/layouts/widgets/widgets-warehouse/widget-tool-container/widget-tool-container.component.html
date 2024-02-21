@@ -20,7 +20,7 @@
 		></p-button>
 	</div>
 	<div
-		*ngIf="this.mapActiveWidget() && (this.mapActiveWidget()?.key === widget.key || this.mapActiveWidget()?.key === 'measurement' || this.mapActiveWidget()?.key === 'bookmarks')"
+		*ngIf="this.mapActiveWidget() && (this.mapActiveWidget()?.key === widget.key || this.mapActiveWidget()?.key === 'measurements' || this.mapActiveWidget()?.key === 'bookmarks')"
 		class="flex flex-wrap-reverse align-self-center"
 		[ngStyle]="{ 'flex-direction': getDirection(widget.config.position) }"
 	>
