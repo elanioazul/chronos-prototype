@@ -26,6 +26,12 @@ export class WidgetToolContainerComponent {
   }
 
   public onClick() {
+    //TODO
+    const nameActive = this.mapActiveWidget()?.key
+    if (nameActive === 'tools' || nameActive === 'measurements' || nameActive === 'bookmarks') {
+      console.log('aqui debería hacer que el active dejase de ser el tools el measurements o el bookmarks y cerrar todo lo relacionado a ellos');
+      
+    }
     this.visorService.toogleWidget$.next(this.widget);
   }
 
