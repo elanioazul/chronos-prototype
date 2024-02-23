@@ -2,28 +2,28 @@
 	<app-visor-header></app-visor-header>
     <app-visor-map *ngIf="map" [map]="map()"></app-visor-map>
     <div class="grid grid-nogutter h-full">
-		<div class="flex justify-content-start col-4" style="height: 50%">
+		<div class="flex justify-content-start col-4" style="height: 75%">
 
 		</div>
-		<div class="flex justify-content-center col-4" style="height: 50%">
+		<div class="flex justify-content-center col-4" style="height: 75%">
 
 		</div>
-		<div class="flex justify-content-end col-4" style="height: 50%">
+		<div #layoutTargetDiv class="flex justify-content-end col-4" style="height: 75%">
 
 		</div>
 		<div
 			class="flex align-items-end justify-content-start col-4"
-			style="height: 50%"
+			style="height: 25%"
 		>
 		</div>
 		<div
 			class="flex align-items-end justify-content-center col-4"
-			style="height: 50%"
+			style="height: 25%"
 		>
 		</div>
 		<div
 			class="flex align-items-end justify-content-end col-4"
-			style="height: 50%"
+			style="height: 25%"
 		>
 			<div class="flex flex-column align-items-end bottom-right-container">
 				<app-widget-container
