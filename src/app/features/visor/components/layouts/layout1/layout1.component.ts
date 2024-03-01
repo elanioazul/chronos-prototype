@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewEncapsulation, computed, inject } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild, ViewEncapsulation, computed, inject } from '@angular/core';
 import { SidebarService } from '@core/services/sidebar.service';
 import { MapService } from '@core/services/map.service';
 import { VisorService } from '@core/services/visor.service';
@@ -13,7 +13,7 @@ import { ISidebarTab } from '@core/interfaces/sidebar/sidebar-tab.interfaz';
   styleUrls: ['./layout1.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
-export class Layout1Component {
+export class Layout1Component implements OnInit, AfterViewInit {
   sidebarService = inject(SidebarService);
   mapService = inject(MapService);
   visorService = inject(VisorService);
@@ -21,6 +21,8 @@ export class Layout1Component {
 
   sidebar: Sidebar | null = null;
   sidebarDiv!: ElementRef<HTMLElement> | undefined;
+
+  @ViewChild('fixedDialogTargetSquare', { static: false, read: ElementRef }) fixedDialogTargetSquare!: ElementRef;
 
   visorTabsConfig = visorTabsConfig;
 
@@ -42,6 +44,12 @@ export class Layout1Component {
         this.setSideBar();
       }
     });
+  }
+  ngOnInit(): void {
+    //this.visorService.setFixedDialogTargetDiv$.next(this.fixedDialogTargetSquare);
+  }
+  ngAfterViewInit(): void {
+    this.visorService.setFixedDialogTargetDiv$.next(this.fixedDialogTargetSquare);
   }
 
   refreshSidebar(): void {

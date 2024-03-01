@@ -1,4 +1,4 @@
-import { Injectable, computed, effect, inject, signal } from '@angular/core';
+import { ElementRef, Injectable, computed, effect, inject, signal } from '@angular/core';
 import { IReadVisor } from '../interfaces/visor-stuff/visor.interfaz';
 import { Message } from 'primeng/api';
 import { Subject } from 'rxjs';
@@ -10,6 +10,7 @@ export interface VisorState {
   config: IReadVisor | null;
   mapWidgets: IWidget[],
   mapActiveWidget: IWidget | null;
+  fixedDialogTargetDiv: ElementRef<any> | null;
   loaded: boolean;
   error: Message | null;
 }
@@ -31,6 +32,7 @@ export class VisorService {
     config: null,
     mapWidgets: [],
     mapActiveWidget: null,
+    fixedDialogTargetDiv: null,
     loaded: false,
     error: null,
   });
@@ -39,12 +41,14 @@ export class VisorService {
   config = computed(() => this.state().config)
   mapWidgets = computed(() => this.state().mapWidgets)
   mapActiveWidget = computed(() => this.state().mapActiveWidget)
+  fixedDialogTargetDiv = computed(() => this.state().fixedDialogTargetDiv)
   loaded = computed(() => this.state().loaded)
 
   //sources
   readVisorConfig$ = new Subject<IReadVisor>();
   addWidget$ = new Subject<IWidget>();
   toogleWidget$ = new Subject<IWidget>();
+  setFixedDialogTargetDiv$ = new Subject<ElementRef<any>>();
   //buildMap$ = new Subject<boolean>();
 
   constructor() {
@@ -74,6 +78,13 @@ export class VisorService {
             : item
         ),
         mapActiveWidget: wgdt
+      }))
+    })
+
+    this.setFixedDialogTargetDiv$.pipe(takeUntilDestroyed()).subscribe((div: ElementRef<any>) => {
+      this.state.update((state) => ({
+        ...state,
+        fixedDialogTargetDiv: div
       }))
     })
   

@@ -3,18 +3,26 @@
         <ng-container
             [ngSwitch]="widget.config.type"
         >
-            <app-widget-tool-container
-                *ngSwitchCase="'toolContainer'"
-                [widget]="widget"
-            ></app-widget-tool-container>
-            <app-widget-dialog
-                *ngSwitchCase="'fixedDialogWidget'"
-                [widget]="widget"
-            ></app-widget-dialog>
-            <app-widget-button
-                *ngSwitchCase="'buttonWidget'"
-                [widget]="widget"
-            ></app-widget-button>
+        <app-widget-tool-container
+            *ngSwitchCase="'toolContainer'"
+            [widget]="widget"
+        ></app-widget-tool-container>
+        <app-widget-dialog
+            *ngSwitchCase="'dialogWidget'"
+            [widget]="widget"
+        ></app-widget-dialog>
+        <app-widget-dialog-floating
+            *ngSwitchCase="'floatingDialogWidget'"
+            [widget]="widget"
+        ></app-widget-dialog-floating>
+        <app-widget-dialog-fixed
+            *ngSwitchCase="'fixedDialogWidget'"
+            [widget]="widget"
+        ></app-widget-dialog-fixed>
+        <app-widget-button
+            *ngSwitchCase="'buttonWidget'"
+            [widget]="widget"
+        ></app-widget-button>
         </ng-container>
     </ng-container>
 </div>

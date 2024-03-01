@@ -1,7 +1,7 @@
 export enum widgetType {
-    //dialogWidget ='dialogWidget',
+    dialogWidget ='dialogWidget',
     floatingDialogWidget = 'floatingDialogWidget',
-    fixedDialogWidget = 'fixedDialogWidget',
+    fixedDialogWidget = 'fixedDialogWidget', //appendTo primeng dialog input puede ser
     buttonWidget = 'buttonWidget',
     toolContainerWidget = 'toolContainer'
 }

@@ -27,6 +27,8 @@ import { DefaultCursorComponent } from './components/layouts/widgets/default-cur
 import { WidgetToolContainerComponent } from './components/layouts/widgets/widgets-warehouse/widget-tool-container/widget-tool-container.component';
 import { BookmarksComponent } from './components/layouts/widgets/bookmarks/bookmarks.component';
 import { MeasurementsComponent } from './components/layouts/widgets/measurements/measurements.component';
+import { WidgetDialogFloatingComponent } from './components/layouts/widgets/widgets-warehouse/widget-dialog-floating/widget-dialog-floating.component';
+import { WidgetDialogFixedComponent } from './components/layouts/widgets/widgets-warehouse/widget-dialog-fixed/widget-dialog-fixed.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +57,8 @@ import { MeasurementsComponent } from './components/layouts/widgets/measurements
     WidgetToolContainerComponent,
     BookmarksComponent,
     MeasurementsComponent,
+    WidgetDialogFloatingComponent,
+    WidgetDialogFixedComponent,
   ],
   imports: [CommonModule, VisorRoutingModule, SharedModule],
 })

@@ -1038,7 +1038,7 @@ export const mockVisor: IReadVisor = {
 						config: {
 							icon: 'fg-bookmark-poi fg-2x',
 							color: '#005673',
-							type: widgetType.fixedDialogWidget,
+							type: widgetType.floatingDialogWidget,
 							active: true,
 						},
 					},
