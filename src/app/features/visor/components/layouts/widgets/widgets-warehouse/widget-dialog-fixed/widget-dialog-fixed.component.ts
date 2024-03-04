@@ -3,6 +3,8 @@ import { widgetsIndex } from '@features/visor/core/consts/widgets-dictionary';
 import { IWidget } from '@features/visor/core/interfaces/widgets/widget.interfaz';
 import { WidgetComponent } from '@features/visor/core/models/widget-component';
 import { VisorService } from '@features/visor/core/services/visor.service';
+import { Dialog } from 'primeng/dialog';
+import { DomHandler } from 'primeng/dom';
 
 @Component({
   selector: 'app-widget-dialog-fixed',
@@ -15,7 +17,6 @@ export class WidgetDialogFixedComponent implements AfterViewInit {
   mapActiveWidget = computed(() => this.visorService.mapActiveWidget());
   fixedDialogTargetDiv = computed(() => this.visorService.fixedDialogTargetDiv());
   div!: ElementRef<any> | null;
-
   
   @Input() widget!: IWidget;
   @Input() toolContainer: string | null = null;
@@ -44,8 +45,6 @@ export class WidgetDialogFixedComponent implements AfterViewInit {
   }
 
   showDialog(event: any) {
-    // this._yourDialog.maskVisible = false;
-    // this.dialogModal = false;
     this.visible = true;
     this.visorService.toogleWidget$.next(this.widget);
     this.newComponent.instance.onClick();
