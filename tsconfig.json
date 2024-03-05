@@ -28,6 +28,8 @@
 			"@shared/*": ["src/app/shared/*"],
 			"@core/*": ["src/app/features/visor/core/*"],
 		},
+    "strictPropertyInitialization": false,
+    "strictNullChecks": false,
     "allowSyntheticDefaultImports": true,
     "noImplicitAny": false,
     "skipLibCheck": true

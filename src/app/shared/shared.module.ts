@@ -14,7 +14,8 @@ import { InputTextModule } from 'primeng/inputtext';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { DropdownModule } from 'primeng/dropdown';
 import { TooltipModule } from 'primeng/tooltip';
-import { DialogModule } from 'primeng/dialog';
+//import { DialogModule } from 'primeng/dialog';
+import { DialogModule } from './primeng/dialog/dialog'
 import { ListboxModule } from 'primeng/listbox';
 import { PanelModule } from 'primeng/panel';
 import { SelectButtonModule } from 'primeng/selectbutton';

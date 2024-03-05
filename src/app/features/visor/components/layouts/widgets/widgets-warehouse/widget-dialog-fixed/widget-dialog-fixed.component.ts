@@ -1,17 +1,15 @@
-import { AfterViewInit, Component, ComponentRef, ElementRef, Input, ViewChild, ViewContainerRef, computed, inject } from '@angular/core';
+import { Component, ComponentRef, ElementRef, Input, ViewChild, ViewContainerRef, computed, inject } from '@angular/core';
 import { widgetsIndex } from '@features/visor/core/consts/widgets-dictionary';
 import { IWidget } from '@features/visor/core/interfaces/widgets/widget.interfaz';
 import { WidgetComponent } from '@features/visor/core/models/widget-component';
 import { VisorService } from '@features/visor/core/services/visor.service';
-import { Dialog } from 'primeng/dialog';
-import { DomHandler } from 'primeng/dom';
 
 @Component({
   selector: 'app-widget-dialog-fixed',
   templateUrl: './widget-dialog-fixed.component.html',
   styleUrls: ['./widget-dialog-fixed.component.scss']
 })
-export class WidgetDialogFixedComponent implements AfterViewInit {
+export class WidgetDialogFixedComponent {
   
   visorService = inject(VisorService);
   mapActiveWidget = computed(() => this.visorService.mapActiveWidget());
@@ -34,9 +32,6 @@ export class WidgetDialogFixedComponent implements AfterViewInit {
   widgetsDictionary = widgetsIndex;
 
   constructor() {}
-
-  ngAfterViewInit(): void {
-  }
   
   ngOnInit(): void {
     this.loadComponent();
