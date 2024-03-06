@@ -990,38 +990,38 @@ export const mockVisor: IReadVisor = {
 							modes: [
 								{
 									geometryType: 'LineString',
-									icon: 'fas fa-ruler-vertical',
+									icon: 'fg-measure fg-2x',
 									type: 'distancia',
 								},
 								{
 									geometryType: 'Polygon',
-									icon: 'fas fa-ruler-combined',
+									icon: 'fg-measure-area-alt fg-2x',
 									type: 'superficie',
 								},
 								{
 									geometryType: 'Point',
-									icon: 'fas fa-crosshairs',
+									icon: 'fg-point fg-2x',
 									type: 'coordenadas',
 								},
 							],
 							lengthUnits: [
 								{
 									code: 'km',
-									label: 'Kilómetros',
+									label: 'Quilòmetres',
 								},
 							],
 							areaUnits: [
 								{
 									code: 'ha',
-									label: 'Hectáreas',
+									label: 'Hectàrees',
 								},
 								{
 									code: 'km2',
-									label: 'Kilómetros cuadrados',
+									label: 'Quilòmetres quadrats',
 								},
 								{
 									code: 'm2',
-									label: 'Metros cuadrados',
+									label: 'Metres quadrats',
 								},
 							],
 							icon: 'fg-measure-area fg-2x',

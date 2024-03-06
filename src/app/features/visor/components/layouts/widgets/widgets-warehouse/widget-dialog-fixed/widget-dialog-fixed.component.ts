@@ -55,6 +55,11 @@ export class WidgetDialogFixedComponent {
       this.newComponent = this.container.createComponent(componentInstance);
       this.newComponent.instance.widget = this.widget;
       this.visorService.addWidget$.next(this.widget);
+      this.newComponent.instance.sendMessageToLoaderComp()
     }
+  }
+
+  manageVisibility(event: any) {
+    console.log(event)
   }
 }
