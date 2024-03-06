@@ -62,6 +62,7 @@ export class WidgetDialogFixedComponent {
   }
 
   manageVisibility(event: any) {
+    //TODO: design a system to close all widgets when another is selected
     console.log(event);
     this.newComponent.destroy();
   }
