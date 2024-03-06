@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { CursorStyle } from '@features/visor/core/enums/cursor.enum';
-import { WidgetComponent } from '@features/visor/core/models/widget-component';
+import { WidgetComponent } from '../widgets-warehouse/widget/widget.component';
 
 @Component({
   selector: 'app-zoom-out',
@@ -18,7 +18,7 @@ export class ZoomOutComponent extends WidgetComponent {
     
   }
 
-  onClick(): void {
+  override onClick(): void {
     console.log('eee clicked from zoomOut component');
     this.mapService.setCursor(CursorStyle.default);
     this.mapService.map()?.getView().animate({
@@ -26,5 +26,9 @@ export class ZoomOutComponent extends WidgetComponent {
       duration: 250
     })
     
+  }
+
+  override sendMessageToLoaderComp(): void {
+    this.messageEvent.emit(`mensaje por aqui al comp cargador desde componente zoomout dynamico`)
   }
 }

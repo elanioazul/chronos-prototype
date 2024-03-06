@@ -2,7 +2,8 @@ import { Component, ComponentRef, Input, OnInit, ViewChild, ViewContainerRef, co
 import { IWidget } from '@features/visor/core/interfaces/widgets/widget.interfaz';
 import { VisorService } from '@features/visor/core/services/visor.service';
 import { widgetsIndex } from '@features/visor/core/consts/widgets-dictionary';
-import { WidgetComponent } from '@features/visor/core/models/widget-component';
+import { WidgetComponent } from '../widget/widget.component';
+
 @Component({
   selector: 'app-widget-dialog',
   templateUrl: './widget-dialog.component.html',

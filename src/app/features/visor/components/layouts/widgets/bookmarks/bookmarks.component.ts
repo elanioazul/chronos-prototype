@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { CursorStyle } from '@features/visor/core/enums/cursor.enum';
-import { WidgetComponent } from '@features/visor/core/models/widget-component';
+import { WidgetComponent } from '../widgets-warehouse/widget/widget.component';
 
 @Component({
   selector: 'app-bookmarks',
@@ -8,13 +8,18 @@ import { WidgetComponent } from '@features/visor/core/models/widget-component';
   styleUrls: ['./bookmarks.component.scss']
 })
 export class BookmarksComponent extends WidgetComponent {
+  
   constructor() {
     super();
     console.log('constructor bookmarks comp');
   }
 
-  onClick(): void {
+  override onClick(): void {
     console.log('eee clicked from bookmarks component');
     this.mapService.setCursor(CursorStyle.default);
+  }
+
+  override sendMessageToLoaderComp(): void {
+    this.messageEvent.emit(`mensaje por aqui al comp cargador desde componente bookmark dynamico`)
   }
 }

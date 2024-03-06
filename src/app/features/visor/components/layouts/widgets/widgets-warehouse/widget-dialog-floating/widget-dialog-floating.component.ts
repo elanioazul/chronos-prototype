@@ -1,8 +1,9 @@
 import { Component, ComponentRef, Input, ViewChild, ViewContainerRef, computed, inject } from '@angular/core';
 import { widgetsIndex } from '@features/visor/core/consts/widgets-dictionary';
 import { IWidget } from '@features/visor/core/interfaces/widgets/widget.interfaz';
-import { WidgetComponent } from '@features/visor/core/models/widget-component';
 import { VisorService } from '@features/visor/core/services/visor.service';
+import { WidgetComponent } from '../widget/widget.component';
+
 @Component({
   selector: 'app-widget-dialog-floating',
   templateUrl: './widget-dialog-floating.component.html',

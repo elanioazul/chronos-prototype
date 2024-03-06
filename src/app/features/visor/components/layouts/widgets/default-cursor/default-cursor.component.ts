@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { CursorStyle } from '@features/visor/core/enums/cursor.enum';
-import { WidgetComponent } from '@features/visor/core/models/widget-component';
+import { WidgetComponent } from '../widgets-warehouse/widget/widget.component';
 
 @Component({
   selector: 'app-default-cursor',
@@ -8,6 +8,7 @@ import { WidgetComponent } from '@features/visor/core/models/widget-component';
   styleUrls: ['./default-cursor.component.scss']
 })
 export class DefaultCursorComponent extends WidgetComponent {
+  
   constructor() {
     super();
     console.log('constructor dragZoom comp');
@@ -17,7 +18,7 @@ export class DefaultCursorComponent extends WidgetComponent {
     
   }
 
-  onClick(): void {
+  override onClick(): void {
     console.log('eee clicked from defaultCursor component');
     this.mapService.setCursor(CursorStyle.default)
     // const dragZoomTooltip = this.mapService.map()!.getOverlayById('dragZoomTooltip');
@@ -26,5 +27,9 @@ export class DefaultCursorComponent extends WidgetComponent {
     
     
     
+  }
+
+  override sendMessageToLoaderComp(): void {
+    this.messageEvent.emit(`mensaje por aqui al comp cargador desde componente default-cursor dynamico`)
   }
 }

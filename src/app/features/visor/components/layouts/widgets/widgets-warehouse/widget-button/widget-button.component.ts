@@ -11,9 +11,9 @@ import {
 } from '@angular/core';
 import { widgetsIndex } from '@features/visor/core/consts/widgets-dictionary';
 import { IWidget } from '@features/visor/core/interfaces/widgets/widget.interfaz';
-import { WidgetComponent } from '@core/models/widget-component';
 import { ScreenSizeService } from '@features/visor/core/services/screen-size.service';
 import { VisorService } from '@features/visor/core/services/visor.service';
+import { WidgetComponent } from '../widget/widget.component';
 
 @Component({
   selector: 'app-widget-button',

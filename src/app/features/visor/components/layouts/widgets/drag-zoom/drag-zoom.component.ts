@@ -1,15 +1,17 @@
-import { Component, OnDestroy, OnInit, computed, inject } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, Output, computed, inject } from '@angular/core';
 import { CursorStyle } from '@features/visor/core/enums/cursor.enum';
-import { WidgetComponent } from '@features/visor/core/models/widget-component';
 import { DragZoom } from 'ol/interaction';
 import * as condition from 'ol/events/condition';
 import Tooltip from 'ol-ext/overlay/Tooltip';
+import { WidgetComponent } from '../widgets-warehouse/widget/widget.component';
+
 @Component({
   selector: 'app-drag-zoom',
   templateUrl: './drag-zoom.component.html',
   styleUrls: ['./drag-zoom.component.scss']
 })
 export class DragZoomComponent extends WidgetComponent implements OnInit/*, OnDestroy*/ {
+  
   private dragZoom: DragZoom;
   private tooltip: Tooltip;
   constructor() {
@@ -31,7 +33,7 @@ export class DragZoomComponent extends WidgetComponent implements OnInit/*, OnDe
   //   this.disableDragZoom();
   // }
 
-  onClick(): void {
+  override onClick(): void {
     console.log('eee clicked from dragZoom component');
     this.enableDragZoom();
   }
@@ -51,6 +53,10 @@ export class DragZoomComponent extends WidgetComponent implements OnInit/*, OnDe
     this.mapService.setCursor(CursorStyle.default);
     this.mapService.map()!.removeOverlay(this.tooltip);
     this.mapService.map()!.removeInteraction(this.dragZoom)
+  }
+
+  override sendMessageToLoaderComp(): void {
+    this.messageEvent.emit(`mensaje por aqui al comp cargador desde componente dragzoom dynamico`)
   }
 
 	private getHTML = () =>

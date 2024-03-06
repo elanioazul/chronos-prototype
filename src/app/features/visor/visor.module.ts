@@ -29,6 +29,7 @@ import { BookmarksComponent } from './components/layouts/widgets/bookmarks/bookm
 import { MeasurementsComponent } from './components/layouts/widgets/measurements/measurements.component';
 import { WidgetDialogFloatingComponent } from './components/layouts/widgets/widgets-warehouse/widget-dialog-floating/widget-dialog-floating.component';
 import { WidgetDialogFixedComponent } from './components/layouts/widgets/widgets-warehouse/widget-dialog-fixed/widget-dialog-fixed.component';
+import { WidgetComponent } from './components/layouts/widgets/widgets-warehouse/widget/widget.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { WidgetDialogFixedComponent } from './components/layouts/widgets/widgets
     MeasurementsComponent,
     WidgetDialogFloatingComponent,
     WidgetDialogFixedComponent,
+    WidgetComponent,
   ],
   imports: [CommonModule, VisorRoutingModule, SharedModule],
 })
