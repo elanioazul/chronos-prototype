@@ -7,6 +7,7 @@ import { HttpProxyService } from '../../services/http-proxy.service';
 import { IWFSLayer } from '../../interfaces/layer-stuff/wfs-layer';
 import VectorSource from 'ol/source/Vector';
 import VectorLayer from 'ol/layer/Vector';
+import * as olLoadingstrategy from 'ol/loadingstrategy';
 
 export class WFSChronosLayer extends ChronosLayer {
   private _version: string;
@@ -46,7 +47,8 @@ export class WFSChronosLayer extends ChronosLayer {
     
     const lyrSource = new VectorSource({
       url: this.url.concat(finalUrlParams.join('&')),
-      format: new GeoJSON()
+      format: new GeoJSON(),
+      strategy: olLoadingstrategy.bbox,
       //format: new GeoJSON({dataProjection: 'EPSG:25831', featureProjection: 'EPSG:25831'})
     })
 
