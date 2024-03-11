@@ -71,7 +71,7 @@ export class MapService {
   simpleTocLayers = computed(() =>
     this.state().services.flatMap((srv) =>
       srv.layers.filter(
-        (lyr) => lyr.type === layerConfigTypes.overview || lyr.type === layerConfigTypes.base
+        (lyr) => lyr.type === layerConfigTypes.overview || lyr.type === layerConfigTypes.base || (lyr.type === layerConfigTypes.initial && (srv.alias === 'Servicios de admin-division' || srv.alias === 'Servicios de salud'))
       )
     )
   );
