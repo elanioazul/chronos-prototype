@@ -25,7 +25,7 @@ import { WFSChronosService } from '../models/layer-stuff/wfs-service';
 import { TMSChronosService } from '../models/layer-stuff/tms-service';
 import { EPSGs } from '../enums/epsgs';
 
-
+const layerConfigTypes = LayerConfigTypes;
 export interface MapState {
   map: ChronosMap | null;
   services: ChronosService[];
@@ -71,7 +71,17 @@ export class MapService {
   simpleTocLayers = computed(() =>
     this.state().services.flatMap((srv) =>
       srv.layers.filter(
-        (lyr) => lyr.type === LayerConfigTypes.initial || LayerConfigTypes.overview || LayerConfigTypes.base
+        (lyr) => lyr.type === layerConfigTypes.overview || lyr.type === layerConfigTypes.base
+      )
+    )
+  );
+
+  recursosLyr = computed(() =>
+    this.state().services.flatMap((srv) =>
+      srv.layers.filter(
+        (lyr) =>
+          lyr.type === layerConfigTypes.initial &&
+          lyr.name === 'Chronos WFS RESOURCES'
       )
     )
   );
@@ -201,7 +211,7 @@ export class MapService {
     srvs.forEach((serviceInfo) => {
       const service: ChronosService = this.createService(
         serviceInfo,
-        LayerConfigTypes.overview
+        layerConfigTypes.overview
       );
       this.setService$.next(service);
       service.layers.forEach((overviewLayer: ChronosLayer) => {
@@ -215,7 +225,7 @@ export class MapService {
     srvs.forEach((serviceInfo) => {
       const service: ChronosService = this.createService(
         serviceInfo,
-        LayerConfigTypes.base
+        layerConfigTypes.base
       );
       this.setService$.next(service);
       service.layers.forEach((baseLayer: ChronosLayer) => {
@@ -229,7 +239,7 @@ export class MapService {
       (serviceInfo: IReadService, index) => {
         const service: ChronosService = this.createService(
           serviceInfo,
-          LayerConfigTypes.initial
+          layerConfigTypes.initial
         );
         this.setService$.next(service);
         service.layers.forEach((initialLayer: ChronosLayer, indexPrima) => {
