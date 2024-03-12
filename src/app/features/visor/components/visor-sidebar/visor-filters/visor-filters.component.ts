@@ -57,7 +57,6 @@ export class VisorFiltersComponent implements OnInit {
       const tipoRecurso = feature.get('TIPORECURSO');
       uniqueTIPORECURSOValues.add(tipoRecurso);
       this.tipoRecursoVisibilityMap.set(tipoRecurso, true);
-      feature.set('resourceStyle', resourceStyle)
     });
 
     uniqueTIPORECURSOValues.forEach((value: string) => {
@@ -98,25 +97,11 @@ export class VisorFiltersComponent implements OnInit {
     features.forEach(feat => {
       const tipoRecurso = feat.get('TIPORECURSO');
       const isVisible = this.tipoRecursoVisibilityMap.get(tipoRecurso);
-      // if (isVisible) {
-      //   feat.setStyle(new Style({}))
-      // } else {
-      //   feat.setStyle(this.resourceInvisibleStyle);
-      // }
       if (tipo === tipoRecurso) {
-        //feat.setStyle(isVisible ? feat.getStyle() : resourceInvisibleStyle);
         feat.setStyle(isVisible ? resourceStyle : resourceInvisibleStyle);
       }
-      //feat.setStyle(isVisible ? feat.getStyle() : this.resourceInvisibleStyle);
     })
   }
 
-  // makeInvisible(feature: any): void {
-  //   feature.setStyle(this.resourceInvisibleStyle);
-  // }
-
-  // makeVisivle(feature: any): void {
-  //   feature.setStyle();
-  // }
 
 }

@@ -57,8 +57,7 @@ export class WFSChronosLayer extends ChronosLayer {
       source: lyrSource,
       visible: this.visible,
       opacity: this.opacity,
-      style: (feature) => {
-        const resourceStyle = feature.get('resourceStyle');
+      style: () => {
         return resourceStyle;
       },
     });
