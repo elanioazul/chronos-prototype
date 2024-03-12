@@ -8,6 +8,7 @@ import { IWFSLayer } from '../../interfaces/layer-stuff/wfs-layer';
 import VectorSource from 'ol/source/Vector';
 import VectorLayer from 'ol/layer/Vector';
 import * as olLoadingstrategy from 'ol/loadingstrategy';
+import { resourceStyle, resourceInvisibleStyle } from '../../utils/ol-styles';
 
 export class WFSChronosLayer extends ChronosLayer {
   private _version: string;
@@ -56,6 +57,10 @@ export class WFSChronosLayer extends ChronosLayer {
       source: lyrSource,
       visible: this.visible,
       opacity: this.opacity,
+      style: (feature) => {
+        const resourceStyle = feature.get('resourceStyle');
+        return resourceStyle;
+      },
     });
   }
 }
