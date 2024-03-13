@@ -83,6 +83,12 @@ export class VisorFiltersComponent implements OnInit {
     this.tipoRecursoVisibilityMap.set(event.node.label, true);
     if (event.node.label === 'TIPORECURSO') {
       this.recursosLyr()[0].ol.setVisible(true)
+      this.features.forEach(feature => {
+        const tipoRecurso = feature.get('TIPORECURSO');
+        this.tipoRecursoVisibilityMap.set(tipoRecurso, true);
+        const isVisible = this.tipoRecursoVisibilityMap.get(tipoRecurso);
+          feature.setStyle(isVisible ? resourceStyle : resourceInvisibleStyle);
+      });
     } else {
       this.updateFeatureVisibility(event.node.label);
     }
@@ -92,6 +98,12 @@ export class VisorFiltersComponent implements OnInit {
     this.tipoRecursoVisibilityMap.set(event.node.label, false);
     if (event.node.label === 'TIPORECURSO') {
       this.recursosLyr()[0].ol.setVisible(false)
+      this.features.forEach(feature => {
+        const tipoRecurso = feature.get('TIPORECURSO');
+        this.tipoRecursoVisibilityMap.set(tipoRecurso, false);
+        const isVisible = this.tipoRecursoVisibilityMap.get(tipoRecurso);
+          feature.setStyle(isVisible ? resourceStyle : resourceInvisibleStyle);
+      });
     } else {
       this.updateFeatureVisibility(event.node.label);
     }
