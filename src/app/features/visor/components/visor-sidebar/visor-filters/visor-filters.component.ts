@@ -117,6 +117,9 @@ export class VisorFiltersComponent implements OnInit {
         feat.setStyle(isVisible ? resourceStyle : resourceInvisibleStyle);
       }
     })
+    if (this.recursosLyr()[0].ol.isVisible() == false) {
+      this.recursosLyr()[0].ol.setVisible(true)
+    }
   }
 
 
