@@ -70,6 +70,11 @@ export class VisorSidebarComponent implements AfterViewInit {
           component: () => import('@features/visor/components/visor-sidebar-tab/visor-sidebar-tab.component').then(m => m.VisorSidebarTabComponent),
           inputs: visorTabsConfig.find(item => item['id'] === type)!
         }
+      case 'filters-custom':
+        return {
+          component: () => import('@features/visor/components/visor-sidebar-tab/visor-sidebar-tab.component').then(m => m.VisorSidebarTabComponent),
+          inputs: visorTabsConfig.find(item => item['id'] === type)!
+        }
       default:
         return {
           component: () => import('@features/visor/components/visor-sidebar-tab/visor-sidebar-tab.component').then(m => m.VisorSidebarTabComponent),

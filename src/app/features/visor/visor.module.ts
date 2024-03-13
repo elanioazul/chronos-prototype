@@ -16,6 +16,7 @@ import { SharedModule } from '@shared/shared.module';
 import { VisorSimpleTocComponent } from './components/visor-sidebar/visor-simple-toc/visor-simple-toc.component';
 import { SimpleLayerItemComponent } from './components/visor-sidebar/visor-simple-toc/simple-layer-item/simple-layer-item.component';
 import { VisorFiltersComponent } from './components/visor-sidebar/visor-filters/visor-filters.component';
+import { VisorFiltersCustomComponent } from './components/visor-sidebar/visor-filters-custom/visor-filters-custom.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { VisorFiltersComponent } from './components/visor-sidebar/visor-filters/
     VisorSimpleTocComponent,
     SimpleLayerItemComponent,
     VisorFiltersComponent,
+    VisorFiltersCustomComponent,
   ],
   imports: [CommonModule, VisorRoutingModule, SharedModule],
 })

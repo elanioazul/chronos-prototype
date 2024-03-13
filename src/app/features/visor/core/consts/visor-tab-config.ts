@@ -2,6 +2,15 @@
 import { ISidebarTab } from '@core/interfaces/sidebar/sidebar-tab.interfaz';
 export const visorTabsConfig: ISidebarTab[] = [
   {
+    id: 'filters-custom',
+    title: 'Filtros de capas funcionales',
+    widget: () => import('@features/visor/components/visor-sidebar/visor-filters-custom/visor-filters-custom.component').then(m => m.VisorFiltersCustomComponent),
+    openableSidebarNeeded: true,
+    largeSidebarNeeded: false,
+    icon: 'fg-layer-up fg-4x',
+    iconStyle: 'font-size: 1.5rem; line-height: 1;'
+  },
+  {
     id: 'filters',
     title: 'Filtros de capas funcionales',
     widget: () => import('@features/visor/components/visor-sidebar/visor-filters/visor-filters.component').then(m => m.VisorFiltersComponent),
