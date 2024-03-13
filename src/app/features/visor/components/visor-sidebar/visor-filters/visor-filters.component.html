@@ -1,0 +1,3 @@
+<div class="flex flex-column">
+    <p-tree [value]="treeNodes" [(selection)]="selectedNodes" selectionMode="checkbox" (onNodeSelect)="onCheckboxIsSelected($event, NODEINSTANCE)" (onNodeUnselect)="onCheckboxIsUnSelected($event, NODEINSTANCE)"></p-tree>
+</div>

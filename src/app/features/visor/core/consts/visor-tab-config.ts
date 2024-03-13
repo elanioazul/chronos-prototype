@@ -2,6 +2,15 @@
 import { ISidebarTab } from '@core/interfaces/sidebar/sidebar-tab.interfaz';
 export const visorTabsConfig: ISidebarTab[] = [
   {
+    id: 'filters',
+    title: 'Filtros de capas funcionales',
+    widget: () => import('@features/visor/components/visor-sidebar/visor-filters/visor-filters.component').then(m => m.VisorFiltersComponent),
+    openableSidebarNeeded: true,
+    largeSidebarNeeded: false,
+    icon: 'fg-layer-alt-edit fg-4x',
+    iconStyle: 'font-size: 1.5rem; line-height: 1;'
+  },
+  {
     id: 'layers',
     title: 'Commutador de capes',
     widget: () => import('@features/visor/components/visor-sidebar/visor-simple-toc/visor-simple-toc.component').then(m => m.VisorSimpleTocComponent),

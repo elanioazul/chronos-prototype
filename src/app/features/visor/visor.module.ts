@@ -15,6 +15,7 @@ import { VisorInfoComponent } from './components/visor-sidebar/visor-info/visor-
 import { SharedModule } from '@shared/shared.module';
 import { VisorSimpleTocComponent } from './components/visor-sidebar/visor-simple-toc/visor-simple-toc.component';
 import { SimpleLayerItemComponent } from './components/visor-sidebar/visor-simple-toc/simple-layer-item/simple-layer-item.component';
+import { VisorFiltersComponent } from './components/visor-sidebar/visor-filters/visor-filters.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { SimpleLayerItemComponent } from './components/visor-sidebar/visor-simpl
     VisorInfoComponent,
     VisorSimpleTocComponent,
     SimpleLayerItemComponent,
+    VisorFiltersComponent,
   ],
   imports: [CommonModule, VisorRoutingModule, SharedModule],
 })
