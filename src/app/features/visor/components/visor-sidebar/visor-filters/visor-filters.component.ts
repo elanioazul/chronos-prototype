@@ -2,10 +2,9 @@ import { Component, OnInit, computed, inject } from '@angular/core';
 import { MapService } from '@features/visor/core/services/map.service';
 import VectorSource from 'ol/source/Vector';
 import { TreeNode } from 'primeng/api/treenode';
-import Style from 'ol/style/Style';
-import Fill from 'ol/style/Fill';
-import Stroke from 'ol/style/Stroke';
 import { resourceStyle, resourceInvisibleStyle } from '../../../../visor/core/utils/ol-styles';
+import { Feature } from 'ol';
+import { Geometry } from 'ol/geom';
 
 @Component({
   selector: 'app-visor-filters',
@@ -19,47 +18,46 @@ export class VisorFiltersComponent implements OnInit {
   recursosLyr = computed(() => this.mapService.recursosLyr());
 
   recursosSource!: VectorSource;
+  features!: Feature<Geometry>[];
 
   NODEINSTANCE: TreeNode = {
-    label: 'TIPORECURSO',  // Adjust the label as needed
-    children: []  // Add any other properties as needed
+    label: 'TIPORECURSO',
+    children: []
   };
   treeNodes: TreeNode[] = [];
   selectedNodes: any;
 
+  uniqueTIPORECURSOValues = new Set<string>();
   tipoRecursoVisibilityMap: Map<string, boolean> = new Map();
 
   constructor() {
-    //console.log('sourceState' + this.recursosLyr()[0].ol.getSource()?.getState())
+    if (this.recursosLyr()[0].ol.getSource()?.getState() === 'ready')
+    this.obtainResourcesSource()
+  }
+
+  obtainResourcesSource(): void {
     const layerSource = this.recursosLyr()[0].ol.getSource();
     if (layerSource && layerSource instanceof VectorSource) {
       this.recursosSource = layerSource;
-      // console.log('Layer source is a VectorSource.');
-      // const features = layerSource.getFeatures()
-      // console.log(features);
-      // const format = layerSource.getFormat()
-      // console.log(format);
-      
-      // const featuresCollection = layerSource.getFeaturesCollection()
-      // console.log(featuresCollection);
-
-      // const featuresWayTwo  = layerSource.getFormat()?.readFeatures(layerSource);
-      // console.log('GeoJSON Features:', featuresWayTwo);
-      
     }
   }
 
   ngOnInit() {
-    const features = this.recursosSource.getFeatures();
+    this.processFeatures();
+    this.buildTreeNodes();
+  }
 
-    const uniqueTIPORECURSOValues = new Set<string>();
-    features.forEach(feature => {
+  processFeatures(): void {
+    this.features = this.recursosSource.getFeatures();
+    this.features.forEach(feature => {
       const tipoRecurso = feature.get('TIPORECURSO');
-      uniqueTIPORECURSOValues.add(tipoRecurso);
+      this.uniqueTIPORECURSOValues.add(tipoRecurso);
       this.tipoRecursoVisibilityMap.set(tipoRecurso, true);
     });
+  }
 
-    uniqueTIPORECURSOValues.forEach((value: string) => {
+  buildTreeNodes(): void {
+    this.uniqueTIPORECURSOValues.forEach((value: string) => {
       if (this.NODEINSTANCE.children) {
         const childNode: TreeNode = {
           label: value,
@@ -67,7 +65,6 @@ export class VisorFiltersComponent implements OnInit {
         };
         this.NODEINSTANCE.children.push(childNode);
       }
-
     });
 
     this.treeNodes.push(this.NODEINSTANCE);
@@ -83,18 +80,25 @@ export class VisorFiltersComponent implements OnInit {
   }
 
   onCheckboxIsSelected(event: any, node: TreeNode) {
-    this.tipoRecursoVisibilityMap.set(event.node.label, true)
-    this.updateFeatureVisibility(event.node.label);
+    this.tipoRecursoVisibilityMap.set(event.node.label, true);
+    if (event.node.label === 'TIPORECURSO') {
+      this.recursosLyr()[0].ol.setVisible(true)
+    } else {
+      this.updateFeatureVisibility(event.node.label);
+    }
   }
 
   onCheckboxIsUnSelected(event: any, node: TreeNode): void {
-    this.tipoRecursoVisibilityMap.set(event.node.label, false)
-    this.updateFeatureVisibility(event.node.label);
+    this.tipoRecursoVisibilityMap.set(event.node.label, false);
+    if (event.node.label === 'TIPORECURSO') {
+      this.recursosLyr()[0].ol.setVisible(false)
+    } else {
+      this.updateFeatureVisibility(event.node.label);
+    }
   }
 
   updateFeatureVisibility(tipo: string): void {
-    const features = this.recursosSource.getFeatures();
-    features.forEach(feat => {
+    this.features.forEach(feat => {
       const tipoRecurso = feat.get('TIPORECURSO');
       const isVisible = this.tipoRecursoVisibilityMap.get(tipoRecurso);
       if (tipo === tipoRecurso) {
