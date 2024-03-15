@@ -1,24 +1,22 @@
-<form [formGroup]="form">
-    <p-accordion expandIcon="pi pi-caret-right" collapseIcon="pi pi-caret-down">
-        <p-accordionTab>
-            <ng-template pTemplate="header">
-                <div class="flex align-items-center p-accordion-header">
-                    <p-checkbox formControlName="parentNodeState" [binary]="true"></p-checkbox>
-                    <i class="pi pi-calendar mr-2"></i>
-                    <span class="vertical-align-middle">ParentNode</span>
-                </div>
-            </ng-template>
-            <ng-template pTemplate="content">
-                <ng-container *ngFor="let tab of tabs">
-                    <div class="p-accordion-content">
-                        <div class="flex align-items-center p-accordion-header">
-                            <p-checkbox [formControlName]="tab.formControlName" [binary]="true"></p-checkbox>
-                            <i class="pi pi-calendar mr-2"></i>
-                            <span class="vertical-align-middle">{{tab.header}}</span>
-                        </div>
+<p-accordion expandIcon="pi pi-caret-right" collapseIcon="pi pi-caret-down" [formGroup]="form">
+    <p-accordionTab>
+        <ng-template pTemplate="header">
+            <div class="flex align-items-center p-accordion-header">
+                <p-checkbox formControlName="parentNodeState" [binary]="true"></p-checkbox>
+                <i class="pi pi-calendar mr-2"></i>
+                <span class="vertical-align-middle">ParentNode</span>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="content">
+            <ng-container *ngFor="let tab of tabs">
+                <div class="p-accordion-content">
+                    <div class="flex align-items-center p-accordion-header">
+                        <p-checkbox [formControlName]="tab.formControlName" [binary]="true"></p-checkbox>
+                        <i class="pi pi-calendar mr-2"></i>
+                        <span class="vertical-align-middle">{{tab.header}}</span>
                     </div>
-                </ng-container>
-            </ng-template>
-        </p-accordionTab>
-    </p-accordion>
-</form>
+                </div>
+            </ng-container>
+        </ng-template>
+    </p-accordionTab>
+</p-accordion>
