@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { VisorRoutingModule } from './visor-routing.module';
 import { VisorComponent } from './components/visor.component';
 import { VisorHeaderComponent } from './components/visor-header/visor-header.component';
@@ -17,6 +19,7 @@ import { VisorSimpleTocComponent } from './components/visor-sidebar/visor-simple
 import { SimpleLayerItemComponent } from './components/visor-sidebar/visor-simple-toc/simple-layer-item/simple-layer-item.component';
 import { VisorFiltersComponent } from './components/visor-sidebar/visor-filters/visor-filters.component';
 import { VisorFiltersCustomComponent } from './components/visor-sidebar/visor-filters-custom/visor-filters-custom.component';
+import { CheckboxAccordionComponent } from './components/visor-sidebar/visor-filters-custom/components/checkbox-accordion/checkbox-accordion.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +38,8 @@ import { VisorFiltersCustomComponent } from './components/visor-sidebar/visor-fi
     SimpleLayerItemComponent,
     VisorFiltersComponent,
     VisorFiltersCustomComponent,
+    CheckboxAccordionComponent,
   ],
-  imports: [CommonModule, VisorRoutingModule, SharedModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, VisorRoutingModule, SharedModule],
 })
 export default class VisorModule {}
