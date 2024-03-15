@@ -48,11 +48,11 @@ export class CheckboxAccordionComponent implements OnInit {
     this.form.get('parentNodeState')!.valueChanges.subscribe((checked: boolean) => {
       if (checked) {
         this.tabsMocked.forEach(tab => {
-          this.form.get(tab.formControlName)!.setValue(true);
+          this.form.get(tab.formControlName)!.setValue(true, { emitEvent: false });
         });
       } else {
         this.tabsMocked.forEach(tab => {
-          this.form.get(tab.formControlName)!.setValue(false);
+          this.form.get(tab.formControlName)!.setValue(false, { emitEvent: false });
         });
       }
     });
