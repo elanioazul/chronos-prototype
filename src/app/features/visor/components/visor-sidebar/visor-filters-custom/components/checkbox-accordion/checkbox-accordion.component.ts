@@ -2,8 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder }  from '@angular/forms';
 interface AccordionTab {
   header: string;
-  //content: string;
-  formControl: FormControl;
+  formControlName: string
 }
 @Component({
   selector: 'app-checkbox-accordion',
@@ -15,40 +14,48 @@ export class CheckboxAccordionComponent implements OnInit {
   tabsMocked: AccordionTab[] = [
     {
       header: 'Tab 1',
-      formControl: new FormControl(false)
+      formControlName: 'tab1'
     },
     {
       header: 'Tab 2',
-      formControl: new FormControl(true)
+      formControlName: 'tab2'
     },
     {
       header: 'Tab 3',
-      formControl: new FormControl(false)
+      formControlName: 'tab3'
     }
   ];
   @Input() tabs: AccordionTab[] = this.tabsMocked;
-  @Output() checkboxChange = new EventEmitter<boolean>();
+  @Output() accodionControlChange = new EventEmitter<FormGroup>();
 
   form: FormGroup;
 
   constructor(private formBuilder: FormBuilder) {
-    this.form = this.formBuilder.group({
-      parentNodeState: false
+    const formGroupConfig = {
+      parentNodeState: [false]
+    };
+    this.tabsMocked.forEach(tab => {
+      formGroupConfig[tab.formControlName] = [false];
     });
-  }
-  ngOnInit(): void {
-    this.form.valueChanges.subscribe(value => console.log(value));
+    this.form = this.formBuilder.group(formGroupConfig);
   }
 
-  onCheckboxChange(checked: boolean) {
-    this.checkboxChange.emit(checked);
-    this.tabs.forEach(tab => {
-      tab.formControl.setValue(checked);
+  ngOnInit(): void {
+    this.form.valueChanges.subscribe(value => {
+      this.accodionControlChange.emit(value);
+      console.log(value);
     });
-  }
-  onCheckboxChildChange(checked: boolean) {
-    console.log('child checkbox clicked');
-    
+    this.form.get('parentNodeState')!.valueChanges.subscribe((checked: boolean) => {
+      if (checked) {
+        this.tabsMocked.forEach(tab => {
+          this.form.get(tab.formControlName)!.setValue(true);
+        });
+      } else {
+        this.tabsMocked.forEach(tab => {
+          this.form.get(tab.formControlName)!.setValue(false);
+        });
+      }
+    });
   }
 
 }
