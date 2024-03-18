@@ -34,7 +34,7 @@ export class CheckboxAccordionComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder) {
     const formGroupConfig = {
-      parentNodeState: [false]
+      accordionState: [false]
     };
     this.tabsMocked.forEach(tab => {
       formGroupConfig[tab.formControlName] = [false];
@@ -47,7 +47,7 @@ export class CheckboxAccordionComponent implements OnInit {
       this.accodionControlChange.emit(value);
       console.log(value);
     });
-    this.form.get('parentNodeState')!.valueChanges.subscribe((checked: boolean) => {
+    this.form.get('accordionState')!.valueChanges.subscribe((checked: boolean) => {
       if (checked) {
         this.tabsMocked.forEach(tab => {
           this.form.get(tab.formControlName)!.setValue(true, { emitEvent: false });
