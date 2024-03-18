@@ -1,9 +1,10 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder }  from '@angular/forms';
 interface AccordionTab {
-  header: string;
+  title: string;
   formControlName: string
 }
+
 @Component({
   selector: 'app-checkbox-accordion',
   templateUrl: './checkbox-accordion.component.html',
@@ -13,19 +14,20 @@ export class CheckboxAccordionComponent implements OnInit {
 
   tabsMocked: AccordionTab[] = [
     {
-      header: 'Tab 1',
-      formControlName: 'tab1'
+      title: 'Tab 1 title',
+      formControlName: 'tab1State'
     },
     {
-      header: 'Tab 2',
-      formControlName: 'tab2'
+      title: 'Tab 2 title',
+      formControlName: 'tab2State'
     },
     {
-      header: 'Tab 3',
-      formControlName: 'tab3'
+      title: 'Tab 3 title',
+      formControlName: 'tab3State'
     }
   ];
-  @Input() tabs: AccordionTab[] = this.tabsMocked;
+  @Input() accordionTabs: AccordionTab[] = this.tabsMocked;
+  @Input() accordionTitle: string = 'accordion title';
   @Output() accodionControlChange = new EventEmitter<FormGroup>();
 
   form: FormGroup;
