@@ -1,9 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder }  from '@angular/forms';
-interface AccordionTab {
-  title: string;
-  formControlName: string
-}
+import { AccordionTabForm } from '@features/visor/core/interfaces/sidebar/accordion-filter-tab';
 
 @Component({
   selector: 'app-checkbox-accordion',
@@ -11,53 +8,40 @@ interface AccordionTab {
   styleUrls: ['./checkbox-accordion.component.scss']
 })
 export class CheckboxAccordionComponent implements OnInit {
-
-  tabsMocked: AccordionTab[] = [
-    {
-      title: 'Tab 1 title',
-      formControlName: 'tab1State'
-    },
-    {
-      title: 'Tab 2 title',
-      formControlName: 'tab2State'
-    },
-    {
-      title: 'Tab 3 title',
-      formControlName: 'tab3State'
-    }
-  ];
-  @Input() accordionTabs: AccordionTab[] = this.tabsMocked;
+  @Input() accordionTabs!: AccordionTabForm[];
   @Input() accordionTitle: string = 'accordion title';
   @Output() accodionControlChange = new EventEmitter<FormGroup>();
 
-  form: FormGroup;
+  form!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
-    const formGroupConfig = {
-      accordionState: [false]
-    };
-    this.tabsMocked.forEach(tab => {
-      formGroupConfig[tab.formControlName] = [false];
-    });
-    this.form = this.formBuilder.group(formGroupConfig);
-  }
+  constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
+    this.initForm();
     this.form.valueChanges.subscribe(value => {
       this.accodionControlChange.emit(value);
-      console.log(value);
     });
     this.form.get('accordionState')!.valueChanges.subscribe((checked: boolean) => {
       if (checked) {
-        this.tabsMocked.forEach(tab => {
+        this.accordionTabs.forEach(tab => {
           this.form.get(tab.formControlName)!.setValue(true, { emitEvent: false });
         });
       } else {
-        this.tabsMocked.forEach(tab => {
+        this.accordionTabs.forEach(tab => {
           this.form.get(tab.formControlName)!.setValue(false, { emitEvent: false });
         });
       }
     });
+  }
+
+  initForm(): void {
+    const formGroupConfig = {
+      accordionState: [false]
+    };
+    this.accordionTabs.forEach(tab => {
+      formGroupConfig[tab.formControlName] = [false];
+    });
+    this.form = this.formBuilder.group(formGroupConfig);
   }
 
 }
