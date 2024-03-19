@@ -17,9 +17,9 @@ import { VisorInfoComponent } from './components/visor-sidebar/visor-info/visor-
 import { SharedModule } from '@shared/shared.module';
 import { VisorSimpleTocComponent } from './components/visor-sidebar/visor-simple-toc/visor-simple-toc.component';
 import { SimpleLayerItemComponent } from './components/visor-sidebar/visor-simple-toc/simple-layer-item/simple-layer-item.component';
-import { VisorFiltersComponent } from './components/visor-sidebar/visor-filters/visor-filters.component';
-import { VisorFiltersCustomComponent } from './components/visor-sidebar/visor-filters-custom/visor-filters-custom.component';
-import { CheckboxAccordionComponent } from './components/visor-sidebar/visor-filters-custom/components/checkbox-accordion/checkbox-accordion.component';
+import { VisorFiltersTreeComponent } from './components/visor-sidebar/visor-filters-tree/visor-filters-tree.component';
+import { VisorFiltersAccordionReactiveFormComponent } from './components/visor-sidebar/visor-filters-accordion-reactive-form/visor-filters-accordion-reactive-form.component';
+import { CheckboxAccordionComponent } from './components/visor-sidebar/visor-filters-accordion-reactive-form/components/checkbox-accordion/checkbox-accordion.component';
 
 @NgModule({
   declarations: [
@@ -36,10 +36,16 @@ import { CheckboxAccordionComponent } from './components/visor-sidebar/visor-fil
     VisorInfoComponent,
     VisorSimpleTocComponent,
     SimpleLayerItemComponent,
-    VisorFiltersComponent,
-    VisorFiltersCustomComponent,
+    VisorFiltersTreeComponent,
+    VisorFiltersAccordionReactiveFormComponent,
     CheckboxAccordionComponent,
   ],
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, VisorRoutingModule, SharedModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    VisorRoutingModule,
+    SharedModule,
+  ],
 })
 export default class VisorModule {}
