@@ -65,7 +65,12 @@ export class VisorSidebarComponent implements AfterViewInit {
           component: () => import('@features/visor/components/visor-sidebar-tab/visor-sidebar-tab.component').then(m => m.VisorSidebarTabComponent),
           inputs: visorTabsConfig.find(item => item['id'] === type)!
         }
-      case 'filters':
+      case 'filters-tree':
+        return {
+          component: () => import('@features/visor/components/visor-sidebar-tab/visor-sidebar-tab.component').then(m => m.VisorSidebarTabComponent),
+          inputs: visorTabsConfig.find(item => item['id'] === type)!
+        }
+      case 'filters-accordion-reactive-form':
         return {
           component: () => import('@features/visor/components/visor-sidebar-tab/visor-sidebar-tab.component').then(m => m.VisorSidebarTabComponent),
           inputs: visorTabsConfig.find(item => item['id'] === type)!

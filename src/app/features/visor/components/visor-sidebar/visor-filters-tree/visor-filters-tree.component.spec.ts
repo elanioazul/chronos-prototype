@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { VisorFiltersComponent } from './visor-filters.component';
+import { VisorFiltersComponent } from './visor-filters-tree.component';
 
 describe('VisorFiltersComponent', () => {
   let component: VisorFiltersComponent;
@@ -8,7 +8,7 @@ describe('VisorFiltersComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [VisorFiltersComponent]
+      declarations: [VisorFiltersComponent],
     });
     fixture = TestBed.createComponent(VisorFiltersComponent);
     component = fixture.componentInstance;

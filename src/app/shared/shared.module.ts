@@ -27,6 +27,7 @@ import { PaginatorModule } from 'primeng/paginator';
 import { TreeModule } from 'primeng/tree';
 import { CheckboxModule } from 'primeng/checkbox';
 import { SliderModule } from 'primeng/slider';
+import { AccordionModule } from 'primeng/accordion';
 //Primeng customized components
 import { TableComponent } from './primeng/table/table.component';
 
@@ -57,7 +58,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     PaginatorModule,
     TreeModule,
     CheckboxModule,
-    SliderModule
+    SliderModule,
+    AccordionModule
   ],
   exports: [
     MessagesModule,
@@ -77,7 +79,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     TreeModule,
     CheckboxModule,
     SliderModule,
-    DragDropModule
+    DragDropModule,
+    AccordionModule
   ],
 })
 export class SharedModule {
