@@ -63,6 +63,8 @@ export class VisorFiltersAccordionReactiveFormComponent implements OnInit {
     if (val.accordionState == true && !allTrue(val)) {
       falseKeys(val).forEach((tab: string) => this.featVisibilityService.recursosFeatureTabsVisibility.set(tab, false));
       falseKeys(val).forEach((tab: string) => this.featVisibilityService.updateFeatureVisibility(tab))
+      trueKeys(val).forEach((tab: string) => this.featVisibilityService.recursosFeatureTabsVisibility.set(tab, true));
+      trueKeys(val).forEach((tab: string) => this.featVisibilityService.updateFeatureVisibility(tab));
       if (this.recursosLyr()[0].ol.isVisible() == false) {
         this.recursosLyr()[0].ol.setVisible(true);
       }
@@ -70,7 +72,9 @@ export class VisorFiltersAccordionReactiveFormComponent implements OnInit {
     //4 val.accordionState == false y alguna tab = true => toggle ese tipo de features visibility y minus symbol en accordionState
     if (val.accordionState == false && !allFalse(val)) {
       trueKeys(val).forEach((tab: string) => this.featVisibilityService.recursosFeatureTabsVisibility.set(tab, true));
-      trueKeys(val).forEach((tab: string) => this.featVisibilityService.updateFeatureVisibility(tab))
+      trueKeys(val).forEach((tab: string) => this.featVisibilityService.updateFeatureVisibility(tab));
+      falseKeys(val).forEach((tab: string) => this.featVisibilityService.recursosFeatureTabsVisibility.set(tab, false));
+      falseKeys(val).forEach((tab: string) => this.featVisibilityService.updateFeatureVisibility(tab))
       if (this.recursosLyr()[0].ol.isVisible() == false) {
         this.recursosLyr()[0].ol.setVisible(true);
       }
