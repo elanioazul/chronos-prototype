@@ -13,7 +13,7 @@ import {AccordionOutput} from '@features/visor/core/types/accordion-output.type'
 })
 export class VisorFiltersAccordionReactiveFormComponent implements OnInit {
   mapService = inject(MapService);
-  featuresVisibilityService = inject(FeaturesVisibilityService);
+  featVisibilityService = inject(FeaturesVisibilityService);
 
   //aqui todas las capas del state que queramos gestionar en la leyenda-toc
   recursosLyr = computed(() => this.mapService.recursosLyr());
@@ -28,8 +28,8 @@ export class VisorFiltersAccordionReactiveFormComponent implements OnInit {
     if (this.recursosLyr()[0].ol.getSource()?.getState() === 'ready' && this.recursosLyr()[0].ol.getSource() instanceof VectorSource) {
       const recursosSource = this.recursosLyr()[0].ol.getSource();
       if (recursosSource && recursosSource instanceof VectorSource) {
-        this.featuresVisibilityService.manageResourcesFeatures(recursosSource);
-         this.featuresVisibilityService.recursosFeatureTabsNames.forEach(item => {
+        this.featVisibilityService.manageResourcesFeatures(recursosSource);
+         this.featVisibilityService.recursosFeatureTabsNames.forEach(item => {
           const accordionTab: AccordionTabForm = {
             formControlName: item 
           };
@@ -50,37 +50,31 @@ export class VisorFiltersAccordionReactiveFormComponent implements OnInit {
     //1 val.accordionState == true y resto de tabs = true => toggle all features visibility
     if (allTrue(val)) {
       this.recursosLyr()[0].ol.setVisible(true);
-      this.featuresVisibilityService.setAllResourcesFeaturesVisible();
+      this.featVisibilityService.toggleResourcesFeaturesVisibility(val.accordionState);
       
     }
     //2 val.accordionState == false y resto de tabs = false => toggle all features visibility
     if (allFalse(val)) {
       this.recursosLyr()[0].ol.setVisible(false);
-      this.featuresVisibilityService.setAllResourcesFeaturesInvisible()
+      this.featVisibilityService.toggleResourcesFeaturesVisibility(val.accordionState)
       
     }
     //3 val.accordionState == true y alguna tab = false => toggle ese tipo de features visibility y minus symbol en accordionState
     if (val.accordionState == true && !allTrue(val)) {
-      falseKeys(val).forEach((val: string) => this.featuresVisibilityService.recursosFeatureTabsVisibility.set(val, false));
-      falseKeys(val).forEach((val: string) => this.featuresVisibilityService.updateFeatureVisibility(val))
+      falseKeys(val).forEach((tab: string) => this.featVisibilityService.recursosFeatureTabsVisibility.set(tab, false));
+      falseKeys(val).forEach((tab: string) => this.featVisibilityService.updateFeatureVisibility(tab))
       if (this.recursosLyr()[0].ol.isVisible() == false) {
         this.recursosLyr()[0].ol.setVisible(true);
       }
     }
     //4 val.accordionState == false y alguna tab = true => toggle ese tipo de features visibility y minus symbol en accordionState
     if (val.accordionState == false && !allFalse(val)) {
-      trueKeys(val).forEach((val: string) => this.featuresVisibilityService.recursosFeatureTabsVisibility.set(val, true));
-      trueKeys(val).forEach((val: string) => this.featuresVisibilityService.updateFeatureVisibility(val))
+      trueKeys(val).forEach((tab: string) => this.featVisibilityService.recursosFeatureTabsVisibility.set(tab, true));
+      trueKeys(val).forEach((tab: string) => this.featVisibilityService.updateFeatureVisibility(tab))
       if (this.recursosLyr()[0].ol.isVisible() == false) {
         this.recursosLyr()[0].ol.setVisible(true);
       }
     }
-
-    
-  }
-
-  getKeyByValue(object: AccordionOutput, value) {
-    return Object.keys(object).find(key => object[key] === value);
   }
 
 

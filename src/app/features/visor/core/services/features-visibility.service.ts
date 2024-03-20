@@ -26,8 +26,8 @@ export class FeaturesVisibilityService {
 
   recursosSource!: VectorSource;
   recursosFeatures!: Feature<Geometry>[];
-  recursosFeaturesAccordionName!: string;
 
+  recursosFeaturesAccordionName!: string;
   recursosFeatureTabsNames: Set<string> = new Set<string>();
   //recursosFeatureTabsNamesSignal = signal<string[]>([]);
 
@@ -52,23 +52,12 @@ export class FeaturesVisibilityService {
       // this.changeVisibilityToTab(visibilityObj);
       this.recursosFeatureTabsVisibility.set(tipoRecurso, true)
     });
-    console.log(this.recursosFeatureTabsVisibility);
-    
   }
 
-  setAllResourcesFeaturesVisible(): void {
+  toggleResourcesFeaturesVisibility(val: boolean): void {
     this.recursosFeatures.forEach((feature) => {
       const tipoRecurso = feature.get('TIPORECURSO');
-      this.recursosFeatureTabsVisibility.set(tipoRecurso, true);
-      const isVisible = this.recursosFeatureTabsVisibility.get(tipoRecurso);
-      feature.setStyle(isVisible ? resourceStyle : resourceInvisibleStyle);
-    });
-  }
-
-  setAllResourcesFeaturesInvisible(): void {
-    this.recursosFeatures.forEach((feature) => {
-      const tipoRecurso = feature.get('TIPORECURSO');
-      this.recursosFeatureTabsVisibility.set(tipoRecurso, false);
+      this.recursosFeatureTabsVisibility.set(tipoRecurso, val);
       const isVisible = this.recursosFeatureTabsVisibility.get(tipoRecurso);
       feature.setStyle(isVisible ? resourceStyle : resourceInvisibleStyle);
     });
