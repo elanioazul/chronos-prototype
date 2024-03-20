@@ -25,26 +25,25 @@ export class FeaturesVisibilityService {
   recursosTabs: Array<AccordionTabForm> = [];
   recursosFeaturesAccordionName!: string;
   recursosFeatureTabsNames: Set<string> = new Set<string>();
-
   //state
   recursosFeatureTabsVisibility: Map<string, boolean> = new Map();
 
   constructor() {
+    //habrá que hacer esto por cada capa que vaya a la leyenda-toc
+    this.checkResourcesSource();
+  }
+
+  checkResourcesSource(): void {
     if (this.recursosLyr()[0].ol.getSource()?.getState() === 'ready' && this.recursosLyr()[0].ol.getSource() instanceof VectorSource) {
       const recursosSource = this.recursosLyr()[0].ol.getSource();
       if (recursosSource && recursosSource instanceof VectorSource) {
-        this.manageResourcesFeatures(recursosSource);
-        this.recursosFeatureTabsNames.forEach(item => {
-          const accordionTab: AccordionTabForm = {
-            formControlName: item 
-          };
-          this.recursosTabs.push(accordionTab)
-         })
+        this.parseResourcesFeatures(recursosSource);
+        this.buildResourcesFeaturesAccordionTabs();
       }
     }
   }
 
-  manageResourcesFeatures(source: VectorSource): void {
+  parseResourcesFeatures(source: VectorSource): void {
     this.recursosSource = source;
     this.recursosFeatures = source.getFeatures();
     this.recursosFeatures.forEach((feature) => {
@@ -53,6 +52,15 @@ export class FeaturesVisibilityService {
       this.recursosFeatureTabsNames.add(tipoRecurso);
       this.recursosFeatureTabsVisibility.set(tipoRecurso, true)
     });
+  }
+
+  buildResourcesFeaturesAccordionTabs(): void {
+    this.recursosFeatureTabsNames.forEach(item => {
+      const accordionTab: AccordionTabForm = {
+        formControlName: item 
+      };
+      this.recursosTabs.push(accordionTab)
+     })
   }
 
   toggleResourcesFeaturesVisibility(val: boolean): void {
