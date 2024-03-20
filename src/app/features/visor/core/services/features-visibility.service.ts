@@ -7,6 +7,7 @@ import {
   resourceStyle,
   resourceInvisibleStyle,
 } from '../../core/utils/ol-styles';
+import { AccordionTabForm } from '@features/visor/core/interfaces/sidebar/accordion-filter-tab';
 interface Tabvisibility {
   name: string,
   isVisible: boolean
@@ -15,28 +16,33 @@ interface Tabvisibility {
   providedIn: 'root'
 })
 export class FeaturesVisibilityService {
-  /*
-  este servicio va a coger todas las sources de las capas vectoriales en la leyenda-toc 
-  y va a hacer 
-  - una signal con el Set de valores unicos y
-  - un Map con la visibilidad en la toc por cada valor único
-  lo va a hacer tras recibir la source por cada capa vectorial que vaya a la leyenda-toc
-  */
+  mapService = inject(MapService);
 
-
+  recursosLyr = computed(() => this.mapService.recursosLyr());
   recursosSource!: VectorSource;
   recursosFeatures!: Feature<Geometry>[];
 
+  recursosTabs: Array<AccordionTabForm> = [];
   recursosFeaturesAccordionName!: string;
   recursosFeatureTabsNames: Set<string> = new Set<string>();
-  //recursosFeatureTabsNamesSignal = signal<string[]>([]);
 
   //state
   recursosFeatureTabsVisibility: Map<string, boolean> = new Map();
-  //recursosFeatureTabsVisibilitySignal = signal<Tabvisibility[]>([]);
-  //recursosFeatureTabsVisibility: Array<Tabvisibility> = [];
 
-  constructor() { }
+  constructor() {
+    if (this.recursosLyr()[0].ol.getSource()?.getState() === 'ready' && this.recursosLyr()[0].ol.getSource() instanceof VectorSource) {
+      const recursosSource = this.recursosLyr()[0].ol.getSource();
+      if (recursosSource && recursosSource instanceof VectorSource) {
+        this.manageResourcesFeatures(recursosSource);
+        this.recursosFeatureTabsNames.forEach(item => {
+          const accordionTab: AccordionTabForm = {
+            formControlName: item 
+          };
+          this.recursosTabs.push(accordionTab)
+         })
+      }
+    }
+  }
 
   manageResourcesFeatures(source: VectorSource): void {
     this.recursosSource = source;
@@ -45,11 +51,6 @@ export class FeaturesVisibilityService {
       const tipoRecurso: string = feature.get('TIPORECURSO');
       this.recursosFeaturesAccordionName = 'TIPORECURSO';
       this.recursosFeatureTabsNames.add(tipoRecurso);
-      // const visibilityObj: Tabvisibility = {
-      //   name: tipoRecurso,
-      //   isVisible: false
-      // };
-      // this.changeVisibilityToTab(visibilityObj);
       this.recursosFeatureTabsVisibility.set(tipoRecurso, true)
     });
   }
@@ -72,8 +73,4 @@ export class FeaturesVisibilityService {
       }
     });
   }
-
-  // changeVisibilityToTab(tab: Tabvisibility): void {
-  //   this.recursosFeatureTabsVisibilitySignal.update(tabs => [...tabs, tab])
-  // }
 }
