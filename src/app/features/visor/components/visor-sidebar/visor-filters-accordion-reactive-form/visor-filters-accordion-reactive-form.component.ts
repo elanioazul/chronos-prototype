@@ -41,7 +41,7 @@ export class VisorFiltersAccordionReactiveFormComponent implements OnInit {
 
 
   onAccordionControlChange(val: AccordionOutput) {
-    console.log('Accordion control changed:', val);
+    //console.log('Accordion control changed:', val);
     const allTrue = (obj: AccordionOutput) => Object.values(obj).every(value => value === true);
     const allFalse = (obj: AccordionOutput) => Object.values(obj).every(value => value === false);
     const falseKeys = (obj: AccordionOutput) =>  Object.keys(obj).filter(key => !obj[key]);
@@ -49,27 +49,31 @@ export class VisorFiltersAccordionReactiveFormComponent implements OnInit {
     //casos
     //1 val.accordionState == true y resto de tabs = true => toggle all features visibility
     if (allTrue(val)) {
-      console.log('toggle all features visibility (visible)');
+      this.recursosLyr()[0].ol.setVisible(true);
+      this.featuresVisibilityService.setAllResourcesFeaturesVisible();
       
     }
     //2 val.accordionState == false y resto de tabs = false => toggle all features visibility
     if (allFalse(val)) {
-      console.log('toggle all features visibility (no visible)');
+      this.recursosLyr()[0].ol.setVisible(false);
+      this.featuresVisibilityService.setAllResourcesFeaturesInvisible()
       
     }
     //3 val.accordionState == true y alguna tab = false => toggle ese tipo de features visibility y minus symbol en accordionState
     if (val.accordionState == true && !allTrue(val)) {
-      console.log('toggle ese tipo de features visibility (no visible) y minus symbol en accordionState');
-      console.log(falseKeys(val));
-      
-      
+      falseKeys(val).forEach((val: string) => this.featuresVisibilityService.recursosFeatureTabsVisibility.set(val, false));
+      falseKeys(val).forEach((val: string) => this.featuresVisibilityService.updateFeatureVisibility(val))
+      if (this.recursosLyr()[0].ol.isVisible() == false) {
+        this.recursosLyr()[0].ol.setVisible(true);
+      }
     }
     //4 val.accordionState == false y alguna tab = true => toggle ese tipo de features visibility y minus symbol en accordionState
     if (val.accordionState == false && !allFalse(val)) {
-      console.log('toggle ese tipo de features visibility (no visible) y minus symbol en accordionState');
-      console.log(trueKeys(val));
-      
-      
+      trueKeys(val).forEach((val: string) => this.featuresVisibilityService.recursosFeatureTabsVisibility.set(val, true));
+      trueKeys(val).forEach((val: string) => this.featuresVisibilityService.updateFeatureVisibility(val))
+      if (this.recursosLyr()[0].ol.isVisible() == false) {
+        this.recursosLyr()[0].ol.setVisible(true);
+      }
     }
 
     

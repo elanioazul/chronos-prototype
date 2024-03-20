@@ -3,7 +3,10 @@ import { MapService } from '@features/visor/core/services/map.service';
 import VectorSource from 'ol/source/Vector';
 import { Feature } from 'ol';
 import { Geometry } from 'ol/geom';
-
+import {
+  resourceStyle,
+  resourceInvisibleStyle,
+} from '../../core/utils/ol-styles';
 interface Tabvisibility {
   name: string,
   isVisible: boolean
@@ -51,6 +54,34 @@ export class FeaturesVisibilityService {
     });
     console.log(this.recursosFeatureTabsVisibility);
     
+  }
+
+  setAllResourcesFeaturesVisible(): void {
+    this.recursosFeatures.forEach((feature) => {
+      const tipoRecurso = feature.get('TIPORECURSO');
+      this.recursosFeatureTabsVisibility.set(tipoRecurso, true);
+      const isVisible = this.recursosFeatureTabsVisibility.get(tipoRecurso);
+      feature.setStyle(isVisible ? resourceStyle : resourceInvisibleStyle);
+    });
+  }
+
+  setAllResourcesFeaturesInvisible(): void {
+    this.recursosFeatures.forEach((feature) => {
+      const tipoRecurso = feature.get('TIPORECURSO');
+      this.recursosFeatureTabsVisibility.set(tipoRecurso, false);
+      const isVisible = this.recursosFeatureTabsVisibility.get(tipoRecurso);
+      feature.setStyle(isVisible ? resourceStyle : resourceInvisibleStyle);
+    });
+  }
+
+  updateFeatureVisibility(tipo: string): void {
+    this.recursosFeatures.forEach((feat) => {
+      const tipoRecurso = feat.get('TIPORECURSO');
+      const isVisible = this.recursosFeatureTabsVisibility.get(tipoRecurso);
+      if (tipo === tipoRecurso) {
+        feat.setStyle(isVisible ? resourceStyle : resourceInvisibleStyle);
+      }
+    });
   }
 
   // changeVisibilityToTab(tab: Tabvisibility): void {
