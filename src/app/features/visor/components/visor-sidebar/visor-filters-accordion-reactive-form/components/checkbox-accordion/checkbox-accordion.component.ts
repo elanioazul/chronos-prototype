@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder }  from '@angular/forms';
 import { AccordionTabForm } from '@features/visor/core/interfaces/sidebar/accordion-filter-tab';
-
+import {AccordionOutput} from '@features/visor/core/types/accordion-output.type';
 @Component({
   selector: 'app-checkbox-accordion',
   templateUrl: './checkbox-accordion.component.html',
@@ -10,7 +10,7 @@ import { AccordionTabForm } from '@features/visor/core/interfaces/sidebar/accord
 export class CheckboxAccordionComponent implements OnInit {
   @Input() accordionTabs!: AccordionTabForm[];
   @Input() accordionTitle: string = 'accordion title';
-  @Output() accodionControlChange = new EventEmitter<FormGroup>();
+  @Output() accodionControlChange = new EventEmitter<AccordionOutput>();
 
   form!: FormGroup;
 

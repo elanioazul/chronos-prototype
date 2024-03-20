@@ -3,6 +3,11 @@ import { MapService } from '@features/visor/core/services/map.service';
 import VectorSource from 'ol/source/Vector';
 import { Feature } from 'ol';
 import { Geometry } from 'ol/geom';
+
+interface Tabvisibility {
+  name: string,
+  isVisible: boolean
+}
 @Injectable({
   providedIn: 'root'
 })
@@ -19,8 +24,14 @@ export class FeaturesVisibilityService {
   recursosSource!: VectorSource;
   recursosFeatures!: Feature<Geometry>[];
   recursosFeaturesAccordionName!: string;
+
   recursosFeatureTabsNames: Set<string> = new Set<string>();
-  recursosFeatureVisibilityMap: Map<string, boolean> = new Map();
+  //recursosFeatureTabsNamesSignal = signal<string[]>([]);
+
+  //state
+  recursosFeatureTabsVisibility: Map<string, boolean> = new Map();
+  //recursosFeatureTabsVisibilitySignal = signal<Tabvisibility[]>([]);
+  //recursosFeatureTabsVisibility: Array<Tabvisibility> = [];
 
   constructor() { }
 
@@ -28,10 +39,21 @@ export class FeaturesVisibilityService {
     this.recursosSource = source;
     this.recursosFeatures = source.getFeatures();
     this.recursosFeatures.forEach((feature) => {
-      const tipoRecurso = feature.get('TIPORECURSO');
+      const tipoRecurso: string = feature.get('TIPORECURSO');
       this.recursosFeaturesAccordionName = 'TIPORECURSO';
       this.recursosFeatureTabsNames.add(tipoRecurso);
-      this.recursosFeatureVisibilityMap.set(tipoRecurso, true);
+      // const visibilityObj: Tabvisibility = {
+      //   name: tipoRecurso,
+      //   isVisible: false
+      // };
+      // this.changeVisibilityToTab(visibilityObj);
+      this.recursosFeatureTabsVisibility.set(tipoRecurso, true)
     });
+    console.log(this.recursosFeatureTabsVisibility);
+    
   }
+
+  // changeVisibilityToTab(tab: Tabvisibility): void {
+  //   this.recursosFeatureTabsVisibilitySignal.update(tabs => [...tabs, tab])
+  // }
 }
