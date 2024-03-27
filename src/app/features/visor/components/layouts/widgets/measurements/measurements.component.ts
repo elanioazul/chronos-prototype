@@ -63,6 +63,7 @@ export class MeasurementsComponent extends WidgetComponent implements OnInit, On
   }
 
   ngOnDestroy(): void {
+    console.log('ngDestroy measurements comp time');
     this.unSubscribe.next();
     this.unSubscribe.complete();
     this.map().removeOverlay(this.tooltip);
@@ -74,6 +75,7 @@ export class MeasurementsComponent extends WidgetComponent implements OnInit, On
   }
 
   ngOnInit(): void {
+    console.log('ngOninit measurements comp');
     this.addInteractions();
     this.tooltip = new Tooltip({
       formatArea: this.formatArea,

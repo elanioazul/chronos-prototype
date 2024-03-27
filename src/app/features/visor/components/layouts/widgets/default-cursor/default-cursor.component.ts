@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { CursorStyle } from '@features/visor/core/enums/cursor.enum';
 import { WidgetComponent } from '../widgets-warehouse/widget/widget.component';
 
@@ -7,15 +7,18 @@ import { WidgetComponent } from '../widgets-warehouse/widget/widget.component';
   templateUrl: './default-cursor.component.html',
   styleUrls: ['./default-cursor.component.scss']
 })
-export class DefaultCursorComponent extends WidgetComponent {
+export class DefaultCursorComponent extends WidgetComponent implements OnInit, OnDestroy {
   
   constructor() {
     super();
-    console.log('constructor dragZoom comp');
+    console.log('constructor defaultCursor comp');
   }
   ngOnInit(): void {
-    console.log('ngOninit dragZoom comp');
+    console.log('ngOninit defaultCursor comp');
     
+  }
+  ngOnDestroy(): void {
+    console.log('ngDestroy defaultCursor comp time');
   }
 
   override onClick(): void {

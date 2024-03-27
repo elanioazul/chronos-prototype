@@ -10,7 +10,7 @@ import { WidgetComponent } from '../widgets-warehouse/widget/widget.component';
   templateUrl: './drag-zoom.component.html',
   styleUrls: ['./drag-zoom.component.scss']
 })
-export class DragZoomComponent extends WidgetComponent implements OnInit/*, OnDestroy*/ {
+export class DragZoomComponent extends WidgetComponent implements OnInit, OnDestroy {
   
   private dragZoom: DragZoom;
   private tooltip: Tooltip;
@@ -29,9 +29,10 @@ export class DragZoomComponent extends WidgetComponent implements OnInit/*, OnDe
     
   }
   
-  // ngOnDestroy(): void {
-  //   this.disableDragZoom();
-  // }
+  ngOnDestroy(): void {
+    this.disableDragZoom();
+    console.log('ngDestroy dragZoom comp time');
+  }
 
   override onClick(): void {
     console.log('eee clicked from dragZoom component');

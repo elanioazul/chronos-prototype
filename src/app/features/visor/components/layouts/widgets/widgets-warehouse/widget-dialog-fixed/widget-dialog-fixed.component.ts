@@ -1,4 +1,4 @@
-import { Component, ComponentRef, ElementRef, Input, ViewChild, ViewContainerRef, computed, inject } from '@angular/core';
+import { Component, ComponentRef, ElementRef, Input, OnDestroy, OnInit, ViewChild, ViewContainerRef, computed, inject } from '@angular/core';
 import { widgetsIndex } from '@features/visor/core/consts/widgets-dictionary';
 import { IWidget } from '@features/visor/core/interfaces/widgets/widget.interfaz';
 import { VisorService } from '@features/visor/core/services/visor.service';
@@ -9,7 +9,7 @@ import { WidgetComponent } from '../widget/widget.component';
   templateUrl: './widget-dialog-fixed.component.html',
   styleUrls: ['./widget-dialog-fixed.component.scss']
 })
-export class WidgetDialogFixedComponent {
+export class WidgetDialogFixedComponent implements OnInit, OnDestroy {
   
   visorService = inject(VisorService);
   mapActiveWidget = computed(() => this.visorService.mapActiveWidget());
@@ -36,6 +36,12 @@ export class WidgetDialogFixedComponent {
   ngOnInit(): void {
     this.loadComponent();
     this.div = this.fixedDialogTargetDiv()?.nativeElement;
+    
+  }
+
+  ngOnDestroy(): void {
+    console.log('widget dialog fixed destroy time');
+    this.newComponent.destroy;
     
   }
 

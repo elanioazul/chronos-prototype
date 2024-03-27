@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { CursorStyle } from '@features/visor/core/enums/cursor.enum';
 import { WidgetComponent } from '../widgets-warehouse/widget/widget.component';
 
@@ -7,7 +7,7 @@ import { WidgetComponent } from '../widgets-warehouse/widget/widget.component';
   templateUrl: './zoom-out.component.html',
   styleUrls: ['./zoom-out.component.scss']
 })
-export class ZoomOutComponent extends WidgetComponent {
+export class ZoomOutComponent extends WidgetComponent implements OnInit, OnDestroy {
 
   constructor() {
     super();
@@ -16,6 +16,10 @@ export class ZoomOutComponent extends WidgetComponent {
   ngOnInit(): void {
     console.log('ngOninit zoom-in comp');
     
+  }
+
+  ngOnDestroy(): void {
+    console.log('OnDestroy zoomOut time');
   }
 
   override onClick(): void {

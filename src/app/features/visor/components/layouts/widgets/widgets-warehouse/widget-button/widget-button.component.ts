@@ -3,6 +3,7 @@ import {
   Component,
   ComponentRef,
   Input,
+  OnDestroy,
   OnInit,
   ViewChild,
   ViewContainerRef,
@@ -20,7 +21,7 @@ import { WidgetComponent } from '../widget/widget.component';
   templateUrl: './widget-button.component.html',
   styleUrls: ['./widget-button.component.scss'],
 })
-export class WidgetButtonComponent implements OnInit {
+export class WidgetButtonComponent implements OnInit, OnDestroy {
   visorService = inject(VisorService);
   screeSizeService = inject(ScreenSizeService);
 
@@ -40,9 +41,15 @@ export class WidgetButtonComponent implements OnInit {
   widgetsDictionary = widgetsIndex;
 
   constructor() {}
-
+  
   ngOnInit() {
     this.loadComponent();
+  }
+  
+  ngOnDestroy(): void {
+    console.log('widget button destroy time');
+    this.newComponent.destroy;
+    
   }
 
   public onClick() {

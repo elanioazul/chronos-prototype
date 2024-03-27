@@ -55,6 +55,7 @@ export class OverviewMapComponent extends WidgetComponent implements OnInit, OnD
 
   ngOnDestroy(): void {
     this.mapService.map()!.removeControl(this.overviewMapControl);
+    console.log('OnDestroy OverviewMap comp time');
   }
 
   override onClick(): void {

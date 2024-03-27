@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { CursorStyle } from '@features/visor/core/enums/cursor.enum';
 import { fitToExtent, getEpsgFromMap } from '@features/visor/core/utils/utils-ol';
 import { ProjUtilities } from '@features/visor/core/utils/utils-proj';
@@ -10,13 +10,14 @@ import { WidgetComponent } from '../widgets-warehouse/widget/widget.component';
   templateUrl: './home-extent.component.html',
   styleUrls: ['./home-extent.component.scss']
 })
-export class HomeExtentComponent extends WidgetComponent {
+export class HomeExtentComponent extends WidgetComponent implements OnInit, OnDestroy {
   
   private predefinedExtent!: Extent;
   constructor() {
     super();
     console.log('constructor homeExtent comp');
   }
+
   ngOnInit(): void {
     console.log('ngOninit homeExtent comp');
     this.predefinedExtent = ProjUtilities.transformExtent(
@@ -25,6 +26,10 @@ export class HomeExtentComponent extends WidgetComponent {
       getEpsgFromMap(this.mapService.map()!)
     );
     
+  }
+
+  ngOnDestroy(): void {
+    console.log('ngODestroy homeExtent comp time');
   }
 
   override onClick(): void {

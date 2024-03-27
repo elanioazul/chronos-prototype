@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { CursorStyle } from '@features/visor/core/enums/cursor.enum';
 import { WidgetComponent } from '../widgets-warehouse/widget/widget.component';
 
@@ -7,11 +7,19 @@ import { WidgetComponent } from '../widgets-warehouse/widget/widget.component';
   templateUrl: './bookmarks.component.html',
   styleUrls: ['./bookmarks.component.scss']
 })
-export class BookmarksComponent extends WidgetComponent {
+export class BookmarksComponent extends WidgetComponent implements OnInit, OnDestroy {
   
   constructor() {
     super();
     console.log('constructor bookmarks comp');
+  }
+  ngOnInit(): void {
+    console.log('ngOninit bookmarks comp');
+    
+  }
+  
+  ngOnDestroy(): void {
+    console.log('ngDestroy bookmarks comp time');
   }
 
   override onClick(): void {

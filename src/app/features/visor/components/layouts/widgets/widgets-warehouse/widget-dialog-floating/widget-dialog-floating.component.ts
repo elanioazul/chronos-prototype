@@ -1,4 +1,4 @@
-import { Component, ComponentRef, Input, ViewChild, ViewContainerRef, computed, inject } from '@angular/core';
+import { Component, ComponentRef, Input, OnDestroy, OnInit, ViewChild, ViewContainerRef, computed, inject } from '@angular/core';
 import { widgetsIndex } from '@features/visor/core/consts/widgets-dictionary';
 import { IWidget } from '@features/visor/core/interfaces/widgets/widget.interfaz';
 import { VisorService } from '@features/visor/core/services/visor.service';
@@ -9,7 +9,7 @@ import { WidgetComponent } from '../widget/widget.component';
   templateUrl: './widget-dialog-floating.component.html',
   styleUrls: ['./widget-dialog-floating.component.scss']
 })
-export class WidgetDialogFloatingComponent {
+export class WidgetDialogFloatingComponent implements OnInit, OnDestroy {
   visorService = inject(VisorService);
   mapActiveWidget = computed(() => this.visorService.mapActiveWidget());
   
@@ -32,6 +32,12 @@ export class WidgetDialogFloatingComponent {
 
   ngOnInit(): void {
     this.loadComponent();
+  }
+
+  ngOnDestroy(): void {
+    console.log('widget dialog floating destroy time');
+    this.newComponent.destroy;
+    
   }
 
   showDialog(event: any) {
